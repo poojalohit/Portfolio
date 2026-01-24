@@ -6,6 +6,7 @@ import {
   Geography,
   Marker,
 } from 'react-simple-maps'
+import type { Geography as GeographyType } from 'react-simple-maps'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
@@ -136,8 +137,8 @@ const Travel = () => {
               className="w-full h-full"
             >
               <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
-                {({ geographies }) =>
-                  geographies.map((geo) => {
+                {({ geographies }: { geographies: GeographyType[] }) =>
+                  geographies.map((geo: GeographyType) => {
                     const countryName = geo.properties.NAME
                     const isVisited = isCountryVisited(countryName)
 
