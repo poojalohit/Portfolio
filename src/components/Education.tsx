@@ -4,7 +4,6 @@ const Education = () => {
   const educationData = [
     {
       university: 'NYU',
-      logo: '🏛️',
       degree: "Master's Degree in Management of Technology",
       period: '2025-2027',
       gpa: 'GPA: 4.0/4.0',
@@ -16,7 +15,6 @@ const Education = () => {
     },
     {
       university: 'Amity University Dubai',
-      logo: '🎓',
       degree: 'Bachelor\'s Degree in Electronics and Telecommunication Engineering',
       period: '2017-2021',
       gpa: 'GPA: 9.51/10.00',
@@ -41,7 +39,10 @@ const Education = () => {
           Education
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 relative">
+          {/* Vertical divider line */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-gray-700 to-transparent transform -translate-x-1/2" />
+          
           {educationData.map((edu, index) => (
             <motion.div
               key={edu.university}
@@ -49,21 +50,43 @@ const Education = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="glass-strong rounded-2xl p-8 hover:shadow-2xl hover:shadow-nyu-purple/20 transition-all duration-300"
+              className="glass-strong rounded-2xl p-8 hover:shadow-2xl hover:shadow-nyu-purple/20 transition-all duration-300 relative"
             >
-              <div className="flex items-start gap-4 mb-6">
-                <div className="text-5xl">{edu.logo}</div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-2">{edu.university}</h3>
-                  <p className="text-gray-300 mb-2">{edu.degree}</p>
-                  <p className="text-nyu-purple-light font-semibold text-lg mb-2">
-                    {edu.period}
-                  </p>
-                  <p className="text-gray-400 mb-4">{edu.gpa}</p>
-                </div>
+              {/* University Logo/Branding */}
+              <div className="mb-6">
+                {edu.university === 'NYU' ? (
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-nyu-purple flex items-center justify-center">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <h3 className="text-2xl font-bold text-nyu-purple-light">NYU</h3>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-yellow-500/20 border-2 border-yellow-500/50 flex items-center justify-center">
+                      <span className="text-2xl font-bold text-yellow-400">A</span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-yellow-400">AMITY UNIVERSITY DUBAI</h3>
+                  </div>
+                )}
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-3 mb-6">
+                <p className="text-gray-300 text-lg">{edu.degree}</p>
+                <p className="text-nyu-purple-light font-semibold text-lg">
+                  {edu.period}
+                </p>
+                <p className="text-gray-400">{edu.gpa}</p>
+              </div>
+
+              <div className="space-y-2 pt-4 border-t border-gray-700/50">
+                <p className="text-sm font-semibold text-gray-400 mb-2">
+                  {edu.university === 'NYU' ? 'Positions Held:' : 'Achievements:'}
+                </p>
                 {edu.details.map((detail, idx) => (
                   <div
                     key={idx}

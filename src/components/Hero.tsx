@@ -102,58 +102,70 @@ const Hero = () => {
           className="mt-16 flex justify-center items-end gap-8 md:gap-16"
         >
           {/* Dubai Skyline */}
-          <div className="flex flex-col items-center">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="flex flex-col items-center"
+          >
             <svg
-              width="200"
-              height="120"
-              viewBox="0 0 200 120"
-              className="text-gray-700"
+              width="220"
+              height="140"
+              viewBox="0 0 220 140"
+              className="text-gray-600"
               fill="currentColor"
             >
-              {/* Burj Khalifa */}
-              <rect x="90" y="20" width="20" height="100" />
-              <rect x="85" y="15" width="30" height="5" />
-              {/* Burj Al Arab */}
-              <rect x="50" y="50" width="15" height="70" />
-              <polygon points="50,50 57.5,40 65,50" />
+              {/* Burj Khalifa - Tallest building */}
+              <rect x="95" y="10" width="22" height="130" rx="2" />
+              <rect x="90" y="5" width="32" height="6" rx="1" />
+              <rect x="98" y="0" width="16" height="5" rx="1" />
+              {/* Burj Al Arab - Sail-shaped hotel */}
+              <rect x="45" y="45" width="18" height="95" rx="1" />
+              <polygon points="45,45 54,30 63,45" fill="currentColor" />
               {/* Other buildings */}
-              <rect x="20" y="70" width="18" height="50" />
-              <rect x="120" y="60" width="15" height="60" />
-              <rect x="145" y="75" width="12" height="45" />
-              <rect x="165" y="80" width="10" height="40" />
+              <rect x="15" y="65" width="20" height="75" rx="1" />
+              <rect x="125" y="55" width="18" height="85" rx="1" />
+              <rect x="150" y="70" width="15" height="70" rx="1" />
+              <rect x="170" y="75" width="12" height="65" rx="1" />
+              <rect x="35" y="80" width="8" height="60" rx="1" />
+              <rect x="185" y="85" width="10" height="55" rx="1" />
             </svg>
-            <p className="text-sm text-gray-400 mt-2">Dubai</p>
-          </div>
+            <p className="text-sm text-gray-400 mt-2 font-semibold">Dubai</p>
+          </motion.div>
 
           {/* NYC Skyline */}
-          <div className="flex flex-col items-center">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="flex flex-col items-center"
+          >
             <svg
-              width="200"
-              height="120"
-              viewBox="0 0 200 120"
+              width="220"
+              height="140"
+              viewBox="0 0 220 140"
               className="text-gray-700"
               fill="currentColor"
             >
               {/* Empire State Building */}
-              <rect x="80" y="30" width="20" height="90" />
-              <rect x="75" y="25" width="30" height="5" />
-              <rect x="85" y="20" width="10" height="5" />
-              {/* Chrysler Building */}
-              <rect x="50" y="40" width="18" height="80" />
-              <polygon points="50,40 59,25 68,40" />
-              {/* One World Trade Center */}
-              <rect x="110" y="15" width="15" height="105" />
-              <polygon points="110,15 117.5,5 125,15" />
-              {/* Statue of Liberty */}
-              <circle cx="170" cy="100" r="8" />
-              <rect x="168" y="100" width="4" height="20" />
+              <rect x="85" y="25" width="22" height="115" rx="1" />
+              <rect x="80" y="20" width="32" height="6" rx="1" />
+              <rect x="90" y="15" width="12" height="5" rx="1" />
+              {/* Chrysler Building - Art Deco top */}
+              <rect x="45" y="35" width="20" height="105" rx="1" />
+              <polygon points="45,35 55,18 65,35" fill="currentColor" />
+              {/* One World Trade Center - Freedom Tower */}
+              <rect x="115" y="10" width="18" height="130" rx="1" />
+              <polygon points="115,10 124,0 133,10" fill="currentColor" />
+              {/* Statue of Liberty silhouette */}
+              <circle cx="175" cy="95" r="10" />
+              <rect x="173" y="95" width="4" height="25" />
+              <polygon points="173,120 175,130 177,120" fill="currentColor" />
               {/* Other buildings */}
-              <rect x="20" y="60" width="15" height="60" />
-              <rect x="135" y="70" width="12" height="50" />
-              <rect x="155" y="75" width="10" height="45" />
+              <rect x="15" y="55" width="18" height="85" rx="1" />
+              <rect x="140" y="65" width="15" height="75" rx="1" />
+              <rect x="160" y="70" width="12" height="70" rx="1" />
+              <rect x="33" y="75" width="10" height="65" rx="1" />
+              <rect x="195" y="80" width="8" height="60" rx="1" />
             </svg>
-            <p className="text-sm text-gray-400 mt-2">New York</p>
-          </div>
+            <p className="text-sm text-gray-400 mt-2 font-semibold">New York</p>
+          </motion.div>
         </motion.div>
       </div>
     </section>

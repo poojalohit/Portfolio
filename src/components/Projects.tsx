@@ -97,12 +97,19 @@ const Projects = () => {
       title: 'Instagram Events',
       category: 'Projects',
       description: (
-        <div>
-          <p>Case study on Instagram Events feature. Detailed analysis available on Notion.</p>
+        <div className="space-y-4">
+          <p>
+            A comprehensive case study analyzing Instagram's Events feature, exploring user experience, 
+            product strategy, and market positioning.
+          </p>
+          <p className="text-gray-400 text-sm">
+            This detailed analysis covers product design, user engagement strategies, and competitive 
+            positioning in the social events space.
+          </p>
         </div>
       ),
       link: 'https://available-ambert-6b8.notion.site/Case-Study-Insta-Events-2a8e3bcc284480e1831ed423f349bee0?source=copy_link',
-      linkText: 'View Case Study',
+      linkText: 'View Full Case Study on Notion',
     },
     {
       title: 'Economic Analysis: How AI and M&As are Forcing a New Business Model for Cybersecurity Vendors',

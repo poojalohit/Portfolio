@@ -15,6 +15,35 @@ import 'swiper/css/pagination'
 const Travel = () => {
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
 
+  // Map of our country names to world atlas country names
+  const countryNameMap: Record<string, string[]> = {
+    'Jordan': ['Jordan'],
+    'Spain': ['Spain'],
+    'Morocco': ['Morocco'],
+    'Georgia': ['Georgia'],
+    'Azerbaijan': ['Azerbaijan'],
+    'Hungary': ['Hungary'],
+    'Maldives': ['Maldives'],
+    'Nepal': ['Nepal'],
+    'Oman': ['Oman'],
+    'Ukraine': ['Ukraine'],
+    'Zanzibar': ['Tanzania'], // Zanzibar is part of Tanzania
+    'Portugal': ['Portugal'],
+    'Kenya': ['Kenya'],
+    'Egypt': ['Egypt'],
+    'Turkey': ['Turkey'],
+    'Greece': ['Greece'],
+    'United Kingdom': ['United Kingdom', 'United Kingdom of Great Britain and Northern Ireland'],
+    'Argentina': ['Argentina'],
+    'Brazil': ['Brazil'],
+    'Peru': ['Peru'],
+    'United Arab Emirates': ['United Arab Emirates'],
+    'United States': ['United States of America', 'United States'],
+    'India': ['India'],
+    'Cyprus': ['Cyprus'],
+    'Mexico': ['Mexico'],
+  }
+
   const countries = [
     { name: 'Jordan', flag: '🇯🇴', coordinates: [36.2384, 30.5852] },
     { name: 'Spain', flag: '🇪🇸', coordinates: [-3.7492, 40.4637] },
@@ -42,6 +71,15 @@ const Travel = () => {
     { name: 'Cyprus', flag: '🇨🇾', coordinates: [33.4299, 35.1264] },
     { name: 'Mexico', flag: '🇲🇽', coordinates: [-102.5528, 23.6345] },
   ]
+
+  const isCountryVisited = (atlasCountryName: string): boolean => {
+    return Object.entries(countryNameMap).some(([_, atlasNames]) =>
+      atlasNames.some(name => 
+        atlasCountryName.toLowerCase().includes(name.toLowerCase()) ||
+        name.toLowerCase().includes(atlasCountryName.toLowerCase())
+      )
+    )
+  }
 
   // Sample travel photos by city (placeholder structure)
   const travelPhotos = [
@@ -101,9 +139,7 @@ const Travel = () => {
                 {({ geographies }) =>
                   geographies.map((geo) => {
                     const countryName = geo.properties.NAME
-                    const isVisited = countries.some(
-                      (c) => c.name === countryName
-                    )
+                    const isVisited = isCountryVisited(countryName)
 
                     return (
                       <Geography
