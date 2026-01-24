@@ -1,0 +1,12 @@
+# Travel Photos Directory
+
+Add your travel photos here with the naming convention:
+- [city-name]-[number].jpg
+
+Examples:
+- dubai-1.jpg
+- nyc-1.jpg
+- barcelona-1.jpg
+- istanbul-1.jpg
+
+The carousel will automatically display these images when available.
