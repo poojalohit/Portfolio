@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import ErrorBoundary from './components/ErrorBoundary'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import Education from './components/Education'
@@ -34,17 +35,19 @@ function App() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gray-900">
-      <Navigation activeSection={activeSection} />
-      <main>
-        <Hero />
-        <Education />
-        <WorkExperience />
-        <Projects />
-        <Travel />
-        <Books />
-      </main>
-    </div>
+    <ErrorBoundary>
+      <div className="min-h-screen bg-gray-900">
+        <Navigation activeSection={activeSection} />
+        <main>
+          <Hero />
+          <Education />
+          <WorkExperience />
+          <Projects />
+          <Travel />
+          <Books />
+        </main>
+      </div>
+    </ErrorBoundary>
   )
 }
 
