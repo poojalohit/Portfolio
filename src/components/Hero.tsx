@@ -106,28 +106,11 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             className="flex flex-col items-center"
           >
-            <svg
-              width="220"
-              height="140"
-              viewBox="0 0 220 140"
-              className="text-gray-600"
-              fill="currentColor"
-            >
-              {/* Burj Khalifa - Tallest building */}
-              <rect x="95" y="10" width="22" height="130" rx="2" />
-              <rect x="90" y="5" width="32" height="6" rx="1" />
-              <rect x="98" y="0" width="16" height="5" rx="1" />
-              {/* Burj Al Arab - Sail-shaped hotel */}
-              <rect x="45" y="45" width="18" height="95" rx="1" />
-              <polygon points="45,45 54,30 63,45" fill="currentColor" />
-              {/* Other buildings */}
-              <rect x="15" y="65" width="20" height="75" rx="1" />
-              <rect x="125" y="55" width="18" height="85" rx="1" />
-              <rect x="150" y="70" width="15" height="70" rx="1" />
-              <rect x="170" y="75" width="12" height="65" rx="1" />
-              <rect x="35" y="80" width="8" height="60" rx="1" />
-              <rect x="185" y="85" width="10" height="55" rx="1" />
-            </svg>
+            <img
+              src="/dubai-skyline.png"
+              alt="Dubai Skyline"
+              className="h-32 md:h-40 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+            />
             <p className="text-sm text-gray-400 mt-2 font-semibold">Dubai</p>
           </motion.div>
 
@@ -136,34 +119,11 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             className="flex flex-col items-center"
           >
-            <svg
-              width="220"
-              height="140"
-              viewBox="0 0 220 140"
-              className="text-gray-700"
-              fill="currentColor"
-            >
-              {/* Empire State Building */}
-              <rect x="85" y="25" width="22" height="115" rx="1" />
-              <rect x="80" y="20" width="32" height="6" rx="1" />
-              <rect x="90" y="15" width="12" height="5" rx="1" />
-              {/* Chrysler Building - Art Deco top */}
-              <rect x="45" y="35" width="20" height="105" rx="1" />
-              <polygon points="45,35 55,18 65,35" fill="currentColor" />
-              {/* One World Trade Center - Freedom Tower */}
-              <rect x="115" y="10" width="18" height="130" rx="1" />
-              <polygon points="115,10 124,0 133,10" fill="currentColor" />
-              {/* Statue of Liberty silhouette */}
-              <circle cx="175" cy="95" r="10" />
-              <rect x="173" y="95" width="4" height="25" />
-              <polygon points="173,120 175,130 177,120" fill="currentColor" />
-              {/* Other buildings */}
-              <rect x="15" y="55" width="18" height="85" rx="1" />
-              <rect x="140" y="65" width="15" height="75" rx="1" />
-              <rect x="160" y="70" width="12" height="70" rx="1" />
-              <rect x="33" y="75" width="10" height="65" rx="1" />
-              <rect x="195" y="80" width="8" height="60" rx="1" />
-            </svg>
+            <img
+              src="/nyc-skyline.png"
+              alt="New York City Skyline"
+              className="h-32 md:h-40 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+            />
             <p className="text-sm text-gray-400 mt-2 font-semibold">New York</p>
           </motion.div>
         </motion.div>
