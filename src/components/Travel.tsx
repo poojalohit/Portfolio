@@ -14,7 +14,6 @@ import 'swiper/css/pagination'
 
 const Travel = () => {
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
-  const [mapError, setMapError] = useState<string | null>(null)
 
   // Map of our country names to world atlas country names
   const countryNameMap: Record<string, string[]> = {
@@ -129,15 +128,7 @@ const Travel = () => {
           className="glass-strong rounded-2xl p-6 mb-12"
         >
           <div className="h-[500px] w-full relative rounded-lg overflow-hidden bg-gray-800">
-            {mapError ? (
-              <div className="w-full h-full flex items-center justify-center text-gray-400">
-                <div className="text-center">
-                  <p className="mb-2">Map temporarily unavailable</p>
-                  <p className="text-sm">{mapError}</p>
-                </div>
-              </div>
-            ) : (
-              <ComposableMap
+            <ComposableMap
                 projectionConfig={{
                   scale: 150,
                   center: [0, 20],
@@ -145,41 +136,35 @@ const Travel = () => {
                 className="w-full h-full"
               >
                 <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
-                  {({ geographies }: { geographies: Array<{ rsmKey: string; properties: { NAME: string } }> }) => {
-                    try {
-                      return geographies.map((geo: { rsmKey: string; properties: { NAME: string } }) => {
-                        const countryName = geo.properties.NAME
-                        const isVisited = isCountryVisited(countryName)
+                  {({ geographies }: { geographies: Array<{ rsmKey: string; properties: { NAME: string } }> }) =>
+                    geographies.map((geo: { rsmKey: string; properties: { NAME: string } }) => {
+                      const countryName = geo.properties.NAME
+                      const isVisited = isCountryVisited(countryName)
 
-                        return (
-                          <Geography
-                            key={geo.rsmKey}
-                            geography={geo}
-                            fill={isVisited ? '#7a1ba8' : '#374151'}
-                            stroke="#1f2937"
-                            strokeWidth={0.5}
-                            style={{
-                              default: {
-                                outline: 'none',
-                                cursor: isVisited ? 'pointer' : 'default',
-                              },
-                              hover: {
-                                fill: isVisited ? '#57068c' : '#4b5563',
-                                outline: 'none',
-                              },
-                              pressed: {
-                                outline: 'none',
-                              },
-                            }}
-                          />
-                        )
-                      })
-                    } catch (error) {
-                      console.error('Error rendering geographies:', error)
-                      setMapError('Error loading map data')
-                      return null
-                    }
-                  }}
+                      return (
+                        <Geography
+                          key={geo.rsmKey}
+                          geography={geo}
+                          fill={isVisited ? '#7a1ba8' : '#374151'}
+                          stroke="#1f2937"
+                          strokeWidth={0.5}
+                          style={{
+                            default: {
+                              outline: 'none',
+                              cursor: isVisited ? 'pointer' : 'default',
+                            },
+                            hover: {
+                              fill: isVisited ? '#57068c' : '#4b5563',
+                              outline: 'none',
+                            },
+                            pressed: {
+                              outline: 'none',
+                            },
+                          }}
+                        />
+                      )
+                    })
+                  }
                 </Geographies>
                 {countries.map((country) => (
                   <Marker
@@ -211,8 +196,7 @@ const Travel = () => {
                     </g>
                   </Marker>
                 ))}
-              </ComposableMap>
-            )}
+            </ComposableMap>
           </div>
         </motion.div>
 
