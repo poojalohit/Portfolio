@@ -68,7 +68,7 @@ const Hero = () => {
                 className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden glass-strong border-4 border-nyu-purple/30 shadow-2xl"
               >
                 <img
-                  src="/headshot.jpg"
+                  src="/headshot.png"
                   alt="Pooja Lohit"
                   className="w-full h-full object-cover"
                   onError={(e) => {
