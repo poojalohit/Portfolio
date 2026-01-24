@@ -1,43 +1,51 @@
 declare module 'react-simple-maps' {
-  import { ComponentType, ReactNode } from 'react'
+  import * as React from 'react'
 
   export interface Geography {
     rsmKey: string
     properties: {
       NAME: string
-      [key: string]: any
+      [key: string]: unknown
     }
-    [key: string]: any
+    [key: string]: unknown
   }
 
   export interface GeographiesProps {
     geography?: string | object
-    children?: (props: { geographies: Geography[] }) => ReactNode
+    children?: (props: { geographies: Geography[] }) => React.ReactNode
   }
 
   export interface GeographyProps {
     geography: Geography
-    [key: string]: any
+    fill?: string
+    stroke?: string
+    strokeWidth?: number
+    style?: {
+      default?: React.CSSProperties
+      hover?: React.CSSProperties
+      pressed?: React.CSSProperties
+    }
+    [key: string]: unknown
   }
 
   export interface MarkerProps {
     coordinates: [number, number]
-    children?: ReactNode
-    [key: string]: any
+    children?: React.ReactNode
+    [key: string]: unknown
   }
 
   export interface ComposableMapProps {
     projectionConfig?: {
       scale?: number
       center?: [number, number]
-      [key: string]: any
+      [key: string]: unknown
     }
     className?: string
-    [key: string]: any
+    [key: string]: unknown
   }
 
-  export const ComposableMap: ComponentType<ComposableMapProps>
-  export const Geographies: ComponentType<GeographiesProps>
-  export const Geography: ComponentType<GeographyProps>
-  export const Marker: ComponentType<MarkerProps>
+  export const ComposableMap: React.ComponentType<ComposableMapProps>
+  export const Geographies: React.ComponentType<GeographiesProps>
+  export const Geography: React.ComponentType<GeographyProps>
+  export const Marker: React.ComponentType<MarkerProps>
 }
