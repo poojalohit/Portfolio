@@ -1,190 +1,188 @@
-# GitHub Pages Troubleshooting Guide
+# Portfolio Troubleshooting Guide
 
-## Common Issues and Solutions
+## 🔍 Common Issues and Solutions
 
-### Issue 1: Workflow Not Running
+### Issue 1: Page Shows Content But No Interactivity
 
-**Symptoms:** No workflow appears in the Actions tab
+**Symptoms:**
+- Content is visible but navigation doesn't work
+- No animations
+- Buttons don't respond
+
+**Possible Causes:**
+1. JavaScript bundle not loading
+2. Build failed but old version is cached
+3. Base path mismatch
 
 **Solutions:**
-1. Check if the workflow file is in the correct location: `.github/workflows/deploy.yml`
-2. Verify the file was committed and pushed:
-   ```bash
-   git add .github/workflows/deploy.yml
-   git commit -m "Add deployment workflow"
-   git push
+
+1. **Check Browser Console:**
+   - Press `F12` to open Developer Tools
+   - Go to "Console" tab
+   - Look for red error messages
+   - Share the errors you see
+
+2. **Check Network Tab:**
+   - In Developer Tools, go to "Network" tab
+   - Refresh the page
+   - Look for failed requests (red entries)
+   - Check if `index.js` or `index.css` are loading
+
+3. **Clear Browser Cache:**
+   - Press `Ctrl + Shift + Delete`
+   - Select "Cached images and files"
+   - Clear and refresh
+
+---
+
+### Issue 2: Blank White/Black Page
+
+**Symptoms:**
+- Page loads but shows nothing
+- Just a blank screen
+
+**Possible Causes:**
+1. JavaScript error preventing render
+2. CSS not loading
+3. React app not mounting
+
+**Solutions:**
+
+1. **Check Console for Errors:**
+   ```javascript
+   // Common errors:
+   - "Failed to load module"
+   - "Cannot read property of undefined"
+   - "React is not defined"
    ```
-3. Check if GitHub Actions is enabled:
-   - Go to Settings → Actions → General
-   - Ensure "Allow all actions and reusable workflows" is selected
 
-### Issue 2: Workflow Fails During Build
+2. **Verify GitHub Actions Build:**
+   - Go to: https://github.com/poojalohit/Portfolio/actions
+   - Check if latest build has green checkmark ✅
+   - If red X, click it to see error details
 
-**Symptoms:** Red X in Actions tab, build step fails
+3. **Check if Base Path is Correct:**
+   - URL should be: `https://poojalohit.github.io/Portfolio/`
+   - NOT: `https://poojalohit.github.io/` (missing /Portfolio/)
+
+---
+
+### Issue 3: 404 Errors for Assets
+
+**Symptoms:**
+- Images not loading
+- Styles not applying
+- Console shows 404 errors
+
+**Solutions:**
+
+1. **Verify Base Path in vite.config.ts:**
+   ```typescript
+   base: '/Portfolio/',  // Must match your repo name
+   ```
+
+2. **Check Asset Paths:**
+   - All assets should be relative to `/Portfolio/`
+   - Example: `/Portfolio/headshot.jpg`
+
+---
+
+### Issue 4: Build Failing on GitHub Actions
+
+**Symptoms:**
+- GitHub Actions shows red X
+- Site not updating
 
 **Common Causes:**
-1. **Missing package-lock.json**
-   - Solution: Generate it locally:
-     ```bash
-     npm install
-     git add package-lock.json
-     git commit -m "Add package-lock.json"
-     git push
-     ```
-
-2. **TypeScript Errors**
-   - Solution: Test build locally first:
-     ```bash
-     npm run build
-     ```
-   - Fix any TypeScript errors before pushing
-
-3. **Missing Dependencies**
-   - Solution: Ensure all dependencies are in package.json
-   - Run `npm install` locally to verify
-
-### Issue 3: Site Shows 404 or Blank Page
-
-**Symptoms:** Site loads but shows 404 or blank page
+1. TypeScript errors
+2. Missing dependencies
+3. Build script errors
 
 **Solutions:**
 
-1. **Repository Name Mismatch**
-   - Check your actual repository name on GitHub
-   - Update `vite.config.ts` if different:
-     ```ts
-     base: '/Your-Actual-Repo-Name/',
-     ```
-   - Commit and push the change
+1. **Check Build Logs:**
+   - Go to: https://github.com/poojalohit/Portfolio/actions
+   - Click on failed workflow
+   - Scroll to "Build" step
+   - Read error messages
 
-2. **Base Path Issue**
-   - If repo is named exactly "Portfolio", keep `base: '/Portfolio/'`
-   - If repo has different name, update accordingly
-   - If using custom domain, use `base: '/'`
+2. **Fix TypeScript Errors:**
+   - Run locally: `npm run build`
+   - Fix any errors shown
+   - Commit and push fixes
 
-3. **Wait for Propagation**
-   - GitHub Pages can take 5-10 minutes to update
-   - Clear browser cache (Ctrl+Shift+R or Cmd+Shift+R)
+---
 
-### Issue 4: GitHub Pages Not Enabled
+## 🛠️ Quick Diagnostic Steps
 
-**Symptoms:** No Pages option in Settings, or "Source" shows nothing
-
-**Solutions:**
-1. Go to Settings → Pages
-2. Under "Source", select **"GitHub Actions"** (not "Deploy from a branch")
-3. If "GitHub Actions" option doesn't appear:
-   - Wait a few minutes after first push
-   - Check if repository is Public (required for free GitHub Pages)
-   - Verify you have admin access to the repository
-
-### Issue 5: Workflow Runs But Doesn't Deploy
-
-**Symptoms:** Build succeeds but site doesn't update
-
-**Solutions:**
-1. Check the "deploy" job in Actions (not just "build")
-2. Ensure both jobs complete successfully
-3. Check if Pages environment is set up:
-   - Go to Settings → Environments
-   - Should see "github-pages" environment
-
-### Issue 6: Authentication Errors
-
-**Symptoms:** Push fails with authentication error
-
-**Solutions:**
-1. Use Personal Access Token instead of password:
-   - GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
-   - Generate new token with `repo` scope
-   - Use token as password when pushing
-
-2. Or use SSH:
-   ```bash
-   git remote set-url origin git@github.com:YOUR_USERNAME/Portfolio.git
-   ```
-
-## Step-by-Step Diagnostic
-
-### Step 1: Verify Local Build Works
-```bash
-npm install
+### Step 1: Check Local Build
+```powershell
+cd "C:\Users\pooja\.cursor\worktrees\Portfolio\fck"
 npm run build
 ```
-If this fails, fix errors before pushing.
+- If this fails, fix errors before pushing
+- If this succeeds, the issue is likely deployment-related
 
-### Step 2: Check Repository Name
-1. Go to your GitHub repository
-2. Check the URL: `github.com/YOUR_USERNAME/REPO_NAME`
-3. Update `vite.config.ts` if repo name is different from "Portfolio"
+### Step 2: Check GitHub Actions
+1. Visit: https://github.com/poojalohit/Portfolio/actions
+2. Check latest workflow status
+3. If failed, read error messages
 
-### Step 3: Verify Workflow File
-1. Check `.github/workflows/deploy.yml` exists
-2. Verify it was committed:
-   ```bash
-   git log --oneline --all -- .github/workflows/deploy.yml
-   ```
+### Step 3: Check Browser Console
+1. Open: https://poojalohit.github.io/Portfolio/
+2. Press `F12`
+3. Check Console tab for errors
+4. Check Network tab for failed requests
 
-### Step 4: Check Actions Tab
-1. Go to your repository → Actions tab
-2. Look for "Deploy to GitHub Pages" workflow
-3. Click on it to see if it ran
-4. Check for any error messages
+### Step 4: Verify URL
+- Correct: `https://poojalohit.github.io/Portfolio/`
+- Wrong: `https://poojalohit.github.io/` (missing /Portfolio/)
 
-### Step 5: Verify Pages Settings
-1. Settings → Pages
-2. Source should be "GitHub Actions"
-3. Should show deployment status
+---
 
-### Step 6: Check Deployment URL
-1. Settings → Pages should show the URL
-2. Try accessing: `https://YOUR_USERNAME.github.io/REPO_NAME/`
-3. Note the trailing slash is important!
+## 📋 What to Share When Asking for Help
 
-## Quick Fixes
+1. **What you see:**
+   - Blank page?
+   - Content but no interactivity?
+   - Error messages?
 
-### Fix 1: Regenerate package-lock.json
-```bash
-rm package-lock.json
-npm install
-git add package-lock.json
-git commit -m "Regenerate package-lock.json"
-git push
+2. **Browser Console Errors:**
+   - Copy any red error messages
+
+3. **GitHub Actions Status:**
+   - Is the latest build passing or failing?
+
+4. **URL you're accessing:**
+   - Full URL you're trying to view
+
+---
+
+## 🔧 Quick Fixes
+
+### Fix 1: Force Rebuild
+1. Make a small change (add a space in README.md)
+2. Commit and push
+3. This triggers a new build
+
+### Fix 2: Clear GitHub Pages Cache
+1. Go to repository Settings > Pages
+2. Change source and save
+3. Change back to GitHub Actions and save
+4. This forces a fresh deployment
+
+### Fix 3: Verify Base Path
+Ensure `vite.config.ts` has:
+```typescript
+base: '/Portfolio/',
 ```
 
-### Fix 2: Update Base Path
-If your repo is NOT named "Portfolio":
-```bash
-# Edit vite.config.ts
-# Change: base: '/Portfolio/',
-# To: base: '/Your-Repo-Name/',
-git add vite.config.ts
-git commit -m "Fix base path"
-git push
-```
+---
 
-### Fix 3: Re-run Workflow
-1. Go to Actions tab
-2. Click on the workflow run
-3. Click "Re-run all jobs"
+## 📞 Still Not Working?
 
-### Fix 4: Manual Deployment (Alternative)
-If GitHub Actions keeps failing:
-1. Build locally: `npm run build`
-2. Create `docs` folder: `mkdir docs`
-3. Copy dist contents: `cp -r dist/* docs/`
-4. Commit and push:
-   ```bash
-   git add docs/
-   git commit -m "Manual deployment"
-   git push
-   ```
-5. Settings → Pages → Source → Select "main" branch and "/docs" folder
-
-## Still Not Working?
-
-Share these details:
-1. What error message do you see in the Actions tab?
-2. What is your repository name?
-3. Is the workflow running at all?
-4. What happens when you visit the Pages URL?
+Share:
+1. Screenshot of the page
+2. Browser console errors (F12 > Console)
+3. GitHub Actions build status
+4. The exact URL you're accessing
