@@ -25,7 +25,7 @@ const WorkExperience = () => {
       ],
     },
     {
-      company: 'Beta IT',
+      company: 'Beta Information Technology',
       role: 'Sales Account Manager',
       period: '2021-2022',
       link: 'https://www.betait.net',

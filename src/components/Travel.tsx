@@ -1,88 +1,92 @@
 import { motion } from 'framer-motion'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 const Travel = () => {
   const countries = [
-    { name: 'Jordan', flag: '🇯🇴' },
-    { name: 'Spain', flag: '🇪🇸' },
-    { name: 'Morocco', flag: '🇲🇦' },
-    { name: 'Georgia', flag: '🇬🇪' },
-    { name: 'Azerbaijan', flag: '🇦🇿' },
-    { name: 'Hungary', flag: '🇭🇺' },
-    { name: 'Maldives', flag: '🇲🇻' },
-    { name: 'Nepal', flag: '🇳🇵' },
-    { name: 'Oman', flag: '🇴🇲' },
-    { name: 'Ukraine', flag: '🇺🇦' },
-    { name: 'Zanzibar', flag: '🇹🇿' },
-    { name: 'Portugal', flag: '🇵🇹' },
-    { name: 'Kenya', flag: '🇰🇪' },
-    { name: 'Egypt', flag: '🇪🇬' },
-    { name: 'Turkey', flag: '🇹🇷' },
-    { name: 'Greece', flag: '🇬🇷' },
-    { name: 'United Kingdom', flag: '🇬🇧' },
-    { name: 'Argentina', flag: '🇦🇷' },
-    { name: 'Brazil', flag: '🇧🇷' },
-    { name: 'Peru', flag: '🇵🇪' },
-    { name: 'United Arab Emirates', flag: '🇦🇪' },
-    { name: 'United States', flag: '🇺🇸' },
-    { name: 'India', flag: '🇮🇳' },
-    { name: 'Cyprus', flag: '🇨🇾' },
-    { name: 'Mexico', flag: '🇲🇽' },
+    { name: 'Jordan', flag: '🇯🇴', iso: 'JOR' },
+    { name: 'Spain', flag: '🇪🇸', iso: 'ESP' },
+    { name: 'Morocco', flag: '🇲🇦', iso: 'MAR' },
+    { name: 'Georgia', flag: '🇬🇪', iso: 'GEO' },
+    { name: 'Azerbaijan', flag: '🇦🇿', iso: 'AZE' },
+    { name: 'Hungary', flag: '🇭🇺', iso: 'HUN' },
+    { name: 'Maldives', flag: '🇲🇻', iso: 'MDV' },
+    { name: 'Nepal', flag: '🇳🇵', iso: 'NPL' },
+    { name: 'Oman', flag: '🇴🇲', iso: 'OMN' },
+    { name: 'Ukraine', flag: '🇺🇦', iso: 'UKR' },
+    { name: 'Zanzibar', flag: '🇹🇿', iso: 'TZA' },
+    { name: 'Portugal', flag: '🇵🇹', iso: 'PRT' },
+    { name: 'Kenya', flag: '🇰🇪', iso: 'KEN' },
+    { name: 'Egypt', flag: '🇪🇬', iso: 'EGY' },
+    { name: 'Turkey', flag: '🇹🇷', iso: 'TUR' },
+    { name: 'Greece', flag: '🇬🇷', iso: 'GRC' },
+    { name: 'United Kingdom', flag: '🇬🇧', iso: 'GBR' },
+    { name: 'Argentina', flag: '🇦🇷', iso: 'ARG' },
+    { name: 'Brazil', flag: '🇧🇷', iso: 'BRA' },
+    { name: 'Peru', flag: '🇵🇪', iso: 'PER' },
+    { name: 'United Arab Emirates', flag: '🇦🇪', iso: 'ARE' },
+    { name: 'United States', flag: '🇺🇸', iso: 'USA' },
+    { name: 'India', flag: '🇮🇳', iso: 'IND' },
+    { name: 'Cyprus', flag: '🇨🇾', iso: 'CYP' },
+    { name: 'Mexico', flag: '🇲🇽', iso: 'MEX' },
   ]
+
+  // ISO codes for visited countries (for map highlighting)
+  const visitedCountryCodes = new Set(countries.map(c => c.iso))
 
   // Travel photos by city - all images from public/travel/ folder
   const travelPhotos = [
     // Greece
-    { city: 'Athens', filename: 'Athens - 1.jpeg', alt: 'Athens, Greece' },
-    { city: 'Mykonos', filename: 'Mykonos - 1.jpeg', alt: 'Mykonos, Greece' },
-    { city: 'Santorini', filename: 'Santorini -1.jpeg', alt: 'Santorini, Greece' },
+    { city: 'Athens, Greece', filename: 'Athens - 1.jpeg', alt: 'Athens, Greece' },
+    { city: 'Mykonos, Greece', filename: 'Mykonos - 1.jpeg', alt: 'Mykonos, Greece' },
+    { city: 'Santorini, Greece', filename: 'Santorini -1.jpeg', alt: 'Santorini, Greece' },
     
     // Brazil
-    { city: 'Brazil', filename: 'Brazil -2.jpg', alt: 'Brazil' },
-    { city: 'Rio De Janeiro', filename: 'Rio De Janeiro - 1.JPG', alt: 'Rio De Janeiro, Brazil' },
-    { city: 'Iguazu Falls', filename: 'Iquazu Falls Brazil -1.JPG', alt: 'Iguazu Falls, Brazil' },
+    { city: 'Rio De Janeiro, Brazil', filename: 'Brazil -2.jpg', alt: 'Rio De Janeiro, Brazil' },
+    { city: 'Rio De Janeiro, Brazil', filename: 'Rio De Janeiro - 1.JPG', alt: 'Rio De Janeiro, Brazil' },
+    { city: 'Iguazu Falls, Brazil', filename: 'Iquazu Falls Brazil -1.JPG', alt: 'Iguazu Falls, Brazil' },
     
     // Argentina
-    { city: 'Buenos Aires', filename: 'Buenos Aires - 1.JPG', alt: 'Buenos Aires, Argentina' },
+    { city: 'Buenos Aires, Argentina', filename: 'Buenos Aires - 1.JPG', alt: 'Buenos Aires, Argentina' },
     
     // Cyprus
     { city: 'Cyprus', filename: 'Cyprus - 1.jpg', alt: 'Cyprus' },
-    { city: 'Cyprus', filename: 'Cyprus - 2.JPG', alt: 'Cyprus' },
+    { city: 'Cyprus, Cyprus', filename: 'Cyprus - 2.JPG', alt: 'Cyprus' },
     
     // Egypt
-    { city: 'Egypt', filename: 'Egypt - 1.jpeg', alt: 'Egypt' },
-    { city: 'Egypt', filename: 'Egypt -2.jpeg', alt: 'Egypt' },
+    { city: 'Abu Simbel, Egypt', filename: 'Egypt - 1.jpeg', alt: 'Egypt' },
+    { city: 'Abu Simbel, Egypt', filename: 'Egypt -2.jpeg', alt: 'Egypt' },
     
     // Kenya
-    { city: 'Kenya', filename: 'Kenya -1.jpg', alt: 'Kenya' },
-    { city: 'Kenya', filename: 'Kenya -2.jpg', alt: 'Kenya' },
-    { city: 'Kenya', filename: 'Kenya -3.jpg', alt: 'Kenya' },
-    { city: 'Kenya', filename: 'Kenya - 4.JPG', alt: 'Kenya' },
+    { city: 'Masai Mara, Kenya', filename: 'Kenya -1.jpg', alt: 'Kenya' },
+    { city: 'Masai Mara, Kenya', filename: 'Kenya -2.jpg', alt: 'Kenya' },
+    { city: 'Masai Mara, Kenya', filename: 'Kenya -3.jpg', alt: 'Kenya' },
+    { city: 'Masai Mara, Kenya', filename: 'Kenya - 4.JPG', alt: 'Kenya' },
     
     // United Kingdom
-    { city: 'London', filename: 'London - 1.jpeg', alt: 'London, United Kingdom' },
-    { city: 'Oxford', filename: 'Oxford - 1.JPG', alt: 'Oxford, United Kingdom' },
+    { city: 'London, United Kingdom', filename: 'London - 1.jpeg', alt: 'London, United Kingdom' },
+    { city: 'Oxford, United Kingdom', filename: 'Oxford - 1.JPG', alt: 'Oxford, United Kingdom' },
     
     // Spain
-    { city: 'Madrid', filename: 'Madrid - 1.jpeg', alt: 'Madrid, Spain' },
+    { city: 'Madrid, Spain', filename: 'Madrid - 1.jpeg', alt: 'Madrid, Spain' },
     
     // United States
-    { city: 'San Francisco', filename: 'San Francisco - 1.jpeg', alt: 'San Francisco, United States' },
-    { city: 'Yosemite', filename: 'Yosemite National Park - 1.jpeg', alt: 'Yosemite National Park, United States' },
+    { city: 'San Francisco, United States', filename: 'San Francisco - 1.jpeg', alt: 'San Francisco, United States' },
+    { city: 'Yosemite National Park, United States', filename: 'Yosemite National Park - 1.jpeg', alt: 'Yosemite National Park, United States' },
     
     // Peru
     { city: 'Peru', filename: 'Peru - 1.JPG', alt: 'Peru' },
     { city: 'Peru', filename: 'Peru - 2.JPG', alt: 'Peru' },
-    { city: 'Peru', filename: 'Peru - 3.jpg', alt: 'Peru' },
-    { city: 'Peru', filename: 'Peru - 4.jpg', alt: 'Peru' },
+    { city: 'Machu Picchu, Peru', filename: 'Peru - 3.jpg', alt: 'Peru' },
+    { city: 'Rainbow Mountain, Peru', filename: 'Peru - 4.jpg', alt: 'Peru' },
     
     // India
-    { city: 'Uttarakhand', filename: 'Uttarakhand - 1.jpeg', alt: 'Uttarakhand, India' },
-    { city: 'Uttarakhand', filename: 'Uttarakhand - 2.jpeg', alt: 'Uttarakhand, India' },
+    { city: 'Valley of Flowers, Uttarakhand', filename: 'Uttarakhand - 1.jpeg', alt: 'Uttarakhand, India' },
+    { city: 'Valley of Flowers, Uttarakhand', filename: 'Uttarakhand - 2.jpeg', alt: 'Uttarakhand, India' },
   ]
 
   return (
@@ -134,6 +138,69 @@ const Travel = () => {
                 <span className="text-gray-300">{country.name}</span>
               </motion.div>
             ))}
+          </div>
+        </motion.div>
+
+        {/* World Map */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="glass-strong rounded-2xl p-6 mb-12"
+        >
+          <h3 className="text-2xl font-bold mb-6 text-center">
+            World Map
+          </h3>
+          <div className="w-full overflow-hidden rounded-lg" style={{ height: '500px', backgroundColor: '#1F2937' }}>
+            <ComposableMap
+              projectionConfig={{
+                scale: 147,
+                center: [0, 20],
+              }}
+              className="w-full h-full"
+            >
+              <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
+                {({ geographies }) =>
+                  geographies.map((geo) => {
+                    const isoCode = geo.properties.ISO_A3 || geo.properties.ISO_A2
+                    const isVisited = visitedCountryCodes.has(isoCode)
+                    return (
+                      <Geography
+                        key={geo.rsmKey}
+                        geography={geo}
+                        fill={isVisited ? '#8B5CF6' : '#374151'}
+                        stroke="#1F2937"
+                        strokeWidth={0.5}
+                        style={{
+                          default: {
+                            outline: 'none',
+                          },
+                          hover: {
+                            fill: isVisited ? '#A78BFA' : '#4B5563',
+                            outline: 'none',
+                            cursor: 'pointer',
+                          },
+                          pressed: {
+                            outline: 'none',
+                          },
+                        }}
+                      />
+                    )
+                  })
+                }
+              </Geographies>
+            </ComposableMap>
+          </div>
+          <div className="mt-4 flex items-center justify-center gap-6 text-sm">
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded bg-nyu-purple"></div>
+              <span className="text-gray-300">Visited</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded bg-gray-600"></div>
+              <span className="text-gray-300">Not Visited</span>
+            </div>
           </div>
         </motion.div>
 
