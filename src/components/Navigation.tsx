@@ -4,7 +4,8 @@ import {
   FaBriefcase, 
   FaTools, 
   FaPlane, 
-  FaBook 
+  FaBook,
+  FaEnvelope
 } from 'react-icons/fa'
 
 interface NavigationProps {
@@ -18,6 +19,7 @@ const Navigation = ({ activeSection }: NavigationProps) => {
     { id: 'projects', icon: FaTools, label: 'Projects' },
     { id: 'travel', icon: FaPlane, label: 'Travel' },
     { id: 'books', icon: FaBook, label: 'Books' },
+    { id: 'contact', icon: FaEnvelope, label: 'Contact' },
   ]
 
   const scrollToSection = (sectionId: string) => {
