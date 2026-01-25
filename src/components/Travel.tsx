@@ -211,18 +211,21 @@ const Travel = () => {
               }}
               className="w-full h-full"
             >
-              <Geographies geography="https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json">
+              <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
                 {({ geographies }) =>
                   geographies.map((geo) => {
                     // Try multiple ISO code properties that might exist in the world atlas
                     const props = geo.properties as Record<string, unknown>
+                    
+                    // Get country name from various possible properties
                     const countryName = (props.NAME as string) || 
                                       (props.NAME_LONG as string) || 
                                       (props.NAME_EN as string) ||
                                       (props.name as string) ||
+                                      (props.NAME_SORT as string) ||
                                       ''
                     
-                    // Try ISO codes first - check all possible property names
+                    // Try ISO codes first - check all possible property names (lowercase and uppercase)
                     let isoCode = (props.ISO_A3 as string) || 
                                  (props.ISO_A2 as string) || 
                                  (props.ISO_A3_EH as string) ||
@@ -230,7 +233,11 @@ const Travel = () => {
                                  (props.ADM0_A3 as string) ||
                                  (props.iso_a3 as string) ||
                                  (props.iso_a2 as string) ||
+                                 (props.ISO_A3_ as string) ||
                                  ''
+                    
+                    // Normalize ISO code to uppercase for comparison
+                    isoCode = isoCode.toUpperCase()
                     
                     // If no ISO code found, try to match by country name (exact and partial)
                     if (!isoCode && countryName) {
@@ -240,7 +247,8 @@ const Travel = () => {
                       // If still no match, try partial matching (e.g., "United States" in "United States of America")
                       if (!isoCode) {
                         for (const [name, code] of Object.entries(countryNameToISO)) {
-                          if (countryName.includes(name) || name.includes(countryName)) {
+                          if (countryName.toLowerCase().includes(name.toLowerCase()) || 
+                              name.toLowerCase().includes(countryName.toLowerCase())) {
                             isoCode = code
                             break
                           }
