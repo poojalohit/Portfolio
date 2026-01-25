@@ -9,6 +9,29 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 const Travel = () => {
+  const [position, setPosition] = useState<[number, number]>([0, 20])
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragStart, setDragStart] = useState<{ x: number; y: number } | null>(null)
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true)
+    setDragStart({ x: e.clientX, y: e.clientY })
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isDragging && dragStart) {
+      const deltaX = (e.clientX - dragStart.x) * 0.5
+      const deltaY = (e.clientY - dragStart.y) * 0.5
+      setPosition([position[0] - deltaX, position[1] + deltaY])
+      setDragStart({ x: e.clientX, y: e.clientY })
+    }
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+    setDragStart(null)
+  }
+
   const countries = [
     { name: 'Jordan', flag: '🇯🇴', iso: 'JOR' },
     { name: 'Spain', flag: '🇪🇸', iso: 'ESP' },
