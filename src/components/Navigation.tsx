@@ -94,7 +94,8 @@ const Navigation = ({ activeSection }: NavigationProps) => {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.3 }}
-          className="fixed left-6 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block"
+          className="fixed left-6 top-1/2 -translate-y-1/2 z-50 hidden lg:block"
+          style={{ top: '50%', transform: 'translateY(-50%)' }}
         >
         <div className="flex flex-col items-center gap-3 glass-strong rounded-2xl px-3 py-4 shadow-2xl">
           {navItems.map((item) => {
