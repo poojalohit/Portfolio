@@ -132,11 +132,11 @@ const Travel = () => {
           >
             {travelPhotos.map((photo, index) => (
               <SwiperSlide key={index}>
-                <div className="relative h-64 rounded-xl overflow-hidden group">
+                <div className="relative h-64 md:h-80 rounded-xl overflow-hidden group bg-gray-800">
                   <img
                     src={`${import.meta.env.BASE_URL}travel/${photo.filename}`}
                     alt={photo.alt}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement
                       target.style.display = 'none'
