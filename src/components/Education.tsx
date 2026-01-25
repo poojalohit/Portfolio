@@ -57,7 +57,7 @@ const Education = () => {
                 {edu.university === 'NYU' ? (
                   <div className="flex items-center gap-3 mb-4">
                     <img
-                      src="/nyu-logo.png"
+                      src={`${import.meta.env.BASE_URL}nyu-logo.png`}
                       alt="NYU Logo"
                       className="h-12 w-auto object-contain"
                     />
@@ -67,7 +67,7 @@ const Education = () => {
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-full bg-yellow-500/20 border-2 border-yellow-500/50 flex items-center justify-center">
                     <img
-                      src="/Amity-logo.png"
+                      src={`${import.meta.env.BASE_URL}Amity-logo.png`}
                       alt="Amity University Dubai Logo"
                       className="h-8 w-auto object-contain"
                       onError={(e) => {

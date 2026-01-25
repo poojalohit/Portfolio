@@ -68,7 +68,7 @@ const Hero = () => {
                 className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden glass-strong border-4 border-nyu-purple/30 shadow-2xl"
               >
                 <img
-                  src="/headshot.png"
+                  src={`${import.meta.env.BASE_URL}headshot.png`}
                   alt="Pooja Lohit"
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -107,7 +107,7 @@ const Hero = () => {
             className="flex flex-col items-center"
           >
             <img
-              src="/dubai.jpg"
+              src={`${import.meta.env.BASE_URL}dubai.jpg`}
               alt="Dubai Skyline"
               className="h-32 md:h-40 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
             />
@@ -120,7 +120,7 @@ const Hero = () => {
             className="flex flex-col items-center"
           >
             <img
-              src="/nyc-skyline.png"
+              src={`${import.meta.env.BASE_URL}nyc-skyline.png`}
               alt="New York City Skyline"
               className="h-32 md:h-40 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
             />

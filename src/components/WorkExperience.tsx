@@ -94,14 +94,14 @@ const WorkExperience = () => {
                     <div className="flex items-center gap-3">
                       {exp.company === 'Thales Group' && (
                         <img
-                          src="/thales-logo.png"
+                          src={`${import.meta.env.BASE_URL}thales-logo.png`}
                           alt="Thales Logo"
                           className="h-10 w-auto object-contain"
                         />
                       )}
                       {(exp.company === 'Beta IT' || exp.company === 'Beta Information Technology') && (
                         <img
-                          src="/beta-it-logo.png"
+                          src={`${import.meta.env.BASE_URL}beta-it-logo.png`}
                           alt="Beta IT Logo"
                           className="h-10 w-auto object-contain"
                         />
