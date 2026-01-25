@@ -163,8 +163,8 @@ const Travel = () => {
               <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
                 {({ geographies }) =>
                   geographies.map((geo) => {
-                    const isoCode = geo.properties.ISO_A3 || geo.properties.ISO_A2
-                    const isVisited = visitedCountryCodes.has(isoCode)
+                    const isoCode = (geo.properties.ISO_A3 as string) || (geo.properties.ISO_A2 as string) || ''
+                    const isVisited = isoCode ? visitedCountryCodes.has(isoCode) : false
                     return (
                       <Geography
                         key={geo.rsmKey}
