@@ -319,19 +319,27 @@ const Travel = () => {
                     
                     const isVisited = isoCode ? visitedCountryCodes.has(isoCode) : false
                     
-                    // Calculate center coordinates for country name label
-                    const coordinates = geo.geometry.type === 'Polygon' 
-                      ? geo.geometry.coordinates[0][0]
-                      : geo.geometry.type === 'MultiPolygon'
-                      ? geo.geometry.coordinates[0][0][0]
-                      : null
-                    
-                    const centerCoords = coordinates 
-                      ? coordinates.reduce((acc: [number, number], coord: [number, number]) => [
-                          acc[0] + coord[0],
-                          acc[1] + coord[1]
-                        ], [0, 0] as [number, number]).map((val: number) => val / coordinates.length) as [number, number]
-                      : null
+                    // Get center coordinates for country name label (simplified approach)
+                    let centerCoords: [number, number] | null = null
+                    try {
+                      const geometry = geo.geometry as { type: string; coordinates: unknown }
+                      if (geometry.type === 'Polygon' && Array.isArray(geometry.coordinates)) {
+                        const coords = (geometry.coordinates[0] as [number, number][]) || []
+                        if (coords.length > 0) {
+                          const sum = coords.reduce((acc, coord) => [acc[0] + coord[0], acc[1] + coord[1]], [0, 0])
+                          centerCoords = [sum[0] / coords.length, sum[1] / coords.length] as [number, number]
+                        }
+                      } else if (geometry.type === 'MultiPolygon' && Array.isArray(geometry.coordinates)) {
+                        const firstPolygon = (geometry.coordinates[0] as [number, number][][])?.[0] || []
+                        if (firstPolygon.length > 0) {
+                          const sum = firstPolygon.reduce((acc, coord) => [acc[0] + coord[0], acc[1] + coord[1]], [0, 0])
+                          centerCoords = [sum[0] / firstPolygon.length, sum[1] / firstPolygon.length] as [number, number]
+                        }
+                      }
+                    } catch (e) {
+                      // If coordinate calculation fails, skip label
+                      centerCoords = null
+                    }
                     
                     return (
                       <g key={geo.rsmKey}>
