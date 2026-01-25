@@ -57,7 +57,7 @@ const Education = () => {
                 <h3 className={`text-2xl font-bold mb-4 ${
                   edu.university === 'NYU' ? 'text-nyu-purple-light' : 'text-yellow-400'
                 }`}>
-                  {edu.university === 'NYU' ? 'NYU' : 'AMITY UNIVERSITY DUBAI'}
+                  {edu.university === 'NYU' ? 'New York University' : 'AMITY UNIVERSITY DUBAI'}
                 </h3>
               </div>
 

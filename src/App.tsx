@@ -37,9 +37,8 @@ function App() {
   return (
     <ErrorBoundary>
       <div className="min-h-screen bg-gray-900">
-        <Navigation activeSection={activeSection} />
         <main>
-          <Hero />
+          <Hero activeSection={activeSection} />
           <Education />
           <WorkExperience />
           <Projects />

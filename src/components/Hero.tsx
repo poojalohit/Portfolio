@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import Navigation from './Navigation'
 
-const Hero = () => {
+interface HeroProps {
+  activeSection: string
+}
+
+const Hero = ({ activeSection }: HeroProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
@@ -93,6 +98,9 @@ const Hero = () => {
             </div>
           </motion.div>
         </div>
+
+        {/* Navigation */}
+        <Navigation activeSection={activeSection} />
       </div>
     </section>
   )

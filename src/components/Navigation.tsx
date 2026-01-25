@@ -36,12 +36,12 @@ const Navigation = ({ activeSection }: NavigationProps) => {
 
   return (
     <motion.nav
-      initial={{ x: -100, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed left-6 top-1/2 transform -translate-y-1/2 z-50 glass-strong rounded-2xl px-3 py-4 shadow-2xl"
+      className="flex items-center justify-center gap-4 mt-12"
     >
-      <div className="flex flex-col items-center gap-3">
+      <div className="flex items-center gap-4 glass-strong rounded-full px-4 py-3 shadow-2xl">
         {navItems.map((item) => {
           const Icon = item.icon
           const isActive = activeSection === item.id
@@ -54,20 +54,13 @@ const Navigation = ({ activeSection }: NavigationProps) => {
               whileTap={{ scale: 0.95 }}
               className={`relative p-3 rounded-full transition-all duration-300 ${
                 isActive
-                  ? 'bg-nyu-purple text-white shadow-lg shadow-nyu-purple/50'
-                  : 'text-gray-300 hover:text-white hover:bg-gray-700/50'
+                  ? 'bg-nyu-purple/20 border-2 border-nyu-purple text-nyu-purple-light shadow-lg shadow-nyu-purple/50'
+                  : 'text-gray-300 hover:text-white hover:bg-gray-700/50 border-2 border-transparent'
               }`}
               aria-label={item.label}
               title={item.label}
             >
-              <Icon className="text-xl" />
-              {isActive && (
-                <motion.div
-                  layoutId="activeIndicator"
-                  className="absolute inset-0 rounded-full bg-nyu-purple"
-                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                />
-              )}
+              <Icon className="text-xl relative z-10" />
             </motion.button>
           )
         })}
