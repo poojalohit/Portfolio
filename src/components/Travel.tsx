@@ -9,10 +9,16 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 const Travel = () => {
+  // Initial zoom set to match the 2nd picture (more zoomed in view of Europe and surrounding areas)
+  const INITIAL_ZOOM = 280
+  const MIN_ZOOM = INITIAL_ZOOM // Users can't zoom out beyond this
+  const MAX_ZOOM = 500
+  
   const [position, setPosition] = useState<[number, number]>([0, 20])
-  const [zoom, setZoom] = useState(147)
+  const [zoom, setZoom] = useState(INITIAL_ZOOM)
   const [isDragging, setIsDragging] = useState(false)
   const [dragStart, setDragStart] = useState<{ x: number; y: number } | null>(null)
+  const [clickedCountry, setClickedCountry] = useState<{ name: string; coordinates: [number, number] } | null>(null)
   const mapRef = useRef<HTMLDivElement>(null)
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -37,21 +43,31 @@ const Travel = () => {
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault()
     const delta = e.deltaY > 0 ? 0.9 : 1.1
-    const newZoom = Math.max(50, Math.min(500, zoom * delta))
+    const newZoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoom * delta))
     setZoom(newZoom)
   }
 
   const handleZoomIn = () => {
-    setZoom(Math.min(500, zoom * 1.2))
+    setZoom(Math.min(MAX_ZOOM, zoom * 1.2))
   }
 
   const handleZoomOut = () => {
-    setZoom(Math.max(50, zoom * 0.8))
+    setZoom(Math.max(MIN_ZOOM, zoom * 0.8))
   }
 
   const handleReset = () => {
     setPosition([0, 20])
-    setZoom(147)
+    setZoom(INITIAL_ZOOM)
+    setClickedCountry(null)
+  }
+
+  const handleCountryClick = (countryName: string, coordinates: [number, number]) => {
+    // Toggle: if clicking the same country, hide the label; otherwise show the clicked country
+    if (clickedCountry?.name === countryName) {
+      setClickedCountry(null)
+    } else {
+      setClickedCountry({ name: countryName, coordinates })
+    }
   }
 
   const countries = [
@@ -413,7 +429,7 @@ const Travel = () => {
             </div>
             
             <div className="absolute bottom-4 left-4 text-xs text-gray-400 bg-gray-800/50 px-3 py-2 rounded-lg">
-              Drag to pan • Scroll to zoom • Country names appear when zoomed in
+              Drag to pan • Scroll to zoom • Click a country to see its name
             </div>
           </div>
           <div className="mt-4 flex items-center justify-center gap-6 text-sm">
