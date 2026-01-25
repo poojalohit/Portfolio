@@ -66,17 +66,17 @@ const Education = () => {
                 ) : (
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-full bg-yellow-500/20 border-2 border-yellow-500/50 flex items-center justify-center">
-                      <img
-                        src="/amity-logo.png"
-                        alt="Amity University Dubai Logo"
-                        className="h-8 w-auto object-contain"
-                        onError={(e) => {
-                          // Fallback if logo doesn't exist
-                          const target = e.target as HTMLImageElement
-                          target.style.display = 'none'
-                          target.parentElement!.innerHTML = '<span class="text-2xl font-bold text-yellow-400">A</span>'
-                        }}
-                      />
+                    <img
+                      src="/Amity-logo.png"
+                      alt="Amity University Dubai Logo"
+                      className="h-8 w-auto object-contain"
+                      onError={(e) => {
+                        // Fallback if logo doesn't exist
+                        const target = e.target as HTMLImageElement
+                        target.style.display = 'none'
+                        target.parentElement!.innerHTML = '<span class="text-2xl font-bold text-yellow-400">A</span>'
+                      }}
+                    />
                     </div>
                     <h3 className="text-2xl font-bold text-yellow-400">AMITY UNIVERSITY DUBAI</h3>
                   </div>
