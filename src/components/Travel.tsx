@@ -18,26 +18,37 @@ const Travel = () => {
   const [zoom, setZoom] = useState(INITIAL_ZOOM)
   const [isDragging, setIsDragging] = useState(false)
   const [dragStart, setDragStart] = useState<{ x: number; y: number } | null>(null)
+  const [hasDragged, setHasDragged] = useState(false)
   const [clickedCountry, setClickedCountry] = useState<{ name: string; coordinates: [number, number] } | null>(null)
   const mapRef = useRef<HTMLDivElement>(null)
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true)
+    setHasDragged(false)
     setDragStart({ x: e.clientX, y: e.clientY })
   }
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (isDragging && dragStart) {
-      const deltaX = (e.clientX - dragStart.x) / zoom * 100
-      const deltaY = (e.clientY - dragStart.y) / zoom * 100
-      setPosition([position[0] - deltaX, position[1] + deltaY])
-      setDragStart({ x: e.clientX, y: e.clientY })
+      const deltaX = Math.abs(e.clientX - dragStart.x)
+      const deltaY = Math.abs(e.clientY - dragStart.y)
+      
+      // If moved more than 5 pixels, consider it a drag
+      if (deltaX > 5 || deltaY > 5) {
+        setHasDragged(true)
+        const moveDeltaX = (e.clientX - dragStart.x) / zoom * 100
+        const moveDeltaY = (e.clientY - dragStart.y) / zoom * 100
+        setPosition([position[0] - moveDeltaX, position[1] + moveDeltaY])
+        setDragStart({ x: e.clientX, y: e.clientY })
+      }
     }
   }
 
   const handleMouseUp = () => {
     setIsDragging(false)
     setDragStart(null)
+    // Reset hasDragged after a short delay to allow click handler to check it
+    setTimeout(() => setHasDragged(false), 100)
   }
 
   const handleWheel = (e: React.WheelEvent) => {
@@ -62,6 +73,10 @@ const Travel = () => {
   }
 
   const handleCountryClick = (countryName: string, coordinates: [number, number]) => {
+    // Don't trigger click if user was dragging
+    if (hasDragged) {
+      return
+    }
     // Toggle: if clicking the same country, hide the label; otherwise show the clicked country
     if (clickedCountry?.name === countryName) {
       setClickedCountry(null)
