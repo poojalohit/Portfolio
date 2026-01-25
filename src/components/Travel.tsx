@@ -1,17 +1,19 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
-import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
-import { FaInstagram } from 'react-icons/fa'
+import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps'
+import { FaInstagram, FaPlus, FaMinus } from 'react-icons/fa'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 const Travel = () => {
   const [position, setPosition] = useState<[number, number]>([0, 20])
+  const [zoom, setZoom] = useState(147)
   const [isDragging, setIsDragging] = useState(false)
   const [dragStart, setDragStart] = useState<{ x: number; y: number } | null>(null)
+  const mapRef = useRef<HTMLDivElement>(null)
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true)
@@ -20,8 +22,8 @@ const Travel = () => {
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (isDragging && dragStart) {
-      const deltaX = (e.clientX - dragStart.x) * 0.5
-      const deltaY = (e.clientY - dragStart.y) * 0.5
+      const deltaX = (e.clientX - dragStart.x) / zoom * 100
+      const deltaY = (e.clientY - dragStart.y) / zoom * 100
       setPosition([position[0] - deltaX, position[1] + deltaY])
       setDragStart({ x: e.clientX, y: e.clientY })
     }
@@ -30,6 +32,26 @@ const Travel = () => {
   const handleMouseUp = () => {
     setIsDragging(false)
     setDragStart(null)
+  }
+
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault()
+    const delta = e.deltaY > 0 ? 0.9 : 1.1
+    const newZoom = Math.max(50, Math.min(500, zoom * delta))
+    setZoom(newZoom)
+  }
+
+  const handleZoomIn = () => {
+    setZoom(Math.min(500, zoom * 1.2))
+  }
+
+  const handleZoomOut = () => {
+    setZoom(Math.max(50, zoom * 0.8))
+  }
+
+  const handleReset = () => {
+    setPosition([0, 20])
+    setZoom(147)
   }
 
   const countries = [
@@ -229,16 +251,18 @@ const Travel = () => {
             World Map
           </h3>
           <div 
+            ref={mapRef}
             className="w-full overflow-hidden rounded-lg relative" 
             style={{ height: '500px', backgroundColor: '#1F2937' }}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
+            onWheel={handleWheel}
           >
             <ComposableMap
               projectionConfig={{
-                scale: 147,
+                scale: zoom,
                 center: position,
               }}
               className="w-full h-full"
@@ -294,34 +318,94 @@ const Travel = () => {
                     }
                     
                     const isVisited = isoCode ? visitedCountryCodes.has(isoCode) : false
+                    
+                    // Calculate center coordinates for country name label
+                    const coordinates = geo.geometry.type === 'Polygon' 
+                      ? geo.geometry.coordinates[0][0]
+                      : geo.geometry.type === 'MultiPolygon'
+                      ? geo.geometry.coordinates[0][0][0]
+                      : null
+                    
+                    const centerCoords = coordinates 
+                      ? coordinates.reduce((acc: [number, number], coord: [number, number]) => [
+                          acc[0] + coord[0],
+                          acc[1] + coord[1]
+                        ], [0, 0] as [number, number]).map((val: number) => val / coordinates.length) as [number, number]
+                      : null
+                    
                     return (
-                      <Geography
-                        key={geo.rsmKey}
-                        geography={geo}
-                        fill={isVisited ? '#8B5CF6' : '#374151'}
-                        stroke="#1F2937"
-                        strokeWidth={0.5}
-                        style={{
-                          default: {
-                            outline: 'none',
-                          },
-                          hover: {
-                            fill: isVisited ? '#A78BFA' : '#4B5563',
-                            outline: 'none',
-                            cursor: 'pointer',
-                          },
-                          pressed: {
-                            outline: 'none',
-                          },
-                        }}
-                      />
+                      <g key={geo.rsmKey}>
+                        <Geography
+                          geography={geo}
+                          fill={isVisited ? '#8B5CF6' : '#374151'}
+                          stroke="#1F2937"
+                          strokeWidth={0.5}
+                          style={{
+                            default: {
+                              outline: 'none',
+                            },
+                            hover: {
+                              fill: isVisited ? '#A78BFA' : '#4B5563',
+                              outline: 'none',
+                              cursor: 'pointer',
+                            },
+                            pressed: {
+                              outline: 'none',
+                            },
+                          }}
+                        />
+                        {/* Show country names when zoomed in */}
+                        {zoom > 200 && centerCoords && countryName && (
+                          <Marker coordinates={centerCoords}>
+                            <text
+                              textAnchor="middle"
+                              fontSize={Math.max(8, Math.min(14, zoom / 20))}
+                              fill="#E5E7EB"
+                              fontWeight="500"
+                              style={{
+                                pointerEvents: 'none',
+                                userSelect: 'none',
+                              }}
+                            >
+                              {countryName}
+                            </text>
+                          </Marker>
+                        )}
+                      </g>
                     )
                   })
                 }
               </Geographies>
             </ComposableMap>
+            
+            {/* Zoom Controls */}
+            <div className="absolute top-4 right-4 flex flex-col gap-2">
+              <button
+                onClick={handleZoomIn}
+                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-nyu-purple/30 transition-colors"
+                aria-label="Zoom in"
+              >
+                <FaPlus />
+              </button>
+              <button
+                onClick={handleZoomOut}
+                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-nyu-purple/30 transition-colors"
+                aria-label="Zoom out"
+              >
+                <FaMinus />
+              </button>
+              <button
+                onClick={handleReset}
+                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-nyu-purple/30 transition-colors text-xs"
+                aria-label="Reset view"
+                title="Reset"
+              >
+                ↺
+              </button>
+            </div>
+            
             <div className="absolute bottom-4 left-4 text-xs text-gray-400 bg-gray-800/50 px-3 py-2 rounded-lg">
-              Click and drag to explore the globe
+              Drag to pan • Scroll to zoom • Country names appear when zoomed in
             </div>
           </div>
           <div className="mt-4 flex items-center justify-center gap-6 text-sm">
