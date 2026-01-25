@@ -30,7 +30,7 @@ const Hero = ({ activeSection }: HeroProps) => {
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-nyu-purple/20 opacity-50" />
       
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
