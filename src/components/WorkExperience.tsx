@@ -65,64 +65,45 @@ const WorkExperience = () => {
           Work Experience
         </motion.h2>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-nyu-purple via-purple-600 to-nyu-purple transform md:-translate-x-1/2" />
-
-          <div className="space-y-12">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={`${exp.company}-${exp.period}`}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className={`relative flex items-start gap-8 ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-nyu-purple rounded-full border-4 border-gray-900 transform md:-translate-x-1/2 z-10" />
-
-                {/* Content card */}
-                <div
-                  className={`flex-1 glass-strong rounded-2xl p-6 md:p-8 hover:shadow-2xl hover:shadow-nyu-purple/20 transition-all duration-300 ${
-                    index % 2 === 0 ? 'md:mr-auto md:w-5/12' : 'md:ml-auto md:w-5/12'
-                  }`}
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-2xl font-bold mb-1">{exp.company}</h3>
-                      <p className="text-nyu-purple-light font-semibold text-lg mb-1">
-                        {exp.role}
-                      </p>
-                      <p className="text-gray-400 text-sm">{exp.period}</p>
-                    </div>
-                    <a
-                      href={exp.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-nyu-purple-light hover:text-nyu-purple transition-colors flex-shrink-0"
-                      aria-label={`Visit ${exp.company} website`}
-                    >
-                      <FaExternalLinkAlt />
-                    </a>
-                  </div>
-
-                  <ul className="space-y-3 text-gray-300">
-                    {exp.description.map((desc, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <span className="text-nyu-purple-light mt-1.5 flex-shrink-0">
-                          ▸
-                        </span>
-                        <span>{desc}</span>
-                      </li>
-                    ))}
-                  </ul>
+        <div className="grid md:grid-cols-3 gap-8">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={`${exp.company}-${exp.period}`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              className="glass-strong rounded-2xl p-6 hover:shadow-2xl hover:shadow-nyu-purple/20 transition-all duration-300 hover:scale-105"
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-1">{exp.company}</h3>
+                  <p className="text-nyu-purple-light font-semibold text-lg mb-1">
+                    {exp.role}
+                  </p>
+                  <p className="text-gray-400 text-sm mb-3">{exp.period}</p>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+                <a
+                  href={exp.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-nyu-purple-light hover:text-nyu-purple transition-colors flex-shrink-0 ml-2"
+                  aria-label={`Visit ${exp.company} website`}
+                >
+                  <FaExternalLinkAlt />
+                </a>
+              </div>
+
+              <div className="space-y-2 pt-4 border-t border-gray-700/50">
+                {exp.description.map((desc, idx) => (
+                  <div key={idx} className="flex items-start gap-2 text-gray-300 text-sm">
+                    <span className="text-nyu-purple-light mt-1 flex-shrink-0">▸</span>
+                    <span>{desc}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
