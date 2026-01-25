@@ -211,7 +211,7 @@ const Travel = () => {
               }}
               className="w-full h-full"
             >
-              <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
+              <Geographies geography="https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json">
                 {({ geographies }) =>
                   geographies.map((geo) => {
                     // Try multiple ISO code properties that might exist in the world atlas
