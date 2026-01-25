@@ -38,34 +38,56 @@ const Travel = () => {
   // ISO codes for visited countries (for map highlighting)
   const visitedCountryCodes = new Set(countries.map(c => c.iso))
   
-  // Country name to ISO code mapping (fallback for world atlas)
+  // Comprehensive country name to ISO code mapping (for world atlas matching)
   const countryNameToISO: Record<string, string> = {
     'Jordan': 'JOR',
+    'Hashemite Kingdom of Jordan': 'JOR',
     'Spain': 'ESP',
+    'Kingdom of Spain': 'ESP',
     'Morocco': 'MAR',
+    'Kingdom of Morocco': 'MAR',
     'Georgia': 'GEO',
     'Azerbaijan': 'AZE',
+    'Republic of Azerbaijan': 'AZE',
     'Hungary': 'HUN',
     'Maldives': 'MDV',
+    'Republic of Maldives': 'MDV',
     'Nepal': 'NPL',
+    'Federal Democratic Republic of Nepal': 'NPL',
     'Oman': 'OMN',
+    'Sultanate of Oman': 'OMN',
     'Ukraine': 'UKR',
     'Tanzania': 'TZA', // Zanzibar is part of Tanzania
+    'United Republic of Tanzania': 'TZA',
     'Portugal': 'PRT',
+    'Portuguese Republic': 'PRT',
     'Kenya': 'KEN',
+    'Republic of Kenya': 'KEN',
     'Egypt': 'EGY',
+    'Arab Republic of Egypt': 'EGY',
     'Turkey': 'TUR',
+    'Republic of Turkey': 'TUR',
     'Greece': 'GRC',
+    'Hellenic Republic': 'GRC',
     'United Kingdom': 'GBR',
+    'United Kingdom of Great Britain and Northern Ireland': 'GBR',
     'Argentina': 'ARG',
+    'Argentine Republic': 'ARG',
     'Brazil': 'BRA',
+    'Federative Republic of Brazil': 'BRA',
     'Peru': 'PER',
+    'Republic of Peru': 'PER',
     'United Arab Emirates': 'ARE',
+    'U.A.E.': 'ARE',
     'United States of America': 'USA',
     'United States': 'USA',
+    'U.S.A.': 'USA',
     'India': 'IND',
+    'Republic of India': 'IND',
     'Cyprus': 'CYP',
+    'Republic of Cyprus': 'CYP',
     'Mexico': 'MEX',
+    'United Mexican States': 'MEX',
   }
 
   // Travel photos by city - all images from public/travel/ folder
@@ -194,19 +216,36 @@ const Travel = () => {
                   geographies.map((geo) => {
                     // Try multiple ISO code properties that might exist in the world atlas
                     const props = geo.properties as Record<string, unknown>
-                    const countryName = (props.NAME as string) || (props.NAME_LONG as string) || ''
+                    const countryName = (props.NAME as string) || 
+                                      (props.NAME_LONG as string) || 
+                                      (props.NAME_EN as string) ||
+                                      (props.name as string) ||
+                                      ''
                     
-                    // Try ISO codes first
+                    // Try ISO codes first - check all possible property names
                     let isoCode = (props.ISO_A3 as string) || 
                                  (props.ISO_A2 as string) || 
                                  (props.ISO_A3_EH as string) ||
                                  (props.ISO_A2_EH as string) ||
                                  (props.ADM0_A3 as string) ||
+                                 (props.iso_a3 as string) ||
+                                 (props.iso_a2 as string) ||
                                  ''
                     
-                    // If no ISO code found, try to match by country name
+                    // If no ISO code found, try to match by country name (exact and partial)
                     if (!isoCode && countryName) {
+                      // Try exact match first
                       isoCode = countryNameToISO[countryName] || ''
+                      
+                      // If still no match, try partial matching (e.g., "United States" in "United States of America")
+                      if (!isoCode) {
+                        for (const [name, code] of Object.entries(countryNameToISO)) {
+                          if (countryName.includes(name) || name.includes(countryName)) {
+                            isoCode = code
+                            break
+                          }
+                        }
+                      }
                     }
                     
                     const isVisited = isoCode ? visitedCountryCodes.has(isoCode) : false
