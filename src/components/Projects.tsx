@@ -4,7 +4,7 @@ import { FaTimes, FaExternalLinkAlt } from 'react-icons/fa'
 
 interface Project {
   title: string
-  category: 'Published Work' | 'Projects' | 'Case Studies' | 'Initiatives'
+  category: 'Published Work' | 'Projects' | 'Initiatives'
   description: string | JSX.Element
   link?: string
   linkText?: string
@@ -14,7 +14,7 @@ const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('Published Work')
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
-  const categories = ['Published Work', 'Projects', 'Case Studies', 'Initiatives']
+  const categories = ['Published Work', 'Projects', 'Initiatives']
 
   const projects: Project[] = [
     {
@@ -113,7 +113,7 @@ const Projects = () => {
     },
     {
       title: 'Economic Analysis: How AI and M&As are Forcing a New Business Model for Cybersecurity Vendors',
-      category: 'Case Studies',
+      category: 'Projects',
       description: (
         <div className="space-y-4">
           <p>
