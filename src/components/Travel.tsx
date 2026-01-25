@@ -37,6 +37,36 @@ const Travel = () => {
 
   // ISO codes for visited countries (for map highlighting)
   const visitedCountryCodes = new Set(countries.map(c => c.iso))
+  
+  // Country name to ISO code mapping (fallback for world atlas)
+  const countryNameToISO: Record<string, string> = {
+    'Jordan': 'JOR',
+    'Spain': 'ESP',
+    'Morocco': 'MAR',
+    'Georgia': 'GEO',
+    'Azerbaijan': 'AZE',
+    'Hungary': 'HUN',
+    'Maldives': 'MDV',
+    'Nepal': 'NPL',
+    'Oman': 'OMN',
+    'Ukraine': 'UKR',
+    'Tanzania': 'TZA', // Zanzibar is part of Tanzania
+    'Portugal': 'PRT',
+    'Kenya': 'KEN',
+    'Egypt': 'EGY',
+    'Turkey': 'TUR',
+    'Greece': 'GRC',
+    'United Kingdom': 'GBR',
+    'Argentina': 'ARG',
+    'Brazil': 'BRA',
+    'Peru': 'PER',
+    'United Arab Emirates': 'ARE',
+    'United States of America': 'USA',
+    'United States': 'USA',
+    'India': 'IND',
+    'Cyprus': 'CYP',
+    'Mexico': 'MEX',
+  }
 
   // Travel photos by city - all images from public/travel/ folder
   const travelPhotos = [
@@ -165,12 +195,21 @@ const Travel = () => {
                   geographies.map((geo) => {
                     // Try multiple ISO code properties that might exist in the world atlas
                     const props = geo.properties as Record<string, unknown>
-                    const isoCode = (props.ISO_A3 as string) || 
-                                   (props.ISO_A2 as string) || 
-                                   (props.ISO_A3_EH as string) ||
-                                   (props.ISO_A2_EH as string) ||
-                                   (props.ADM0_A3 as string) ||
-                                   ''
+                    const countryName = (props.NAME as string) || (props.NAME_LONG as string) || ''
+                    
+                    // Try ISO codes first
+                    let isoCode = (props.ISO_A3 as string) || 
+                                 (props.ISO_A2 as string) || 
+                                 (props.ISO_A3_EH as string) ||
+                                 (props.ISO_A2_EH as string) ||
+                                 (props.ADM0_A3 as string) ||
+                                 ''
+                    
+                    // If no ISO code found, try to match by country name
+                    if (!isoCode && countryName) {
+                      isoCode = countryNameToISO[countryName] || ''
+                    }
+                    
                     const isVisited = isoCode ? visitedCountryCodes.has(isoCode) : false
                     return (
                       <Geography
