@@ -55,7 +55,7 @@ const Travel = () => {
     
     // Cyprus
     { city: 'Cyprus', filename: 'Cyprus - 1.jpg', alt: 'Cyprus' },
-    { city: 'Cyprus, Cyprus', filename: 'Cyprus - 2.JPG', alt: 'Cyprus' },
+    { city: 'Cyprus', filename: 'Cyprus - 2.JPG', alt: 'Cyprus' },
     
     // Egypt
     { city: 'Abu Simbel, Egypt', filename: 'Egypt - 1.jpeg', alt: 'Egypt' },
@@ -163,7 +163,14 @@ const Travel = () => {
               <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
                 {({ geographies }) =>
                   geographies.map((geo) => {
-                    const isoCode = (geo.properties.ISO_A3 as string) || (geo.properties.ISO_A2 as string) || ''
+                    // Try multiple ISO code properties that might exist in the world atlas
+                    const props = geo.properties as Record<string, unknown>
+                    const isoCode = (props.ISO_A3 as string) || 
+                                   (props.ISO_A2 as string) || 
+                                   (props.ISO_A3_EH as string) ||
+                                   (props.ISO_A2_EH as string) ||
+                                   (props.ADM0_A3 as string) ||
+                                   ''
                     const isVisited = isoCode ? visitedCountryCodes.has(isoCode) : false
                     return (
                       <Geography
