@@ -379,6 +379,11 @@ const Travel = () => {
                           fill={isVisited ? '#8B5CF6' : '#374151'}
                           stroke="#1F2937"
                           strokeWidth={0.5}
+                          onClick={() => {
+                            if (centerCoords && countryName) {
+                              handleCountryClick(countryName, centerCoords)
+                            }
+                          }}
                           style={{
                             default: {
                               outline: 'none',
@@ -393,21 +398,33 @@ const Travel = () => {
                             },
                           }}
                         />
-                        {/* Show country names when zoomed in */}
-                        {zoom > 200 && centerCoords && countryName && (
+                        {/* Show country name only when clicked */}
+                        {clickedCountry?.name === countryName && centerCoords && (
                           <Marker coordinates={centerCoords}>
-                            <text
-                              textAnchor="middle"
-                              fontSize={Math.max(8, Math.min(14, zoom / 20))}
-                              fill="#E5E7EB"
-                              fontWeight="500"
-                              style={{
-                                pointerEvents: 'none',
-                                userSelect: 'none',
-                              }}
-                            >
-                              {countryName}
-                            </text>
+                            <g>
+                              {/* Background for better readability */}
+                              <rect
+                                x={-40}
+                                y={-12}
+                                width={80}
+                                height={24}
+                                fill="#1F2937"
+                                fillOpacity={0.9}
+                                rx={4}
+                              />
+                              <text
+                                textAnchor="middle"
+                                fontSize={Math.max(12, Math.min(16, zoom / 20))}
+                                fill="#E5E7EB"
+                                fontWeight="600"
+                                style={{
+                                  pointerEvents: 'none',
+                                  userSelect: 'none',
+                                }}
+                              >
+                                {countryName}
+                              </text>
+                            </g>
                           </Marker>
                         )}
                       </g>
