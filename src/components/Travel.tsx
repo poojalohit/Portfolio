@@ -34,17 +34,55 @@ const Travel = () => {
     { name: 'Mexico', flag: '🇲🇽' },
   ]
 
-  // Travel photos by city - add your images to public/travel/ folder
-  // Name them: dubai-1.jpg, nyc-1.jpg, barcelona-1.jpg, etc.
+  // Travel photos by city - all images from public/travel/ folder
   const travelPhotos = [
-    { city: 'Dubai', filename: 'dubai-1.jpg', alt: 'Dubai' },
-    { city: 'New York', filename: 'nyc-1.jpg', alt: 'New York City' },
-    { city: 'Barcelona', filename: 'barcelona-1.jpg', alt: 'Barcelona' },
-    { city: 'Istanbul', filename: 'istanbul-1.jpg', alt: 'Istanbul' },
-    { city: 'Athens', filename: 'athens-1.jpg', alt: 'Athens' },
-    { city: 'Lisbon', filename: 'lisbon-1.jpg', alt: 'Lisbon' },
-    { city: 'Marrakech', filename: 'marrakech-1.jpg', alt: 'Marrakech' },
-    { city: 'Cairo', filename: 'cairo-1.jpg', alt: 'Cairo' },
+    // Greece
+    { city: 'Athens', filename: 'Athens - 1.jpeg', alt: 'Athens, Greece' },
+    { city: 'Mykonos', filename: 'Mykonos - 1.jpeg', alt: 'Mykonos, Greece' },
+    { city: 'Santorini', filename: 'Santorini -1.jpeg', alt: 'Santorini, Greece' },
+    
+    // Brazil
+    { city: 'Brazil', filename: 'Brazil -2.jpg', alt: 'Brazil' },
+    { city: 'Rio De Janeiro', filename: 'Rio De Janeiro - 1.JPG', alt: 'Rio De Janeiro, Brazil' },
+    { city: 'Iguazu Falls', filename: 'Iquazu Falls Brazil -1.JPG', alt: 'Iguazu Falls, Brazil' },
+    
+    // Argentina
+    { city: 'Buenos Aires', filename: 'Buenos Aires - 1.JPG', alt: 'Buenos Aires, Argentina' },
+    
+    // Cyprus
+    { city: 'Cyprus', filename: 'Cyprus - 1.jpg', alt: 'Cyprus' },
+    { city: 'Cyprus', filename: 'Cyprus - 2.JPG', alt: 'Cyprus' },
+    
+    // Egypt
+    { city: 'Egypt', filename: 'Egypt - 1.jpeg', alt: 'Egypt' },
+    { city: 'Egypt', filename: 'Egypt -2.jpeg', alt: 'Egypt' },
+    
+    // Kenya
+    { city: 'Kenya', filename: 'Kenya -1.jpg', alt: 'Kenya' },
+    { city: 'Kenya', filename: 'Kenya -2.jpg', alt: 'Kenya' },
+    { city: 'Kenya', filename: 'Kenya -3.jpg', alt: 'Kenya' },
+    { city: 'Kenya', filename: 'Kenya - 4.JPG', alt: 'Kenya' },
+    
+    // United Kingdom
+    { city: 'London', filename: 'London - 1.jpeg', alt: 'London, United Kingdom' },
+    { city: 'Oxford', filename: 'Oxford - 1.JPG', alt: 'Oxford, United Kingdom' },
+    
+    // Spain
+    { city: 'Madrid', filename: 'Madrid - 1.jpeg', alt: 'Madrid, Spain' },
+    
+    // United States
+    { city: 'San Francisco', filename: 'San Francisco - 1.jpeg', alt: 'San Francisco, United States' },
+    { city: 'Yosemite', filename: 'Yosemite National Park - 1.jpeg', alt: 'Yosemite National Park, United States' },
+    
+    // Peru
+    { city: 'Peru', filename: 'Peru - 1.JPG', alt: 'Peru' },
+    { city: 'Peru', filename: 'Peru - 2.JPG', alt: 'Peru' },
+    { city: 'Peru', filename: 'Peru - 3.jpg', alt: 'Peru' },
+    { city: 'Peru', filename: 'Peru - 4.jpg', alt: 'Peru' },
+    
+    // India
+    { city: 'Uttarakhand', filename: 'Uttarakhand - 1.jpeg', alt: 'Uttarakhand, India' },
+    { city: 'Uttarakhand', filename: 'Uttarakhand - 2.jpeg', alt: 'Uttarakhand, India' },
   ]
 
   return (
