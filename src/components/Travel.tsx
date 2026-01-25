@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
+import { FaInstagram } from 'react-icons/fa'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -131,8 +133,8 @@ const Travel = () => {
     { city: 'Yosemite National Park, United States', filename: 'Yosemite National Park - 1.jpeg', alt: 'Yosemite National Park, United States' },
     
     // Peru
-    { city: 'Peru', filename: 'Peru - 1.JPG', alt: 'Peru' },
-    { city: 'Peru', filename: 'Peru - 2.JPG', alt: 'Peru' },
+    { city: 'Nazca Lines, Peru', filename: 'Peru - 1.JPG', alt: 'Peru' },
+    { city: 'The Quechua people of Peru', filename: 'Peru - 2.JPG', alt: 'Peru' },
     { city: 'Machu Picchu, Peru', filename: 'Peru - 3.jpg', alt: 'Peru' },
     { city: 'Rainbow Mountain, Peru', filename: 'Peru - 4.jpg', alt: 'Peru' },
     
@@ -203,13 +205,25 @@ const Travel = () => {
           <h3 className="text-2xl font-bold mb-6 text-center">
             World Map
           </h3>
-          <div className="w-full overflow-hidden rounded-lg" style={{ height: '500px', backgroundColor: '#1F2937' }}>
+          <div 
+            className="w-full overflow-hidden rounded-lg relative" 
+            style={{ height: '500px', backgroundColor: '#1F2937' }}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+          >
             <ComposableMap
               projectionConfig={{
                 scale: 147,
-                center: [0, 20],
+                center: position,
               }}
               className="w-full h-full"
+              style={{ 
+                width: '100%', 
+                height: '100%',
+                cursor: isDragging ? 'grabbing' : 'grab'
+              }}
             >
               <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
                 {({ geographies }) =>
@@ -283,6 +297,9 @@ const Travel = () => {
                 }
               </Geographies>
             </ComposableMap>
+            <div className="absolute bottom-4 left-4 text-xs text-gray-400 bg-gray-800/50 px-3 py-2 rounded-lg">
+              Click and drag to explore the globe
+            </div>
           </div>
           <div className="mt-4 flex items-center justify-center gap-6 text-sm">
             <div className="flex items-center gap-2">
@@ -355,6 +372,25 @@ const Travel = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+          
+          {/* Instagram Link */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-8 text-center"
+          >
+            <a
+              href="https://www.instagram.com/poojalohit/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 text-nyu-purple-light hover:text-nyu-purple transition-colors text-lg font-semibold hover:underline group"
+            >
+              <FaInstagram className="text-2xl group-hover:scale-110 transition-transform" />
+              <span>Follow my travels on Instagram</span>
+            </a>
+          </motion.div>
         </motion.div>
       </div>
     </section>
