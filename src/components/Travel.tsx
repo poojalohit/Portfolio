@@ -164,7 +164,6 @@ const Travel = () => {
                 className="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-700/30 transition-colors cursor-pointer glass"
               >
                 <span className="text-green-400 text-lg">✓</span>
-                <span className="text-2xl">{country.flag}</span>
                 <span className="text-gray-300">{country.name}</span>
               </motion.div>
             ))}
