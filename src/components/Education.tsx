@@ -52,35 +52,13 @@ const Education = () => {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className="glass-strong rounded-2xl p-8 hover:shadow-2xl hover:shadow-nyu-purple/20 transition-all duration-300 relative"
             >
-              {/* University Logo/Branding */}
+              {/* University Name */}
               <div className="mb-6">
-                {edu.university === 'NYU' ? (
-                  <div className="flex items-center gap-3 mb-4">
-                    <img
-                      src={`${import.meta.env.BASE_URL}nyu-logo.png`}
-                      alt="NYU Logo"
-                      className="h-12 w-auto object-contain"
-                    />
-                    <h3 className="text-2xl font-bold text-nyu-purple-light">NYU</h3>
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full bg-yellow-500/20 border-2 border-yellow-500/50 flex items-center justify-center">
-                    <img
-                      src={`${import.meta.env.BASE_URL}Amity-logo.png`}
-                      alt="Amity University Dubai Logo"
-                      className="h-8 w-auto object-contain"
-                      onError={(e) => {
-                        // Fallback if logo doesn't exist
-                        const target = e.target as HTMLImageElement
-                        target.style.display = 'none'
-                        target.parentElement!.innerHTML = '<span class="text-2xl font-bold text-yellow-400">A</span>'
-                      }}
-                    />
-                    </div>
-                    <h3 className="text-2xl font-bold text-yellow-400">AMITY UNIVERSITY DUBAI</h3>
-                  </div>
-                )}
+                <h3 className={`text-2xl font-bold mb-4 ${
+                  edu.university === 'NYU' ? 'text-nyu-purple-light' : 'text-yellow-400'
+                }`}>
+                  {edu.university === 'NYU' ? 'NYU' : 'AMITY UNIVERSITY DUBAI'}
+                </h3>
               </div>
 
               <div className="space-y-3 mb-6">

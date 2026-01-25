@@ -93,40 +93,6 @@ const Hero = () => {
             </div>
           </motion.div>
         </div>
-
-        {/* City Skylines */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="mt-16 flex justify-center items-end gap-8 md:gap-16"
-        >
-          {/* Dubai Skyline */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex flex-col items-center"
-          >
-            <img
-              src={`${import.meta.env.BASE_URL}dubai.jpg`}
-              alt="Dubai Skyline"
-              className="h-32 md:h-40 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
-            />
-            <p className="text-sm text-gray-400 mt-2 font-semibold">Dubai</p>
-          </motion.div>
-
-          {/* NYC Skyline */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex flex-col items-center"
-          >
-            <img
-              src={`${import.meta.env.BASE_URL}nyc-skyline.png`}
-              alt="New York City Skyline"
-              className="h-32 md:h-40 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
-            />
-            <p className="text-sm text-gray-400 mt-2 font-semibold">New York</p>
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   )

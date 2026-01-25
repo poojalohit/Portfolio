@@ -91,28 +91,12 @@ const WorkExperience = () => {
                   }`}
                 >
                   <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      {exp.company === 'Thales Group' && (
-                        <img
-                          src={`${import.meta.env.BASE_URL}thales-logo.png`}
-                          alt="Thales Logo"
-                          className="h-10 w-auto object-contain"
-                        />
-                      )}
-                      {(exp.company === 'Beta IT' || exp.company === 'Beta Information Technology') && (
-                        <img
-                          src={`${import.meta.env.BASE_URL}beta-it-logo.png`}
-                          alt="Beta IT Logo"
-                          className="h-10 w-auto object-contain"
-                        />
-                      )}
-                      <div>
-                        <h3 className="text-2xl font-bold mb-1">{exp.company}</h3>
-                        <p className="text-nyu-purple-light font-semibold text-lg mb-1">
-                          {exp.role}
-                        </p>
-                        <p className="text-gray-400 text-sm">{exp.period}</p>
-                      </div>
+                    <div>
+                      <h3 className="text-2xl font-bold mb-1">{exp.company}</h3>
+                      <p className="text-nyu-purple-light font-semibold text-lg mb-1">
+                        {exp.role}
+                      </p>
+                      <p className="text-gray-400 text-sm">{exp.period}</p>
                     </div>
                     <a
                       href={exp.link}

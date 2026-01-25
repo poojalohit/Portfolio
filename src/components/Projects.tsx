@@ -199,7 +199,10 @@ const Projects = () => {
         </div>
 
         {/* Project Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={filteredProjects.length < 3 
+          ? 'flex flex-wrap justify-center gap-6' 
+          : 'grid md:grid-cols-2 lg:grid-cols-3 gap-6'
+        }>
           <AnimatePresence mode="wait">
             {filteredProjects.map((project, index) => (
               <motion.div
@@ -209,7 +212,9 @@ const Projects = () => {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 onClick={() => setSelectedProject(project)}
-                className="glass-strong rounded-2xl p-6 cursor-pointer hover:shadow-2xl hover:shadow-nyu-purple/20 transition-all duration-300 hover:scale-105"
+                className={`glass-strong rounded-2xl p-6 cursor-pointer hover:shadow-2xl hover:shadow-nyu-purple/20 transition-all duration-300 hover:scale-105 ${
+                  filteredProjects.length < 3 ? 'w-full max-w-md' : ''
+                }`}
               >
                 <h3 className="text-xl font-bold mb-3 text-nyu-purple-light">
                   {project.title}
