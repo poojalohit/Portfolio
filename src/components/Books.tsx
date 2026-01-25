@@ -76,31 +76,15 @@ const Books = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="glass-strong rounded-2xl p-6 hover:shadow-2xl hover:shadow-nyu-purple/20 transition-all duration-300 hover:scale-105"
               >
-                <div className="relative mb-4">
-                  <div className="aspect-[2/3] w-full rounded-lg overflow-hidden bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
-                    <img
-                      src={book.coverUrl}
-                      alt={`${book.title} cover`}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement
-                        target.style.display = 'none'
-                        const parent = target.parentElement
-                        if (parent) {
-                          parent.innerHTML = `<div class="w-full h-full flex flex-col items-center justify-center text-gray-400">
-                            <div class="text-4xl mb-2">📚</div>
-                            <div class="text-sm text-center px-4">${book.title}</div>
-                          </div>`
-                        }
-                      }}
-                    />
-                  </div>
-                  <div className="absolute top-2 left-2 bg-nyu-purple text-white rounded-full w-10 h-10 flex items-center justify-center font-bold shadow-lg">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="bg-nyu-purple text-white rounded-full w-10 h-10 flex items-center justify-center font-bold shadow-lg flex-shrink-0">
                     #{book.rank}
                   </div>
+                  <div className="flex-1">
+                    <h4 className="text-xl font-bold mb-1">{book.title}</h4>
+                    <p className="text-gray-400">by {book.author}</p>
+                  </div>
                 </div>
-                <h4 className="text-xl font-bold mb-1">{book.title}</h4>
-                <p className="text-gray-400">by {book.author}</p>
               </motion.div>
             ))}
           </div>

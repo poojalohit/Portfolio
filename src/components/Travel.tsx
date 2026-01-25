@@ -34,16 +34,17 @@ const Travel = () => {
     { name: 'Mexico', flag: '🇲🇽' },
   ]
 
-  // Sample travel photos by city (placeholder structure)
+  // Travel photos by city - add your images to public/travel/ folder
+  // Name them: dubai-1.jpg, nyc-1.jpg, barcelona-1.jpg, etc.
   const travelPhotos = [
-    { city: 'Dubai', url: '/travel/dubai-1.jpg', alt: 'Dubai' },
-    { city: 'New York', url: '/travel/nyc-1.jpg', alt: 'New York City' },
-    { city: 'Barcelona', url: '/travel/barcelona-1.jpg', alt: 'Barcelona' },
-    { city: 'Istanbul', url: '/travel/istanbul-1.jpg', alt: 'Istanbul' },
-    { city: 'Athens', url: '/travel/athens-1.jpg', alt: 'Athens' },
-    { city: 'Lisbon', url: '/travel/lisbon-1.jpg', alt: 'Lisbon' },
-    { city: 'Marrakech', url: '/travel/marrakech-1.jpg', alt: 'Marrakech' },
-    { city: 'Cairo', url: '/travel/cairo-1.jpg', alt: 'Cairo' },
+    { city: 'Dubai', filename: 'dubai-1.jpg', alt: 'Dubai' },
+    { city: 'New York', filename: 'nyc-1.jpg', alt: 'New York City' },
+    { city: 'Barcelona', filename: 'barcelona-1.jpg', alt: 'Barcelona' },
+    { city: 'Istanbul', filename: 'istanbul-1.jpg', alt: 'Istanbul' },
+    { city: 'Athens', filename: 'athens-1.jpg', alt: 'Athens' },
+    { city: 'Lisbon', filename: 'lisbon-1.jpg', alt: 'Lisbon' },
+    { city: 'Marrakech', filename: 'marrakech-1.jpg', alt: 'Marrakech' },
+    { city: 'Cairo', filename: 'cairo-1.jpg', alt: 'Cairo' },
   ]
 
   return (
@@ -132,11 +133,24 @@ const Travel = () => {
             {travelPhotos.map((photo, index) => (
               <SwiperSlide key={index}>
                 <div className="relative h-64 rounded-xl overflow-hidden group">
-                  <div className="w-full h-full bg-gradient-to-br from-nyu-purple/20 to-purple-600/20 flex items-center justify-center">
-                    <span className="text-gray-400">
-                      {photo.city} Photo {index + 1}
-                    </span>
-                  </div>
+                  <img
+                    src={`${import.meta.env.BASE_URL}travel/${photo.filename}`}
+                    alt={photo.alt}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement
+                      target.style.display = 'none'
+                      const parent = target.parentElement
+                      if (parent) {
+                        parent.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-nyu-purple/20 to-purple-600/20 flex items-center justify-center">
+                          <span class="text-gray-400">${photo.city} Photo</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                          <p class="text-white font-semibold">${photo.city}</p>
+                        </div>`
+                      }
+                    }}
+                  />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                     <p className="text-white font-semibold">{photo.city}</p>
                   </div>
