@@ -36,12 +36,12 @@ const Navigation = ({ activeSection }: NavigationProps) => {
 
   return (
     <motion.nav
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
+      initial={{ x: -100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 glass-strong rounded-full px-4 py-3 shadow-2xl"
+      className="fixed left-6 top-1/2 transform -translate-y-1/2 z-50 glass-strong rounded-2xl px-3 py-4 shadow-2xl"
     >
-      <div className="flex items-center gap-4">
+      <div className="flex flex-col items-center gap-3">
         {navItems.map((item) => {
           const Icon = item.icon
           const isActive = activeSection === item.id
@@ -58,6 +58,7 @@ const Navigation = ({ activeSection }: NavigationProps) => {
                   : 'text-gray-300 hover:text-white hover:bg-gray-700/50'
               }`}
               aria-label={item.label}
+              title={item.label}
             >
               <Icon className="text-xl" />
               {isActive && (
