@@ -91,18 +91,34 @@ const WorkExperience = () => {
                   }`}
                 >
                   <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-2xl font-bold mb-1">{exp.company}</h3>
-                      <p className="text-nyu-purple-light font-semibold text-lg mb-1">
-                        {exp.role}
-                      </p>
-                      <p className="text-gray-400 text-sm">{exp.period}</p>
+                    <div className="flex items-center gap-3">
+                      {exp.company === 'Thales Group' && (
+                        <img
+                          src="/thales-logo.png"
+                          alt="Thales Logo"
+                          className="h-10 w-auto object-contain"
+                        />
+                      )}
+                      {(exp.company === 'Beta IT' || exp.company === 'Beta Information Technology') && (
+                        <img
+                          src="/beta-it-logo.png"
+                          alt="Beta IT Logo"
+                          className="h-10 w-auto object-contain"
+                        />
+                      )}
+                      <div>
+                        <h3 className="text-2xl font-bold mb-1">{exp.company}</h3>
+                        <p className="text-nyu-purple-light font-semibold text-lg mb-1">
+                          {exp.role}
+                        </p>
+                        <p className="text-gray-400 text-sm">{exp.period}</p>
+                      </div>
                     </div>
                     <a
                       href={exp.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-nyu-purple-light hover:text-nyu-purple transition-colors"
+                      className="text-nyu-purple-light hover:text-nyu-purple transition-colors flex-shrink-0"
                       aria-label={`Visit ${exp.company} website`}
                     >
                       <FaExternalLinkAlt />

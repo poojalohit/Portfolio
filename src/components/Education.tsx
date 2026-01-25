@@ -56,19 +56,27 @@ const Education = () => {
               <div className="mb-6">
                 {edu.university === 'NYU' ? (
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full bg-nyu-purple flex items-center justify-center">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M2 17L12 22L22 17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M2 12L12 17L22 12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
+                    <img
+                      src="/nyu-logo.png"
+                      alt="NYU Logo"
+                      className="h-12 w-auto object-contain"
+                    />
                     <h3 className="text-2xl font-bold text-nyu-purple-light">NYU</h3>
                   </div>
                 ) : (
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-full bg-yellow-500/20 border-2 border-yellow-500/50 flex items-center justify-center">
-                      <span className="text-2xl font-bold text-yellow-400">A</span>
+                      <img
+                        src="/amity-logo.png"
+                        alt="Amity University Dubai Logo"
+                        className="h-8 w-auto object-contain"
+                        onError={(e) => {
+                          // Fallback if logo doesn't exist
+                          const target = e.target as HTMLImageElement
+                          target.style.display = 'none'
+                          target.parentElement!.innerHTML = '<span class="text-2xl font-bold text-yellow-400">A</span>'
+                        }}
+                      />
                     </div>
                     <h3 className="text-2xl font-bold text-yellow-400">AMITY UNIVERSITY DUBAI</h3>
                   </div>

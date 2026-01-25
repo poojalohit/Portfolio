@@ -107,7 +107,7 @@ const Hero = () => {
             className="flex flex-col items-center"
           >
             <img
-              src="/dubai-skyline.png"
+              src="/dubai.jpg"
               alt="Dubai Skyline"
               className="h-32 md:h-40 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
             />
