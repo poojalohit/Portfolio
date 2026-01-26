@@ -58,14 +58,35 @@ const Books = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="glass-strong rounded-2xl p-8 mb-12 text-center"
+          className="glass-strong rounded-2xl p-8 mb-12"
         >
-          <p className="text-xl text-gray-300 mb-2">
-            <span className="text-nyu-purple-light font-semibold">
-              Currently Reading:
-            </span>{' '}
-            <span className="font-semibold">{currentlyReading.title}</span> by {currentlyReading.author}
-          </p>
+          <div className="flex flex-col md:flex-row items-center gap-6">
+            {/* Book Cover */}
+            {loading ? (
+              <div className="w-32 h-48 bg-gray-700 rounded-lg animate-pulse flex-shrink-0" />
+            ) : currentlyReadingCover?.coverUrl ? (
+              <img
+                src={currentlyReadingCover.coverUrl}
+                alt={`${currentlyReading.title} cover`}
+                className="w-32 h-48 object-cover rounded-lg shadow-lg flex-shrink-0"
+                onError={(e) => {
+                  // Hide image if it fails to load
+                  e.currentTarget.style.display = 'none'
+                }}
+              />
+            ) : null}
+            
+            {/* Book Info */}
+            <div className="text-center md:text-left">
+              <p className="text-xl text-gray-300 mb-2">
+                <span className="text-nyu-purple-light font-semibold">
+                  Currently Reading:
+                </span>
+              </p>
+              <p className="text-2xl font-bold mb-1">{currentlyReading.title}</p>
+              <p className="text-lg text-gray-400">by {currentlyReading.author}</p>
+            </div>
+          </div>
         </motion.div>
 
         {/* Top Recommendations */}
