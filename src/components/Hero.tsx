@@ -70,7 +70,7 @@ const Hero = ({ activeSection }: HeroProps) => {
                   y: mousePosition.y,
                 }}
                 transition={{ type: 'spring', stiffness: 50, damping: 20 }}
-                className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden glass-strong border-4 border-lime/30 shadow-2xl"
+                className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden glass-strong border-4 border-dusty-rose/30 shadow-2xl"
               >
                 <img
                   src={`${import.meta.env.BASE_URL}headshot.png`}
