@@ -28,11 +28,18 @@ const Projects = () => {
       description = proj.description()
     }
     
+    // Construct PDF links with base URL if they're PDFs
+    let link = proj.link
+    if (proj.link && proj.link.startsWith('/pdfs/')) {
+      // Remove leading slash and prepend BASE_URL
+      link = `${import.meta.env.BASE_URL}pdfs/${proj.link.replace(/^\/pdfs\//, '')}`
+    }
+    
     return {
       title: proj.title,
       category: proj.category,
       description,
-      link: proj.link,
+      link,
       linkText: proj.linkText,
     }
   })
