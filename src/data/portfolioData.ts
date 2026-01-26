@@ -1,5 +1,19 @@
-// Centralized Portfolio Data
-// Edit this file to update any portfolio content
+// ============================================
+// CENTRALIZED PORTFOLIO DATA
+// ============================================
+// 
+// This is the SINGLE SOURCE OF TRUTH for all portfolio content.
+// To update any section of your portfolio, edit the corresponding data below:
+//
+// - Education: Edit `educationData` array
+// - Work Experience: Edit `workExperienceData` array
+// - Projects: Edit `projectsData` array
+// - Travel: Edit `travelCountries`, `travelPhotos`, or `travelStats`
+// - Books: Edit `currentlyReading` or `bookRecommendations` array
+// - Contact: Edit `contactData` array
+//
+// After making changes, save the file and the portfolio will automatically update.
+// ============================================
 
 import React from 'react'
 
