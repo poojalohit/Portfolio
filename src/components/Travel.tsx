@@ -115,7 +115,7 @@ const Travel = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-center text-white/60 mb-12 text-lg"
         >
-          Currently been to: <span className="text-lime font-bold">{travelStats.visited}/{travelStats.total} countries</span>
+          Currently been to: <span className="text-dusty-rose font-light">{travelStats.visited}/{travelStats.total} countries</span>
         </motion.p>
 
         {/* Countries List */}
@@ -151,7 +151,7 @@ const Travel = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="glass-strong rounded-2xl p-6 mb-12"
         >
-          <h3 className="text-2xl font-bold mb-6 text-center">
+          <h3 className="text-2xl font-light mb-6 text-center text-white">
             World Map
           </h3>
           <div 

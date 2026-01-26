@@ -104,7 +104,7 @@ const Books = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-12"
         >
-          <h3 className="text-3xl font-serif font-bold mb-8 text-center text-white">
+          <h3 className="text-3xl font-light mb-8 text-center text-white">
             My Top Book Recommendations
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
@@ -143,11 +143,11 @@ const Books = () => {
                   
                   {/* Book Info */}
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="bg-lime text-dark-bg rounded-full w-10 h-10 flex items-center justify-center font-bold shadow-lg flex-shrink-0">
+                    <div className="bg-dusty-rose text-charcoal rounded-full w-10 h-10 flex items-center justify-center font-light shadow-lg flex-shrink-0">
                       #{book.rank}
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-xl font-serif font-bold mb-1 text-white">{book.title}</h4>
+                      <h4 className="text-xl font-light mb-1 text-white">{book.title}</h4>
                       <p className="text-white/60">by {book.author}</p>
                     </div>
                   </div>

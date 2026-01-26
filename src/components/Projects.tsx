@@ -137,7 +137,7 @@ const Projects = () => {
                 <FaTimes className="text-2xl" />
               </button>
 
-              <h3 className="text-3xl font-serif font-bold mb-4 text-lime">
+              <h3 className="text-3xl font-light mb-4 text-slate-blue">
                 {selectedProject.title}
               </h3>
 
