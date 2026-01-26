@@ -47,7 +47,7 @@ const Books = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold mb-16 text-center"
+          className="text-4xl md:text-5xl font-serif font-bold mb-16 text-center text-white"
         >
           Books
         </motion.h2>
@@ -85,13 +85,13 @@ const Books = () => {
             
             {/* Book Info */}
             <div className="text-center md:text-left">
-              <p className="text-xl text-gray-300 mb-2">
-                <span className="text-nyu-purple-light font-semibold">
+              <p className="text-xl text-white/80 mb-2">
+                <span className="text-lime font-semibold">
                   Currently Reading:
                 </span>
               </p>
-              <p className="text-2xl font-bold mb-1">{currentlyReading.title}</p>
-              <p className="text-lg text-gray-400">by {currentlyReading.author}</p>
+              <p className="text-2xl font-serif font-bold mb-1 text-white">{currentlyReading.title}</p>
+              <p className="text-lg text-white/60">by {currentlyReading.author}</p>
             </div>
           </div>
         </motion.div>
@@ -104,7 +104,7 @@ const Books = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-12"
         >
-          <h3 className="text-3xl font-bold mb-8 text-center">
+          <h3 className="text-3xl font-serif font-bold mb-8 text-center text-white">
             My Top Book Recommendations
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
@@ -117,7 +117,7 @@ const Books = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="glass-strong rounded-2xl p-6 hover:shadow-2xl hover:shadow-nyu-purple/20 transition-all duration-300 hover:scale-105"
+                  className="glass-strong rounded-2xl p-6 hover:shadow-2xl hover:shadow-lime/20 transition-all duration-300 hover:scale-105"
                 >
                   {/* Book Cover */}
                   {loading ? (
@@ -143,20 +143,20 @@ const Books = () => {
                   
                   {/* Book Info */}
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="bg-nyu-purple text-white rounded-full w-10 h-10 flex items-center justify-center font-bold shadow-lg flex-shrink-0">
+                    <div className="bg-lime text-dark-bg rounded-full w-10 h-10 flex items-center justify-center font-bold shadow-lg flex-shrink-0">
                       #{book.rank}
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-xl font-bold mb-1">{book.title}</h4>
-                      <p className="text-gray-400">by {book.author}</p>
+                      <h4 className="text-xl font-serif font-bold mb-1 text-white">{book.title}</h4>
+                      <p className="text-white/60">by {book.author}</p>
                     </div>
                   </div>
                   
                   {/* Why I Like It */}
                   {book.whyILikeIt && (
-                    <div className="pt-3 border-t border-gray-700/50">
-                      <p className="text-sm font-semibold text-nyu-purple-light mb-2">Why I like it:</p>
-                      <p className="text-sm text-gray-300 leading-relaxed">{book.whyILikeIt}</p>
+                    <div className="pt-3 border-t border-white/10">
+                      <p className="text-sm font-semibold text-cyan mb-2">Why I like it:</p>
+                      <p className="text-sm text-white/80 leading-relaxed">{book.whyILikeIt}</p>
                     </div>
                   )}
                 </motion.div>
@@ -177,7 +177,7 @@ const Books = () => {
             href={goodreadsLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-nyu-purple-light hover:text-nyu-purple transition-colors text-lg font-semibold hover:underline"
+            className="inline-flex items-center gap-2 text-cyan hover:text-cyan-dark transition-colors text-lg font-semibold hover:underline"
           >
             <span>Link to my Goodreads</span>
             <FaExternalLinkAlt />

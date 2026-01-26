@@ -21,7 +21,7 @@ const Education = () => {
 
         <div className="grid md:grid-cols-2 gap-8 relative">
           {/* Vertical divider line */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-gray-700 to-transparent transform -translate-x-1/2" />
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-white/20 to-transparent transform -translate-x-1/2" />
           
           {educationData.map((edu, index) => (
             <motion.div
@@ -42,7 +42,7 @@ const Education = () => {
               </div>
 
               <div className="space-y-3 mb-6">
-                <p className="text-gray-300 text-lg">{edu.degree}</p>
+                <p className="text-white/80 text-lg">{edu.degree}</p>
                 <p className="text-cyan font-semibold text-lg">
                   {edu.period}
                 </p>

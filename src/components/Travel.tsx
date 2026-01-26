@@ -103,7 +103,7 @@ const Travel = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold mb-4 text-center"
+          className="text-4xl md:text-5xl font-serif font-bold mb-4 text-center text-white"
         >
           Travel
         </motion.h2>
@@ -113,9 +113,9 @@ const Travel = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-center text-gray-400 mb-12 text-lg"
+          className="text-center text-white/60 mb-12 text-lg"
         >
-          Currently been to: <span className="text-nyu-purple-light font-bold">{travelStats.visited}/{travelStats.total} countries</span>
+          Currently been to: <span className="text-lime font-bold">{travelStats.visited}/{travelStats.total} countries</span>
         </motion.p>
 
         {/* Countries List */}
@@ -134,10 +134,10 @@ const Travel = () => {
               <motion.div
                 key={country.name}
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-700/30 transition-colors cursor-pointer glass"
+                className="flex items-center gap-2 p-3 rounded-lg hover:bg-white/10 transition-colors cursor-pointer glass"
               >
-                <span className="text-green-400 text-lg">✓</span>
-                <span className="text-gray-300">{country.name}</span>
+                <span className="text-lime text-lg">✓</span>
+                <span className="text-white/80">{country.name}</span>
               </motion.div>
             ))}
           </div>
@@ -157,7 +157,7 @@ const Travel = () => {
           <div 
             ref={mapRef}
             className="w-full overflow-hidden rounded-lg relative" 
-            style={{ height: '500px', backgroundColor: '#1F2937' }}
+            style={{ height: '500px', backgroundColor: '#0a0a0a' }}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
@@ -249,8 +249,8 @@ const Travel = () => {
                       <g key={geo.rsmKey}>
                         <Geography
                           geography={geo}
-                          fill={isVisited ? '#8B5CF6' : '#374151'}
-                          stroke="#1F2937"
+                          fill={isVisited ? '#39ff14' : '#1a1a1a'}
+                          stroke="#0a0a0a"
                           strokeWidth={0.5}
                           onClick={() => {
                             if (centerCoords && countryName) {
@@ -262,7 +262,7 @@ const Travel = () => {
                               outline: 'none',
                             },
                             hover: {
-                              fill: isVisited ? '#A78BFA' : '#4B5563',
+                              fill: isVisited ? '#2ecc00' : '#2a2a2a',
                               outline: 'none',
                               cursor: 'pointer',
                             },
@@ -311,14 +311,14 @@ const Travel = () => {
             <div className="absolute top-4 right-4 flex flex-col gap-2">
               <button
                 onClick={handleZoomIn}
-                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-nyu-purple/30 transition-colors"
+                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-lime/30 transition-colors"
                 aria-label="Zoom in"
               >
                 <FaPlus />
               </button>
               <button
                 onClick={handleZoomOut}
-                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-nyu-purple/30 transition-colors"
+                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-lime/30 transition-colors"
                 aria-label="Zoom out"
               >
                 <FaMinus />
@@ -339,12 +339,12 @@ const Travel = () => {
           </div>
           <div className="mt-4 flex items-center justify-center gap-6 text-sm">
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-nyu-purple"></div>
-              <span className="text-gray-300">Visited</span>
+              <div className="w-4 h-4 rounded bg-lime"></div>
+              <span className="text-white/80">Visited</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-gray-600"></div>
-              <span className="text-gray-300">Not Visited</span>
+              <div className="w-4 h-4 rounded bg-dark-surface"></div>
+              <span className="text-white/80">Not Visited</span>
             </div>
           </div>
         </motion.div>
@@ -382,7 +382,7 @@ const Travel = () => {
           >
             {travelPhotos.map((photo, index) => (
               <SwiperSlide key={index}>
-                <div className="relative h-64 md:h-80 rounded-xl overflow-hidden group bg-gray-800">
+                <div className="relative h-64 md:h-80 rounded-xl overflow-hidden group bg-dark-surface">
                   <img
                     src={`${import.meta.env.BASE_URL}travel/${photo.filename}`}
                     alt={photo.alt}
@@ -392,8 +392,8 @@ const Travel = () => {
                       target.style.display = 'none'
                       const parent = target.parentElement
                       if (parent) {
-                        parent.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-nyu-purple/20 to-purple-600/20 flex items-center justify-center">
-                          <span class="text-gray-400">${photo.city} Photo</span>
+                        parent.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-lime/20 to-cyan/20 flex items-center justify-center">
+                          <span class="text-white/60">${photo.city} Photo</span>
                         </div>
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                           <p class="text-white font-semibold">${photo.city}</p>
@@ -421,7 +421,7 @@ const Travel = () => {
               href={instagramLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-nyu-purple-light hover:text-nyu-purple transition-colors text-lg font-semibold hover:underline group"
+              className="inline-flex items-center gap-3 text-cyan hover:text-cyan-dark transition-colors text-lg font-semibold hover:underline group"
             >
               <FaInstagram className="text-2xl group-hover:scale-110 transition-transform" />
               <span>Follow my travels on Instagram</span>
