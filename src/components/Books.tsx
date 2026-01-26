@@ -63,7 +63,7 @@ const Books = () => {
           <div className="flex flex-col md:flex-row items-center gap-6">
             {/* Book Cover */}
             {loading ? (
-              <div className="w-32 h-48 bg-gray-700 rounded-lg animate-pulse flex-shrink-0" />
+              <div className="w-32 h-48 bg-dark-surface rounded-lg animate-pulse flex-shrink-0" />
             ) : currentlyReadingCover?.coverUrl ? (
               <a
                 href={currentlyReadingCover.goodreadsUrl || `https://www.goodreads.com/search?q=${encodeURIComponent(`${currentlyReading.title} ${currentlyReading.author}`)}`}
@@ -121,7 +121,7 @@ const Books = () => {
                 >
                   {/* Book Cover */}
                   {loading ? (
-                    <div className="w-full h-80 bg-gray-700 rounded-lg animate-pulse mb-4" />
+                    <div className="w-full h-80 bg-dark-surface rounded-lg animate-pulse mb-4" />
                   ) : cover?.coverUrl ? (
                     <a
                       href={cover.goodreadsUrl || book.goodreadsUrl || `https://www.goodreads.com/search?q=${encodeURIComponent(`${book.title} ${book.author}`)}`}
@@ -132,7 +132,7 @@ const Books = () => {
                       <img
                         src={cover.coverUrl}
                         alt={`${book.title} cover`}
-                        className="w-full h-80 object-contain rounded-lg shadow-lg bg-gray-800/50"
+                        className="w-full h-80 object-contain rounded-lg shadow-lg bg-dark-surface/50"
                         onError={(e) => {
                           // Hide image if it fails to load
                           e.currentTarget.style.display = 'none'

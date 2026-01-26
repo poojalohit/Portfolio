@@ -333,7 +333,7 @@ const Travel = () => {
               </button>
             </div>
             
-            <div className="absolute bottom-4 left-4 text-xs text-gray-400 bg-gray-800/50 px-3 py-2 rounded-lg">
+            <div className="absolute bottom-4 left-4 text-xs text-white/60 bg-dark-surface/50 px-3 py-2 rounded-lg">
               Drag to pan • Scroll to zoom • Click a country to see its name
             </div>
           </div>

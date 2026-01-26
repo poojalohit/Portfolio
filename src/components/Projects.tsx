@@ -131,7 +131,7 @@ const Projects = () => {
             >
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+                className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors"
                 aria-label="Close"
               >
                 <FaTimes className="text-2xl" />

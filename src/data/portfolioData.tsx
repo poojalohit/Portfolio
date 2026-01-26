@@ -126,7 +126,7 @@ export const projectsData: ProjectItem[] = [
     description: () => (
       <div className="space-y-4">
         <div>
-          <span className="font-semibold text-nyu-purple-light">🗂 Project Overview</span>
+          <span className="font-semibold text-lime">🗂 Project Overview</span>
           <p className="mt-1">
             This interactive dashboard was designed for clinical nutritionists to identify correlations between patient lifestyle habits (Diet, Cooking Method, Workout Type) and key biometric health outcomes (BMI, Cholesterol, Sodium levels, and Metabolic Efficiency).
           </p>
@@ -138,7 +138,7 @@ export const projectsData: ProjectItem[] = [
           </p>
         </div>
         <div>
-          <span className="font-semibold text-nyu-purple-light">🛠 Tools & Techniques</span>
+          <span className="font-semibold text-lime">🛠 Tools & Techniques</span>
           <ul className="mt-1 space-y-1 list-disc list-inside">
             <li>Tool: Tableau Public</li>
             <li>Data Structure: Aggregated tabular lifestyle data</li>
@@ -156,7 +156,7 @@ export const projectsData: ProjectItem[] = [
           </ul>
         </div>
         <div>
-          <span className="font-semibold text-nyu-purple-light">🚀 Conclusion</span>
+          <span className="font-semibold text-lime">🚀 Conclusion</span>
           <p className="mt-1">
             To achieve optimal health outcomes, the data supports a protocol of Grilled Low-Carb nutrition combined with HIIT activity, supported by a strict &gt;3L daily hydration target.
           </p>
@@ -197,7 +197,7 @@ export const projectsData: ProjectItem[] = [
           </p>
         </div>
         <div>
-          <span className="font-semibold text-nyu-purple-light">Case Study:</span>
+            <span className="font-semibold text-lime">Case Study:</span>
           <p className="mt-1">
             Performed an internal business model analysis of Palo Alto Networks (PANW) using the Business Model Canvas and Resource-Based View to evaluate "platformization" as a survival strategy.
           </p>
@@ -209,7 +209,7 @@ export const projectsData: ProjectItem[] = [
           </p>
         </div>
         <div>
-          <span className="font-semibold text-nyu-purple-light">Strategic Recommendations:</span>
+            <span className="font-semibold text-lime">Strategic Recommendations:</span>
           <p className="mt-1">
             Proposed six targeted initiatives to optimize resource disposal and long-term profitability.
           </p>
