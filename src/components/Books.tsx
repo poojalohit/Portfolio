@@ -47,7 +47,7 @@ const Books = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-light mb-16 text-center text-white"
+          className="text-4xl md:text-5xl font-light mb-16 text-center text-text-primary"
         >
           Books
         </motion.h2>
@@ -63,13 +63,13 @@ const Books = () => {
           <div className="flex flex-col md:flex-row items-center gap-6">
             {/* Book Cover */}
             {loading ? (
-              <div className="w-32 h-48 bg-dark-surface rounded-lg animate-pulse flex-shrink-0" />
+              <div className="w-32 h-48 bg-surface rounded-lg animate-pulse flex-shrink-0" />
             ) : currentlyReadingCover?.coverUrl ? (
               <a
                 href={currentlyReadingCover.goodreadsUrl || `https://www.goodreads.com/search?q=${encodeURIComponent(`${currentlyReading.title} ${currentlyReading.author}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-shrink-0 hover:scale-105 transition-transform duration-300 cursor-pointer"
+                className="flex-shrink-0 hover:scale-105 transition-transform duration-300 cursor-pointer focus-ring"
               >
                 <img
                   src={currentlyReadingCover.coverUrl}
@@ -85,13 +85,13 @@ const Books = () => {
             
             {/* Book Info */}
             <div className="text-center md:text-left">
-              <p className="text-xl text-white/80 mb-2">
-                <span className="text-warm-gold font-light">
+              <p className="text-xl text-text-secondary mb-2">
+                <span className="text-accent-gold font-light">
                   Currently Reading:
                 </span>
               </p>
-              <p className="text-2xl font-light mb-1 text-white">{currentlyReading.title}</p>
-              <p className="text-lg text-light-text/70">by {currentlyReading.author}</p>
+              <p className="text-2xl font-light mb-1 text-text-primary">{currentlyReading.title}</p>
+              <p className="text-lg text-text-muted">by {currentlyReading.author}</p>
             </div>
           </div>
         </motion.div>
@@ -104,7 +104,7 @@ const Books = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-12"
         >
-          <h3 className="text-3xl font-light mb-8 text-center text-white">
+          <h3 className="text-3xl font-light mb-8 text-center text-text-primary">
             My Top Book Recommendations
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
@@ -117,22 +117,22 @@ const Books = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="glass-strong rounded-2xl p-6 hover:shadow-2xl hover:shadow-warm-gold/10 transition-all duration-300 hover:scale-105"
+                  className="glass-strong rounded-2xl p-6 hover:shadow-2xl hover:shadow-accent-blue/20 transition-all duration-300 hover:scale-105 focus-ring"
                 >
                   {/* Book Cover */}
                   {loading ? (
-                    <div className="w-full h-80 bg-dark-surface rounded-lg animate-pulse mb-4" />
+                    <div className="w-full h-80 bg-surface rounded-lg animate-pulse mb-4" />
                   ) : cover?.coverUrl ? (
                     <a
                       href={cover.goodreadsUrl || book.goodreadsUrl || `https://www.goodreads.com/search?q=${encodeURIComponent(`${book.title} ${book.author}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block mb-4 hover:scale-105 transition-transform duration-300 cursor-pointer"
+                      className="block mb-4 hover:scale-105 transition-transform duration-300 cursor-pointer focus-ring"
                     >
                       <img
                         src={cover.coverUrl}
                         alt={`${book.title} cover`}
-                        className="w-full h-80 object-contain rounded-lg shadow-lg bg-dark-surface/50"
+                        className="w-full h-80 object-contain rounded-lg shadow-lg bg-surface/50"
                         onError={(e) => {
                           // Hide image if it fails to load
                           e.currentTarget.style.display = 'none'
@@ -143,20 +143,20 @@ const Books = () => {
                   
                   {/* Book Info */}
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="bg-warm-gold text-dark-brown rounded-full w-10 h-10 flex items-center justify-center font-light shadow-lg flex-shrink-0">
+                    <div className="bg-accent-gold text-charcoal rounded-full w-10 h-10 flex items-center justify-center font-light shadow-lg flex-shrink-0">
                       #{book.rank}
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-xl font-light mb-1 text-white">{book.title}</h4>
-                      <p className="text-white/60">by {book.author}</p>
+                      <h4 className="text-xl font-light mb-1 text-text-primary">{book.title}</h4>
+                      <p className="text-text-muted">by {book.author}</p>
                     </div>
                   </div>
                   
                   {/* Why I Like It */}
                   {book.whyILikeIt && (
-                    <div className="pt-3 border-t border-white/10">
-                      <p className="text-sm font-light text-medium-brown mb-2">Why I like it:</p>
-                      <p className="text-sm text-white/80 leading-relaxed">{book.whyILikeIt}</p>
+                    <div className="pt-3 border-t border-surface-light/20">
+                      <p className="text-sm font-light text-accent-blue mb-2">Why I like it:</p>
+                      <p className="text-sm text-text-secondary leading-relaxed">{book.whyILikeIt}</p>
                     </div>
                   )}
                 </motion.div>
@@ -177,7 +177,7 @@ const Books = () => {
             href={goodreadsLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-medium-brown hover:text-medium-brown/80 transition-colors text-lg font-light hover:underline"
+            className="inline-flex items-center gap-2 text-accent-blue hover:text-accent-blue-hover transition-colors text-lg font-light hover:underline focus-ring"
           >
             <span>Link to my Goodreads</span>
             <FaExternalLinkAlt />

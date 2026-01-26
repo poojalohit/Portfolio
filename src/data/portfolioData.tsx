@@ -126,13 +126,13 @@ export const projectsData: ProjectItem[] = [
     description: () => (
       <div className="space-y-4">
         <div>
-          <span className="font-light text-dusty-rose">🗂 Project Overview</span>
+          <span className="font-light text-accent-blue">🗂 Project Overview</span>
           <p className="mt-1">
             This interactive dashboard was designed for clinical nutritionists to identify correlations between patient lifestyle habits (Diet, Cooking Method, Workout Type) and key biometric health outcomes (BMI, Cholesterol, Sodium levels, and Metabolic Efficiency).
           </p>
         </div>
         <div>
-          <span className="font-semibold text-nyu-purple-light">🎯 The Business Question</span>
+          <span className="font-semibold text-accent-gold">🎯 The Business Question</span>
           <p className="mt-1">
             How can we move beyond generic diet prescriptions to find specific combinations of cooking methods and activity levels that maximize caloric deficit while minimizing cardiovascular risk?
           </p>
@@ -147,7 +147,7 @@ export const projectsData: ProjectItem[] = [
           </ul>
         </div>
         <div>
-          <span className="font-semibold text-nyu-purple-light">💡 Key Insights & Findings</span>
+          <span className="font-semibold text-accent-gold">💡 Key Insights & Findings</span>
           <p className="mt-1">Through cross-tabulated analysis, three major patterns emerged that challenge standard dietary advice:</p>
           <ul className="mt-2 space-y-2 list-disc list-inside">
             <li><strong>The "Grill & Burn" Sweet Spot:</strong> Analysis reveals that a Grilled, Low-Carb diet offers the highest probability of maintaining an Ideal BMI while keeping cholesterol below average.</li>
@@ -193,25 +193,25 @@ export const projectsData: ProjectItem[] = [
           Conducted an in-depth strategic analysis of the structural transformation within the US Cybersecurity Software industry, investigating how Artificial Intelligence is driving a market-wide shift from fragmented "best-of-breed" tools toward integrated "National Champion" platforms.
         </p>
         <div>
-          <span className="font-semibold text-nyu-purple-light">Frameworks Applied:</span>
+          <span className="font-semibold text-accent-gold">Frameworks Applied:</span>
           <p className="mt-1">
             Leveraged PESTEL and Porter's Five Forces to analyze macro-environmental trends and industry rivalry, identifying a transition toward a protected oligopoly.
           </p>
         </div>
         <div>
-            <span className="font-light text-dusty-rose">Case Study:</span>
+            <span className="font-light text-accent-blue">Case Study:</span>
           <p className="mt-1">
             Performed an internal business model analysis of Palo Alto Networks (PANW) using the Business Model Canvas and Resource-Based View to evaluate "platformization" as a survival strategy.
           </p>
         </div>
         <div>
-          <span className="font-semibold text-nyu-purple-light">Key Insights:</span>
+          <span className="font-semibold text-accent-gold">Key Insights:</span>
           <p className="mt-1">
             Identified critical structural vulnerabilities, including high supplier dependency on cloud compute/GPUs and technical debt from aggressive M&A.
           </p>
         </div>
         <div>
-            <span className="font-light text-dusty-rose">Strategic Recommendations:</span>
+            <span className="font-light text-accent-blue">Strategic Recommendations:</span>
           <p className="mt-1">
             Proposed six targeted initiatives to optimize resource disposal and long-term profitability.
           </p>

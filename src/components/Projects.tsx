@@ -59,7 +59,7 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-light mb-16 text-center text-white"
+          className="text-4xl md:text-5xl font-light mb-16 text-center text-text-primary"
         >
           Projects
         </motion.h2>
@@ -70,10 +70,10 @@ const Projects = () => {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-full font-light transition-all duration-300 ${
+              className={`px-6 py-3 rounded-full font-light transition-all duration-300 focus-ring ${
                 selectedCategory === category
-                  ? 'bg-warm-gold text-dark-brown shadow-lg shadow-warm-gold/30'
-                  : 'glass text-light-text hover:bg-cream-beige/10 hover:text-white'
+                  ? 'bg-accent-gold text-charcoal shadow-lg shadow-accent-gold/30'
+                  : 'glass text-text-secondary hover:bg-surface-elevated hover:text-text-primary'
               }`}
             >
               {category}
@@ -95,20 +95,20 @@ const Projects = () => {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 onClick={() => setSelectedProject(project)}
-                className={`glass-strong rounded-2xl p-6 cursor-pointer hover:shadow-2xl hover:shadow-warm-gold/10 transition-all duration-300 hover:scale-105 ${
+                className={`glass-strong rounded-2xl p-6 cursor-pointer hover:shadow-2xl hover:shadow-accent-blue/20 transition-all duration-300 hover:scale-105 focus-ring ${
                   filteredProjects.length < 3 ? 'w-full max-w-md' : ''
                 }`}
               >
-                <h3 className="text-xl font-light mb-3 text-medium-brown">
+                <h3 className="text-xl font-light mb-3 text-accent-blue">
                   {project.title}
                 </h3>
-                <p className="text-light-text text-sm line-clamp-3">
+                <p className="text-text-secondary text-sm line-clamp-3">
                   {typeof project.description === 'string'
                     ? project.description
                     : 'Click to view details...'}
                 </p>
                 {project.link && (
-                  <div className="mt-4 text-medium-brown text-sm flex items-center gap-2">
+                  <div className="mt-4 text-accent-blue text-sm flex items-center gap-2">
                     <FaExternalLinkAlt className="text-xs" />
                     <span>View Project</span>
                   </div>
@@ -126,7 +126,7 @@ const Projects = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-6"
+            className="fixed inset-0 bg-charcoal-dark/90 backdrop-blur-sm z-50 flex items-center justify-center p-6"
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
@@ -138,17 +138,17 @@ const Projects = () => {
             >
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors"
+                className="absolute top-4 right-4 text-text-muted hover:text-text-primary transition-colors focus-ring"
                 aria-label="Close"
               >
                 <FaTimes className="text-2xl" />
               </button>
 
-              <h3 className="text-3xl font-light mb-4 text-medium-brown">
+              <h3 className="text-3xl font-light mb-4 text-accent-blue">
                 {selectedProject.title}
               </h3>
 
-              <div className="text-white/80 space-y-4">
+              <div className="text-text-secondary space-y-4">
                 {typeof selectedProject.description === 'string' ? (
                   <p>{selectedProject.description}</p>
                 ) : (
@@ -161,7 +161,7 @@ const Projects = () => {
                   href={selectedProject.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center gap-2 text-medium-brown hover:text-medium-brown/80 transition-colors font-light"
+                  className="mt-6 inline-flex items-center gap-2 text-accent-blue hover:text-accent-blue-hover transition-colors font-light focus-ring"
                 >
                   <FaExternalLinkAlt />
                   <span>{selectedProject.linkText || 'View Project'}</span>

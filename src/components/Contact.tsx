@@ -25,7 +25,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-light mb-16 text-center text-white"
+          className="text-4xl md:text-5xl font-light mb-16 text-center text-text-primary"
         >
           Contact Me
         </motion.h2>
@@ -43,7 +43,7 @@ const Contact = () => {
               const content = info.link ? (
                 <a
                   href={info.link}
-                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-cream-beige/10 transition-colors group"
+                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-surface-elevated transition-colors group focus-ring"
                 >
                   <div className="w-12 h-12 rounded-full bg-warm-gold/20 border-2 border-warm-gold/50 flex items-center justify-center flex-shrink-0">
                     <Icon className="text-warm-gold text-xl" />
@@ -57,12 +57,12 @@ const Contact = () => {
                 </a>
               ) : (
                 <div className="flex items-center gap-4 p-4 rounded-lg">
-                  <div className="w-12 h-12 rounded-full bg-medium-brown/20 border-2 border-medium-brown/50 flex items-center justify-center flex-shrink-0">
-                    <Icon className="text-medium-brown text-xl" />
+                  <div className="w-12 h-12 rounded-full bg-accent-blue/20 border-2 border-accent-blue/50 flex items-center justify-center flex-shrink-0">
+                    <Icon className="text-accent-blue text-xl" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm text-light-text/70 mb-1">{info.label}</p>
-                    <p className="text-xl font-light text-white">
+                    <p className="text-sm text-text-muted mb-1">{info.label}</p>
+                    <p className="text-xl font-light text-text-primary">
                       {info.value}
                     </p>
                   </div>

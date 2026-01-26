@@ -72,10 +72,10 @@ const Navigation = ({ activeSection }: NavigationProps) => {
                 onClick={() => scrollToSection(item.id)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`relative flex items-center gap-2 px-3 py-2 rounded-full transition-all duration-300 ${
+                className={`relative flex items-center gap-2 px-3 py-2 rounded-full transition-all duration-300 focus-ring ${
                   isActive
-                    ? 'bg-warm-gold/20 border-2 border-warm-gold text-warm-gold shadow-lg shadow-warm-gold/30'
-                    : 'text-light-text hover:text-white hover:bg-cream-beige/10 border-2 border-transparent'
+                    ? 'bg-accent-gold/20 border-2 border-accent-gold text-accent-gold shadow-lg shadow-accent-gold/30'
+                    : 'text-text-secondary hover:text-text-primary hover:bg-surface-elevated border-2 border-transparent'
                 }`}
                 aria-label={item.label}
               >
@@ -113,10 +113,10 @@ const Navigation = ({ activeSection }: NavigationProps) => {
                 onClick={() => scrollToSection(item.id)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className={`relative flex flex-col items-center gap-1 p-3 rounded-lg transition-all duration-300 w-full min-w-[80px] ${
+                className={`relative flex flex-col items-center gap-1 p-3 rounded-lg transition-all duration-300 w-full min-w-[80px] focus-ring ${
                   isActive
-                    ? 'bg-warm-gold/20 border-2 border-warm-gold text-warm-gold shadow-lg shadow-warm-gold/30'
-                    : 'text-light-text hover:text-white hover:bg-cream-beige/10 border-2 border-transparent'
+                    ? 'bg-accent-gold/20 border-2 border-accent-gold text-accent-gold shadow-lg shadow-accent-gold/30'
+                    : 'text-text-secondary hover:text-text-primary hover:bg-surface-elevated border-2 border-transparent'
                 }`}
                 aria-label={item.label}
                 title={item.label}

@@ -103,7 +103,7 @@ const Travel = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-light mb-4 text-center text-white"
+          className="text-4xl md:text-5xl font-light mb-4 text-center text-text-primary"
         >
           Travel
         </motion.h2>
@@ -113,9 +113,9 @@ const Travel = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-center text-white/60 mb-12 text-lg"
+          className="text-center text-text-muted mb-12 text-lg"
         >
-          Currently been to: <span className="text-warm-gold font-light">{travelStats.visited}/{travelStats.total} countries</span>
+          Currently been to: <span className="text-accent-gold font-light">{travelStats.visited}/{travelStats.total} countries</span>
         </motion.p>
 
         {/* Countries List */}
@@ -126,7 +126,7 @@ const Travel = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="glass-strong rounded-2xl p-8 mb-12"
         >
-          <h3 className="text-2xl font-bold mb-6 text-center">
+          <h3 className="text-2xl font-bold mb-6 text-center text-text-primary">
             Countries Visited
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -134,10 +134,10 @@ const Travel = () => {
               <motion.div
                 key={country.name}
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 p-3 rounded-lg hover:bg-cream-beige/10 transition-colors cursor-pointer glass"
+                className="flex items-center gap-2 p-3 rounded-lg hover:bg-surface-elevated transition-colors cursor-pointer glass focus-ring"
               >
-                <span className="text-warm-gold text-lg">✓</span>
-                <span className="text-light-text">{country.name}</span>
+                <span className="text-accent-gold text-lg">✓</span>
+                <span className="text-text-secondary">{country.name}</span>
               </motion.div>
             ))}
           </div>
@@ -151,13 +151,13 @@ const Travel = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="glass-strong rounded-2xl p-6 mb-12"
         >
-          <h3 className="text-2xl font-light mb-6 text-center text-white">
+          <h3 className="text-2xl font-light mb-6 text-center text-text-primary">
             World Map
           </h3>
           <div 
             ref={mapRef}
             className="w-full overflow-hidden rounded-lg relative" 
-            style={{ height: '500px', backgroundColor: '#1A1A1A' }}
+            style={{ height: '500px', backgroundColor: '#1E1E1E' }}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
@@ -311,21 +311,21 @@ const Travel = () => {
             <div className="absolute top-4 right-4 flex flex-col gap-2">
               <button
                 onClick={handleZoomIn}
-                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-dusty-rose/30 transition-colors"
+                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-text-primary hover:bg-surface-elevated transition-colors focus-ring"
                 aria-label="Zoom in"
               >
                 <FaPlus />
               </button>
               <button
                 onClick={handleZoomOut}
-                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-dusty-rose/30 transition-colors"
+                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-text-primary hover:bg-surface-elevated transition-colors focus-ring"
                 aria-label="Zoom out"
               >
                 <FaMinus />
               </button>
               <button
                 onClick={handleReset}
-                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-warm-gold/30 transition-colors text-xs"
+                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-text-primary hover:bg-surface-elevated transition-colors text-xs focus-ring"
                 aria-label="Reset view"
                 title="Reset"
               >
@@ -333,18 +333,18 @@ const Travel = () => {
               </button>
             </div>
             
-            <div className="absolute bottom-4 left-4 text-xs text-light-blue-grey/70 bg-dark-surface/50 px-3 py-2 rounded-lg">
+            <div className="absolute bottom-4 left-4 text-xs text-text-muted bg-surface/80 px-3 py-2 rounded-lg">
               Drag to pan • Scroll to zoom • Click a country to see its name
             </div>
           </div>
           <div className="mt-4 flex items-center justify-center gap-6 text-sm">
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 rounded" style={{ backgroundColor: '#DDAAAA' }}></div>
-              <span className="text-light-text">Visited</span>
+              <span className="text-text-secondary">Visited</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 rounded" style={{ backgroundColor: '#4D4D4D' }}></div>
-              <span className="text-light-text">Not Visited</span>
+              <span className="text-text-secondary">Not Visited</span>
             </div>
           </div>
         </motion.div>
@@ -357,7 +357,7 @@ const Travel = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="glass-strong rounded-2xl p-6"
         >
-          <h3 className="text-2xl font-bold mb-6 text-center">
+          <h3 className="text-2xl font-bold mb-6 text-center text-text-primary">
             Travel Photos
           </h3>
           <Swiper
@@ -382,7 +382,7 @@ const Travel = () => {
           >
             {travelPhotos.map((photo, index) => (
               <SwiperSlide key={index}>
-                <div className="relative h-64 md:h-80 rounded-xl overflow-hidden group bg-dark-surface">
+                <div className="relative h-64 md:h-80 rounded-xl overflow-hidden group bg-surface">
                   <img
                     src={`${import.meta.env.BASE_URL}travel/${photo.filename}`}
                     alt={photo.alt}
@@ -392,17 +392,17 @@ const Travel = () => {
                       target.style.display = 'none'
                       const parent = target.parentElement
                       if (parent) {
-                        parent.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-warm-gold/20 to-medium-brown/20 flex items-center justify-center">
-                          <span class="text-light-text/70">${photo.city} Photo</span>
+                        parent.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-accent-gold/20 to-accent-blue/20 flex items-center justify-center">
+                          <span class="text-text-muted">${photo.city} Photo</span>
                         </div>
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                          <p class="text-white font-semibold">${photo.city}</p>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal-dark/80 to-transparent p-4">
+                          <p class="text-text-primary font-semibold">${photo.city}</p>
                         </div>`
                       }
                     }}
                   />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                    <p className="text-white font-semibold">{photo.city}</p>
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal-dark/80 to-transparent p-4">
+                    <p className="text-text-primary font-semibold">{photo.city}</p>
                   </div>
                 </div>
               </SwiperSlide>
@@ -421,7 +421,7 @@ const Travel = () => {
               href={instagramLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-medium-brown hover:text-medium-brown/80 transition-colors text-lg font-light hover:underline group"
+              className="inline-flex items-center gap-3 text-accent-blue hover:text-accent-blue-hover transition-colors text-lg font-light hover:underline group focus-ring"
             >
               <FaInstagram className="text-2xl group-hover:scale-110 transition-transform" />
               <span>Follow my travels on Instagram</span>

@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-dark-brown-bg text-white;
+    @apply bg-charcoal text-text-primary;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
@@ -17,16 +17,27 @@
     font-family: 'Inter', sans-serif;
     font-weight: 300;
     letter-spacing: -0.02em;
+    @apply text-text-primary;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-cream-beige/5 backdrop-blur-md border border-cream-beige/10;
+    @apply bg-surface/80 backdrop-blur-md border border-surface-light/20;
   }
   
   .glass-strong {
-    @apply bg-cream-beige/10 backdrop-blur-lg border border-cream-beige/20;
+    @apply bg-surface/90 backdrop-blur-lg border border-surface-light/30;
+  }
+  
+  /* Focus states for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-charcoal;
+  }
+  
+  /* Hover states */
+  .hover-lift {
+    @apply transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl;
   }
 }
 
@@ -41,34 +52,34 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-dark-brown-bg;
+  @apply bg-charcoal;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-dark-surface rounded-full;
+  @apply bg-surface rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-dark-brown/50;
+  @apply bg-surface-elevated;
 }
 
 /* Swiper Custom Styles */
 .travel-carousel .swiper-button-next,
 .travel-carousel .swiper-button-prev {
-  color: #A47053;
+  color: #5B8DB8;
 }
 
 .travel-carousel .swiper-button-next:hover,
 .travel-carousel .swiper-button-prev:hover {
-  color: #8B5F43;
+  color: #6B9BD1;
 }
 
 .travel-carousel .swiper-pagination-bullet {
-  background: #A47053;
+  background: #5B8DB8;
   opacity: 0.5;
 }
 
 .travel-carousel .swiper-pagination-bullet-active {
-  background: #8B5F43;
+  background: #6B9BD1;
   opacity: 1;
 }
