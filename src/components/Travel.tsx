@@ -92,7 +92,7 @@ const Travel = () => {
   }
 
   // Handle clicking on a country in the "Countries Visited" list
-  const handleCountryListClick = (countryName: string, isoCode: string) => {
+  const handleCountryListClick = (_countryName: string, isoCode: string) => {
     // If already highlighted, unhighlight
     if (highlightedCountryISO === isoCode) {
       setHighlightedCountryISO(null)
