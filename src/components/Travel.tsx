@@ -103,7 +103,7 @@ const Travel = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-serif font-bold mb-4 text-center text-white"
+          className="text-4xl md:text-5xl font-light mb-4 text-center text-white"
         >
           Travel
         </motion.h2>
@@ -134,10 +134,10 @@ const Travel = () => {
               <motion.div
                 key={country.name}
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 p-3 rounded-lg hover:bg-white/10 transition-colors cursor-pointer glass"
+                className="flex items-center gap-2 p-3 rounded-lg hover:bg-light-blue-grey/10 transition-colors cursor-pointer glass"
               >
-                <span className="text-lime text-lg">✓</span>
-                <span className="text-white/80">{country.name}</span>
+                <span className="text-dusty-rose text-lg">✓</span>
+                <span className="text-light-blue-grey">{country.name}</span>
               </motion.div>
             ))}
           </div>
@@ -249,7 +249,7 @@ const Travel = () => {
                       <g key={geo.rsmKey}>
                         <Geography
                           geography={geo}
-                          fill={isVisited ? '#39ff14' : '#1a1a1a'}
+                          fill={isVisited ? '#D4A5A5' : '#2A2A2A'}
                           stroke="#0a0a0a"
                           strokeWidth={0.5}
                           onClick={() => {
@@ -311,14 +311,14 @@ const Travel = () => {
             <div className="absolute top-4 right-4 flex flex-col gap-2">
               <button
                 onClick={handleZoomIn}
-                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-lime/30 transition-colors"
+                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-dusty-rose/30 transition-colors"
                 aria-label="Zoom in"
               >
                 <FaPlus />
               </button>
               <button
                 onClick={handleZoomOut}
-                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-lime/30 transition-colors"
+                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-dusty-rose/30 transition-colors"
                 aria-label="Zoom out"
               >
                 <FaMinus />
@@ -333,7 +333,7 @@ const Travel = () => {
               </button>
             </div>
             
-            <div className="absolute bottom-4 left-4 text-xs text-white/60 bg-dark-surface/50 px-3 py-2 rounded-lg">
+            <div className="absolute bottom-4 left-4 text-xs text-light-blue-grey/70 bg-dark-surface/50 px-3 py-2 rounded-lg">
               Drag to pan • Scroll to zoom • Click a country to see its name
             </div>
           </div>
@@ -392,8 +392,8 @@ const Travel = () => {
                       target.style.display = 'none'
                       const parent = target.parentElement
                       if (parent) {
-                        parent.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-lime/20 to-cyan/20 flex items-center justify-center">
-                          <span class="text-white/60">${photo.city} Photo</span>
+                        parent.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-dusty-rose/20 to-slate-blue/20 flex items-center justify-center">
+                          <span class="text-light-blue-grey/70">${photo.city} Photo</span>
                         </div>
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                           <p class="text-white font-semibold">${photo.city}</p>
@@ -421,7 +421,7 @@ const Travel = () => {
               href={instagramLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-cyan hover:text-cyan-dark transition-colors text-lg font-semibold hover:underline group"
+              className="inline-flex items-center gap-3 text-slate-blue hover:text-slate-blue/80 transition-colors text-lg font-light hover:underline group"
             >
               <FaInstagram className="text-2xl group-hover:scale-110 transition-transform" />
               <span>Follow my travels on Instagram</span>

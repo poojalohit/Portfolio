@@ -25,7 +25,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-serif font-bold mb-16 text-center text-white"
+          className="text-4xl md:text-5xl font-light mb-16 text-center text-white"
         >
           Contact Me
         </motion.h2>
@@ -43,26 +43,26 @@ const Contact = () => {
               const content = info.link ? (
                 <a
                   href={info.link}
-                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-white/10 transition-colors group"
+                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-light-blue-grey/10 transition-colors group"
                 >
-                  <div className="w-12 h-12 rounded-full bg-lime/20 border-2 border-lime/50 flex items-center justify-center flex-shrink-0">
-                    <Icon className="text-lime text-xl" />
+                  <div className="w-12 h-12 rounded-full bg-dusty-rose/20 border-2 border-dusty-rose/50 flex items-center justify-center flex-shrink-0">
+                    <Icon className="text-dusty-rose text-xl" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm text-white/60 mb-1">{info.label}</p>
-                    <p className="text-xl font-semibold text-white group-hover:text-lime transition-colors">
+                    <p className="text-sm text-light-blue-grey/70 mb-1">{info.label}</p>
+                    <p className="text-xl font-light text-white group-hover:text-dusty-rose transition-colors">
                       {info.value}
                     </p>
                   </div>
                 </a>
               ) : (
                 <div className="flex items-center gap-4 p-4 rounded-lg">
-                  <div className="w-12 h-12 rounded-full bg-cyan/20 border-2 border-cyan/50 flex items-center justify-center flex-shrink-0">
-                    <Icon className="text-cyan text-xl" />
+                  <div className="w-12 h-12 rounded-full bg-slate-blue/20 border-2 border-slate-blue/50 flex items-center justify-center flex-shrink-0">
+                    <Icon className="text-slate-blue text-xl" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm text-white/60 mb-1">{info.label}</p>
-                    <p className="text-xl font-semibold text-white">
+                    <p className="text-sm text-light-blue-grey/70 mb-1">{info.label}</p>
+                    <p className="text-xl font-light text-white">
                       {info.value}
                     </p>
                   </div>

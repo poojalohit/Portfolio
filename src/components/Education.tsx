@@ -14,7 +14,7 @@ const Education = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-serif font-bold mb-16 text-center text-white"
+          className="text-4xl md:text-5xl font-light mb-16 text-center text-white"
         >
           Education
         </motion.h2>
@@ -30,7 +30,7 @@ const Education = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="glass-strong rounded-2xl p-8 hover:shadow-2xl hover:shadow-lime/20 transition-all duration-300 relative"
+              className="glass-strong rounded-2xl p-8 hover:shadow-2xl hover:shadow-dusty-rose/10 transition-all duration-300 relative"
             >
               {/* University Name */}
               <div className="mb-6">
@@ -43,22 +43,22 @@ const Education = () => {
 
               <div className="space-y-3 mb-6">
                 <p className="text-white/80 text-lg">{edu.degree}</p>
-                <p className="text-cyan font-semibold text-lg">
+                <p className="text-taupe font-light text-lg">
                   {edu.period}
                 </p>
-                <p className="text-white/60">{edu.gpa}</p>
+                <p className="text-light-blue-grey/70">{edu.gpa}</p>
               </div>
 
-              <div className="space-y-2 pt-4 border-t border-white/10">
-                <p className="text-sm font-semibold text-white/60 mb-2">
+              <div className="space-y-2 pt-4 border-t border-light-blue-grey/10">
+                <p className="text-sm font-light text-light-blue-grey/70 mb-2">
                   {edu.university === 'NYU' ? 'Positions Held:' : 'Achievements:'}
                 </p>
                 {edu.details.map((detail, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-2 text-white/80"
+                    className="flex items-start gap-2 text-light-blue-grey"
                   >
-                    <span className="text-lime mt-1">▸</span>
+                    <span className="text-dusty-rose mt-1">▸</span>
                     <span>{detail}</span>
                   </div>
                 ))}

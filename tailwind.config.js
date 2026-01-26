@@ -8,22 +8,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        // New vibrant color palette
-        'lime': '#39ff14',
-        'lime-dark': '#2ecc00',
-        'yellow': '#ffeb3b',
-        'yellow-dark': '#fdd835',
-        'cyan': '#00bcd4',
-        'cyan-dark': '#0097a7',
-        'dark-bg': '#0a0a0a',
-        'dark-surface': '#1a1a1a',
-        // Keep purple for compatibility, but can be replaced
-        'nyu-purple': '#57068c',
-        'nyu-purple-light': '#7a1ba8',
-        'nyu-purple-dark': '#3d0059',
+        // Muted, earthy color palette
+        'light-blue-grey': '#E8E8E8',      // Very light blue-grey
+        'dusty-rose': '#D4A5A5',           // Dusty rose / muted pink
+        'taupe': '#8B7D7D',                // Medium brownish-grey / taupe
+        'slate-blue': '#6B8FA3',           // Muted blue / slate blue
+        'charcoal': '#2C2C2C',             // Dark navy / charcoal
+        'dark-bg': '#1A1A1A',              // Dark background
+        'dark-surface': '#2A2A2A',          // Elevated surfaces
       },
       fontFamily: {
-        'serif': ['Playfair Display', 'serif'],
         'sans': ['Inter', 'sans-serif'],
       },
       backdropBlur: {

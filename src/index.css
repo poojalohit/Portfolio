@@ -8,22 +8,25 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
+    font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-dark-surface/40 backdrop-blur-md border border-white/10;
+    @apply bg-light-blue-grey/5 backdrop-blur-md border border-light-blue-grey/10;
   }
   
   .glass-strong {
-    @apply bg-dark-surface/60 backdrop-blur-lg border border-white/20;
+    @apply bg-light-blue-grey/10 backdrop-blur-lg border border-light-blue-grey/20;
   }
 }
 
@@ -46,26 +49,26 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-lime/30;
+  @apply bg-taupe/50;
 }
 
 /* Swiper Custom Styles */
 .travel-carousel .swiper-button-next,
 .travel-carousel .swiper-button-prev {
-  color: #39ff14;
+  color: #6B8FA3;
 }
 
 .travel-carousel .swiper-button-next:hover,
 .travel-carousel .swiper-button-prev:hover {
-  color: #2ecc00;
+  color: #5A7A8F;
 }
 
 .travel-carousel .swiper-pagination-bullet {
-  background: #39ff14;
+  background: #6B8FA3;
   opacity: 0.5;
 }
 
 .travel-carousel .swiper-pagination-bullet-active {
-  background: #2ecc00;
+  background: #5A7A8F;
   opacity: 1;
 }

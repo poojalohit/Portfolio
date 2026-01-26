@@ -47,7 +47,7 @@ const Books = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-serif font-bold mb-16 text-center text-white"
+          className="text-4xl md:text-5xl font-light mb-16 text-center text-white"
         >
           Books
         </motion.h2>
@@ -86,12 +86,12 @@ const Books = () => {
             {/* Book Info */}
             <div className="text-center md:text-left">
               <p className="text-xl text-white/80 mb-2">
-                <span className="text-lime font-semibold">
+                <span className="text-dusty-rose font-light">
                   Currently Reading:
                 </span>
               </p>
-              <p className="text-2xl font-serif font-bold mb-1 text-white">{currentlyReading.title}</p>
-              <p className="text-lg text-white/60">by {currentlyReading.author}</p>
+              <p className="text-2xl font-light mb-1 text-white">{currentlyReading.title}</p>
+              <p className="text-lg text-light-blue-grey/70">by {currentlyReading.author}</p>
             </div>
           </div>
         </motion.div>
@@ -117,7 +117,7 @@ const Books = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="glass-strong rounded-2xl p-6 hover:shadow-2xl hover:shadow-lime/20 transition-all duration-300 hover:scale-105"
+                  className="glass-strong rounded-2xl p-6 hover:shadow-2xl hover:shadow-dusty-rose/10 transition-all duration-300 hover:scale-105"
                 >
                   {/* Book Cover */}
                   {loading ? (
@@ -177,7 +177,7 @@ const Books = () => {
             href={goodreadsLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-cyan hover:text-cyan-dark transition-colors text-lg font-semibold hover:underline"
+            className="inline-flex items-center gap-2 text-slate-blue hover:text-slate-blue/80 transition-colors text-lg font-light hover:underline"
           >
             <span>Link to my Goodreads</span>
             <FaExternalLinkAlt />
