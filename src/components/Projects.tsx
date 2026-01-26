@@ -36,8 +36,8 @@ const Projects = () => {
       linkText: proj.linkText,
     }
   })
-    {
-      title: 'Machine Learning Algorithms',
+
+  const filteredProjects = projects.filter(
       category: 'Published Work',
       description: 'Co-authored the paper: Analysis of Machine Learning Algorithms in Smart Manufacturing. IEEE published. Presented at ICRITO 2020.',
       link: 'https://ieeexplore.ieee.org/document/9198017/',
@@ -157,11 +157,6 @@ const Projects = () => {
           </p>
         </div>
       ),
-      link: 'https://www.linkedin.com/in/pooja-lohit/',
-      linkText: 'Link to my LinkedIn',
-    },
-  ]
-
   const filteredProjects = projects.filter(
     (p) => p.category === selectedCategory
   )
