@@ -339,12 +339,12 @@ const Travel = () => {
           </div>
           <div className="mt-4 flex items-center justify-center gap-6 text-sm">
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-lime"></div>
-              <span className="text-white/80">Visited</span>
+              <div className="w-4 h-4 rounded bg-dusty-rose"></div>
+              <span className="text-light-blue-grey">Visited</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-dark-surface"></div>
-              <span className="text-white/80">Not Visited</span>
+              <div className="w-4 h-4 rounded bg-taupe"></div>
+              <span className="text-light-blue-grey">Not Visited</span>
             </div>
           </div>
         </motion.div>
