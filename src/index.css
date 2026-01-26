@@ -52,20 +52,20 @@ html {
 /* Swiper Custom Styles */
 .travel-carousel .swiper-button-next,
 .travel-carousel .swiper-button-prev {
-  color: #7a1ba8;
+  color: #39ff14;
 }
 
 .travel-carousel .swiper-button-next:hover,
 .travel-carousel .swiper-button-prev:hover {
-  color: #57068c;
+  color: #2ecc00;
 }
 
 .travel-carousel .swiper-pagination-bullet {
-  background: #7a1ba8;
+  background: #39ff14;
   opacity: 0.5;
 }
 
 .travel-carousel .swiper-pagination-bullet-active {
-  background: #57068c;
+  background: #2ecc00;
   opacity: 1;
 }
