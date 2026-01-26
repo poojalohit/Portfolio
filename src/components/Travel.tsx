@@ -21,6 +21,7 @@ const Travel = () => {
   const [dragStart, setDragStart] = useState<{ x: number; y: number } | null>(null)
   const [hasDragged, setHasDragged] = useState(false)
   const [clickedCountry, setClickedCountry] = useState<{ name: string; coordinates: [number, number] } | null>(null)
+  const [highlightedCountryISO, setHighlightedCountryISO] = useState<string | null>(null)
   const mapRef = useRef<HTMLDivElement>(null)
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -73,7 +74,7 @@ const Travel = () => {
     setClickedCountry(null)
   }
 
-  const handleCountryClick = (countryName: string, coordinates: [number, number]) => {
+  const handleCountryClick = (countryName: string, coordinates: [number, number], isoCode?: string) => {
     // Don't trigger click if user was dragging
     if (hasDragged) {
       return
@@ -81,8 +82,25 @@ const Travel = () => {
     // Toggle: if clicking the same country, hide the label; otherwise show the clicked country
     if (clickedCountry?.name === countryName) {
       setClickedCountry(null)
+      setHighlightedCountryISO(null)
     } else {
       setClickedCountry({ name: countryName, coordinates })
+      if (isoCode) {
+        setHighlightedCountryISO(isoCode)
+      }
+    }
+  }
+
+  // Handle clicking on a country in the "Countries Visited" list
+  const handleCountryListClick = (countryName: string, isoCode: string) => {
+    // If already highlighted, unhighlight
+    if (highlightedCountryISO === isoCode) {
+      setHighlightedCountryISO(null)
+      setClickedCountry(null)
+    } else {
+      setHighlightedCountryISO(isoCode)
+      // We'll show the name via the highlighted state
+      setClickedCountry(null)
     }
   }
 
@@ -134,13 +152,20 @@ const Travel = () => {
               <motion.div
                 key={country.name}
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 p-3 rounded-lg hover:bg-surface-elevated transition-colors cursor-pointer glass focus-ring"
+                whileTap={{ scale: 0.98 }}
+                onClick={() => handleCountryListClick(country.name, country.iso)}
+                className={`flex items-center gap-2 p-3 rounded-lg transition-all duration-300 cursor-pointer glass focus-ring ${
+                  highlightedCountryISO === country.iso
+                    ? 'bg-accent-gold/30 border-2 border-accent-gold shadow-lg shadow-accent-gold/20'
+                    : 'hover:bg-surface-elevated border-2 border-transparent'
+                }`}
               >
-                <span className="text-accent-gold text-lg">✓</span>
-                <span className="text-text-secondary">{country.name}</span>
+                <span className={`text-lg ${highlightedCountryISO === country.iso ? 'text-accent-gold' : 'text-accent-gold'}`}>✓</span>
+                <span className={`${highlightedCountryISO === country.iso ? 'text-text-primary font-medium' : 'text-text-secondary'}`}>{country.name}</span>
               </motion.div>
             ))}
           </div>
+          <p className="text-center text-text-muted text-sm mt-4">Click a country to highlight it on the map</p>
         </motion.div>
 
         {/* World Map */}
@@ -222,6 +247,7 @@ const Travel = () => {
                     }
                     
                     const isVisited = isoCode ? visitedCountryCodes.has(isoCode) : false
+                    const isHighlighted = isoCode === highlightedCountryISO
                     
                     // Get center coordinates for country name label (simplified approach)
                     let centerCoords: [number, number] | null = null
@@ -245,16 +271,32 @@ const Travel = () => {
                       centerCoords = null
                     }
                     
+                    // Determine fill color based on state
+                    let fillColor = '#3A3A3A' // Not visited (surface-light)
+                    if (isHighlighted) {
+                      fillColor = '#D4AF37' // Highlighted (accent-gold)
+                    } else if (isVisited) {
+                      fillColor = '#5B8DB8' // Visited (accent-blue)
+                    }
+                    
+                    // Determine hover color
+                    let hoverColor = '#4A4A4A' // Not visited hover
+                    if (isHighlighted) {
+                      hoverColor = '#E5C04A' // Highlighted hover (accent-gold-hover)
+                    } else if (isVisited) {
+                      hoverColor = '#6B9BD1' // Visited hover (accent-blue-hover)
+                    }
+                    
                     return (
                       <g key={geo.rsmKey}>
                         <Geography
                           geography={geo}
-                          fill={isVisited ? '#D4A5A5' : '#2A2A2A'}
-                          stroke="#2C1F1A"
+                          fill={fillColor}
+                          stroke="#1E1E1E"
                           strokeWidth={0.5}
                           onClick={() => {
                             if (centerCoords && countryName) {
-                              handleCountryClick(countryName, centerCoords)
+                              handleCountryClick(countryName, centerCoords, isoCode)
                             }
                           }}
                           style={{
@@ -262,34 +304,50 @@ const Travel = () => {
                               outline: 'none',
                             },
                             hover: {
-                              fill: isVisited ? '#D4A574' : '#3A2E28',
+                              fill: hoverColor,
                               outline: 'none',
                               cursor: 'pointer',
                             },
                             pressed: {
+                              fill: isHighlighted ? '#D4AF37' : (isVisited ? '#7BAED9' : '#5A5A5A'),
                               outline: 'none',
                             },
                           }}
                         />
-                        {/* Show country name only when clicked */}
-                        {clickedCountry?.name === countryName && centerCoords && (
+                        {/* Show country name when clicked or highlighted */}
+                        {(clickedCountry?.name === countryName || isHighlighted) && centerCoords && (
                           <Marker coordinates={centerCoords}>
                             <g>
-                              {/* Background for better readability */}
+                              {/* Shadow for depth */}
                               <rect
-                                x={-40}
-                                y={-12}
-                                width={80}
-                                height={24}
-                                fill="#1F2937"
-                                fillOpacity={0.9}
-                                rx={4}
+                                x={-52}
+                                y={-14}
+                                width={104}
+                                height={28}
+                                fill="#000000"
+                                fillOpacity={0.3}
+                                rx={6}
+                                transform="translate(2, 2)"
+                              />
+                              {/* Background pill */}
+                              <rect
+                                x={-52}
+                                y={-14}
+                                width={104}
+                                height={28}
+                                fill={isHighlighted ? '#D4AF37' : '#2A2A2A'}
+                                fillOpacity={0.95}
+                                rx={6}
+                                stroke={isHighlighted ? '#E5C04A' : '#5B8DB8'}
+                                strokeWidth={2}
                               />
                               <text
                                 textAnchor="middle"
-                                fontSize={Math.max(12, Math.min(16, zoom / 20))}
-                                fill="#E5E7EB"
+                                y={5}
+                                fontSize={14}
+                                fill={isHighlighted ? '#1E1E1E' : '#F5F5F5'}
                                 fontWeight="600"
+                                fontFamily="Inter, sans-serif"
                                 style={{
                                   pointerEvents: 'none',
                                   userSelect: 'none',
@@ -333,17 +391,21 @@ const Travel = () => {
               </button>
             </div>
             
-            <div className="absolute bottom-4 left-4 text-xs text-text-muted bg-surface/80 px-3 py-2 rounded-lg">
+            <div className="absolute bottom-4 left-4 text-xs text-text-muted bg-surface/90 px-3 py-2 rounded-lg border border-surface-light/30">
               Drag to pan • Scroll to zoom • Click a country to see its name
             </div>
           </div>
-          <div className="mt-4 flex items-center justify-center gap-6 text-sm">
+          <div className="mt-4 flex items-center justify-center gap-6 text-sm flex-wrap">
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded" style={{ backgroundColor: '#DDAAAA' }}></div>
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: '#5B8DB8' }}></div>
               <span className="text-text-secondary">Visited</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded" style={{ backgroundColor: '#4D4D4D' }}></div>
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: '#D4AF37' }}></div>
+              <span className="text-text-secondary">Highlighted</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: '#3A3A3A' }}></div>
               <span className="text-text-secondary">Not Visited</span>
             </div>
           </div>
