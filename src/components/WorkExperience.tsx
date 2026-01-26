@@ -37,7 +37,7 @@ const WorkExperience = () => {
       link: 'https://www.betait.net',
       isIntern: true,
       description: [
-        'Led a team of five to analyze AI and Data Infrastructure trends, delivering weekly strategic insights to senior leadership that shaped the company's long-term solution roadmap.',
+        'Led a team of five to analyze AI and Data Infrastructure trends, delivering weekly strategic insights to senior leadership that shaped the company\'s long-term solution roadmap.',
       ],
     },
   ]
