@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-dark-bg text-white;
+    @apply bg-dark-brown-bg text-white;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
@@ -22,11 +22,11 @@
 
 @layer utilities {
   .glass {
-    @apply bg-light-blue-grey/5 backdrop-blur-md border border-light-blue-grey/10;
+    @apply bg-cream-beige/5 backdrop-blur-md border border-cream-beige/10;
   }
   
   .glass-strong {
-    @apply bg-light-blue-grey/10 backdrop-blur-lg border border-light-blue-grey/20;
+    @apply bg-cream-beige/10 backdrop-blur-lg border border-cream-beige/20;
   }
 }
 
@@ -41,7 +41,7 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-dark-bg;
+  @apply bg-dark-brown-bg;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -49,26 +49,26 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-taupe/50;
+  @apply bg-dark-brown/50;
 }
 
 /* Swiper Custom Styles */
 .travel-carousel .swiper-button-next,
 .travel-carousel .swiper-button-prev {
-  color: #6B8FA3;
+  color: #A47053;
 }
 
 .travel-carousel .swiper-button-next:hover,
 .travel-carousel .swiper-button-prev:hover {
-  color: #5A7A8F;
+  color: #8B5F43;
 }
 
 .travel-carousel .swiper-pagination-bullet {
-  background: #6B8FA3;
+  background: #A47053;
   opacity: 0.5;
 }
 
 .travel-carousel .swiper-pagination-bullet-active {
-  background: #5A7A8F;
+  background: #8B5F43;
   opacity: 1;
 }

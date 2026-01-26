@@ -65,8 +65,8 @@ const Projects = () => {
               onClick={() => setSelectedCategory(category)}
               className={`px-6 py-3 rounded-full font-light transition-all duration-300 ${
                 selectedCategory === category
-                  ? 'bg-dusty-rose text-charcoal shadow-lg shadow-dusty-rose/30'
-                  : 'glass text-light-blue-grey hover:bg-light-blue-grey/10 hover:text-white'
+                  ? 'bg-warm-gold text-dark-brown shadow-lg shadow-warm-gold/30'
+                  : 'glass text-light-text hover:bg-cream-beige/10 hover:text-white'
               }`}
             >
               {category}
@@ -88,20 +88,20 @@ const Projects = () => {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 onClick={() => setSelectedProject(project)}
-                className={`glass-strong rounded-2xl p-6 cursor-pointer hover:shadow-2xl hover:shadow-dusty-rose/10 transition-all duration-300 hover:scale-105 ${
+                className={`glass-strong rounded-2xl p-6 cursor-pointer hover:shadow-2xl hover:shadow-warm-gold/10 transition-all duration-300 hover:scale-105 ${
                   filteredProjects.length < 3 ? 'w-full max-w-md' : ''
                 }`}
               >
-                <h3 className="text-xl font-light mb-3 text-slate-blue">
+                <h3 className="text-xl font-light mb-3 text-medium-brown">
                   {project.title}
                 </h3>
-                <p className="text-light-blue-grey text-sm line-clamp-3">
+                <p className="text-light-text text-sm line-clamp-3">
                   {typeof project.description === 'string'
                     ? project.description
                     : 'Click to view details...'}
                 </p>
                 {project.link && (
-                  <div className="mt-4 text-slate-blue text-sm flex items-center gap-2">
+                  <div className="mt-4 text-medium-brown text-sm flex items-center gap-2">
                     <FaExternalLinkAlt className="text-xs" />
                     <span>View Project</span>
                   </div>
@@ -137,7 +137,7 @@ const Projects = () => {
                 <FaTimes className="text-2xl" />
               </button>
 
-              <h3 className="text-3xl font-light mb-4 text-slate-blue">
+              <h3 className="text-3xl font-light mb-4 text-medium-brown">
                 {selectedProject.title}
               </h3>
 
@@ -154,7 +154,7 @@ const Projects = () => {
                   href={selectedProject.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center gap-2 text-slate-blue hover:text-slate-blue/80 transition-colors font-light"
+                  className="mt-6 inline-flex items-center gap-2 text-medium-brown hover:text-medium-brown/80 transition-colors font-light"
                 >
                   <FaExternalLinkAlt />
                   <span>{selectedProject.linkText || 'View Project'}</span>

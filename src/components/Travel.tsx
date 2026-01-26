@@ -115,7 +115,7 @@ const Travel = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-center text-white/60 mb-12 text-lg"
         >
-          Currently been to: <span className="text-dusty-rose font-light">{travelStats.visited}/{travelStats.total} countries</span>
+          Currently been to: <span className="text-warm-gold font-light">{travelStats.visited}/{travelStats.total} countries</span>
         </motion.p>
 
         {/* Countries List */}
@@ -134,10 +134,10 @@ const Travel = () => {
               <motion.div
                 key={country.name}
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 p-3 rounded-lg hover:bg-light-blue-grey/10 transition-colors cursor-pointer glass"
+                className="flex items-center gap-2 p-3 rounded-lg hover:bg-cream-beige/10 transition-colors cursor-pointer glass"
               >
-                <span className="text-dusty-rose text-lg">✓</span>
-                <span className="text-light-blue-grey">{country.name}</span>
+                <span className="text-warm-gold text-lg">✓</span>
+                <span className="text-light-text">{country.name}</span>
               </motion.div>
             ))}
           </div>
@@ -157,7 +157,7 @@ const Travel = () => {
           <div 
             ref={mapRef}
             className="w-full overflow-hidden rounded-lg relative" 
-            style={{ height: '500px', backgroundColor: '#0a0a0a' }}
+            style={{ height: '500px', backgroundColor: '#1A1A1A' }}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
@@ -250,7 +250,7 @@ const Travel = () => {
                         <Geography
                           geography={geo}
                           fill={isVisited ? '#D4A5A5' : '#2A2A2A'}
-                          stroke="#0a0a0a"
+                          stroke="#2C1F1A"
                           strokeWidth={0.5}
                           onClick={() => {
                             if (centerCoords && countryName) {
@@ -262,7 +262,7 @@ const Travel = () => {
                               outline: 'none',
                             },
                             hover: {
-                              fill: isVisited ? '#2ecc00' : '#2a2a2a',
+                              fill: isVisited ? '#D4A574' : '#3A2E28',
                               outline: 'none',
                               cursor: 'pointer',
                             },
@@ -325,7 +325,7 @@ const Travel = () => {
               </button>
               <button
                 onClick={handleReset}
-                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-nyu-purple/30 transition-colors text-xs"
+                className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-white hover:bg-warm-gold/30 transition-colors text-xs"
                 aria-label="Reset view"
                 title="Reset"
               >
@@ -339,12 +339,12 @@ const Travel = () => {
           </div>
           <div className="mt-4 flex items-center justify-center gap-6 text-sm">
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-dusty-rose"></div>
-              <span className="text-light-blue-grey">Visited</span>
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: '#DDAAAA' }}></div>
+              <span className="text-light-text">Visited</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-taupe"></div>
-              <span className="text-light-blue-grey">Not Visited</span>
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: '#4D4D4D' }}></div>
+              <span className="text-light-text">Not Visited</span>
             </div>
           </div>
         </motion.div>
@@ -392,8 +392,8 @@ const Travel = () => {
                       target.style.display = 'none'
                       const parent = target.parentElement
                       if (parent) {
-                        parent.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-dusty-rose/20 to-slate-blue/20 flex items-center justify-center">
-                          <span class="text-light-blue-grey/70">${photo.city} Photo</span>
+                        parent.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-warm-gold/20 to-medium-brown/20 flex items-center justify-center">
+                          <span class="text-light-text/70">${photo.city} Photo</span>
                         </div>
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                           <p class="text-white font-semibold">${photo.city}</p>
@@ -421,7 +421,7 @@ const Travel = () => {
               href={instagramLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-slate-blue hover:text-slate-blue/80 transition-colors text-lg font-light hover:underline group"
+              className="inline-flex items-center gap-3 text-medium-brown hover:text-medium-brown/80 transition-colors text-lg font-light hover:underline group"
             >
               <FaInstagram className="text-2xl group-hover:scale-110 transition-transform" />
               <span>Follow my travels on Instagram</span>

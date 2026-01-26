@@ -43,25 +43,25 @@ const Contact = () => {
               const content = info.link ? (
                 <a
                   href={info.link}
-                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-light-blue-grey/10 transition-colors group"
+                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-cream-beige/10 transition-colors group"
                 >
-                  <div className="w-12 h-12 rounded-full bg-dusty-rose/20 border-2 border-dusty-rose/50 flex items-center justify-center flex-shrink-0">
-                    <Icon className="text-dusty-rose text-xl" />
+                  <div className="w-12 h-12 rounded-full bg-warm-gold/20 border-2 border-warm-gold/50 flex items-center justify-center flex-shrink-0">
+                    <Icon className="text-warm-gold text-xl" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm text-light-blue-grey/70 mb-1">{info.label}</p>
-                    <p className="text-xl font-light text-white group-hover:text-dusty-rose transition-colors">
+                    <p className="text-sm text-light-text/70 mb-1">{info.label}</p>
+                    <p className="text-xl font-light text-white group-hover:text-warm-gold transition-colors">
                       {info.value}
                     </p>
                   </div>
                 </a>
               ) : (
                 <div className="flex items-center gap-4 p-4 rounded-lg">
-                  <div className="w-12 h-12 rounded-full bg-slate-blue/20 border-2 border-slate-blue/50 flex items-center justify-center flex-shrink-0">
-                    <Icon className="text-slate-blue text-xl" />
+                  <div className="w-12 h-12 rounded-full bg-medium-brown/20 border-2 border-medium-brown/50 flex items-center justify-center flex-shrink-0">
+                    <Icon className="text-medium-brown text-xl" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm text-light-blue-grey/70 mb-1">{info.label}</p>
+                    <p className="text-sm text-light-text/70 mb-1">{info.label}</p>
                     <p className="text-xl font-light text-white">
                       {info.value}
                     </p>

@@ -181,6 +181,8 @@ export const projectsData: ProjectItem[] = [
         </p>
       </div>
     ),
+    link: '/pdfs/ReSKUe Pitch Deck.pdf',
+    linkText: 'View the Pitch Deck',
   },
   {
     title: 'Economic Analysis: How AI and M&As are Forcing a New Business Model for Cybersecurity Vendors',
@@ -216,6 +218,8 @@ export const projectsData: ProjectItem[] = [
         </div>
       </div>
     ),
+    link: '/pdfs/Economic Analysis of Cybersecurity Industry.pdf',
+    linkText: 'View the full analysis',
   },
   {
     title: 'Behind the Build with Pooja Lohit',

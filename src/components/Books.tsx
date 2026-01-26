@@ -86,12 +86,12 @@ const Books = () => {
             {/* Book Info */}
             <div className="text-center md:text-left">
               <p className="text-xl text-white/80 mb-2">
-                <span className="text-dusty-rose font-light">
+                <span className="text-warm-gold font-light">
                   Currently Reading:
                 </span>
               </p>
               <p className="text-2xl font-light mb-1 text-white">{currentlyReading.title}</p>
-              <p className="text-lg text-light-blue-grey/70">by {currentlyReading.author}</p>
+              <p className="text-lg text-light-text/70">by {currentlyReading.author}</p>
             </div>
           </div>
         </motion.div>
@@ -117,7 +117,7 @@ const Books = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="glass-strong rounded-2xl p-6 hover:shadow-2xl hover:shadow-dusty-rose/10 transition-all duration-300 hover:scale-105"
+                  className="glass-strong rounded-2xl p-6 hover:shadow-2xl hover:shadow-warm-gold/10 transition-all duration-300 hover:scale-105"
                 >
                   {/* Book Cover */}
                   {loading ? (
@@ -143,7 +143,7 @@ const Books = () => {
                   
                   {/* Book Info */}
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="bg-dusty-rose text-charcoal rounded-full w-10 h-10 flex items-center justify-center font-light shadow-lg flex-shrink-0">
+                    <div className="bg-warm-gold text-dark-brown rounded-full w-10 h-10 flex items-center justify-center font-light shadow-lg flex-shrink-0">
                       #{book.rank}
                     </div>
                     <div className="flex-1">
@@ -155,7 +155,7 @@ const Books = () => {
                   {/* Why I Like It */}
                   {book.whyILikeIt && (
                     <div className="pt-3 border-t border-white/10">
-                      <p className="text-sm font-semibold text-cyan mb-2">Why I like it:</p>
+                      <p className="text-sm font-light text-medium-brown mb-2">Why I like it:</p>
                       <p className="text-sm text-white/80 leading-relaxed">{book.whyILikeIt}</p>
                     </div>
                   )}
@@ -177,7 +177,7 @@ const Books = () => {
             href={goodreadsLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-slate-blue hover:text-slate-blue/80 transition-colors text-lg font-light hover:underline"
+            className="inline-flex items-center gap-2 text-medium-brown hover:text-medium-brown/80 transition-colors text-lg font-light hover:underline"
           >
             <span>Link to my Goodreads</span>
             <FaExternalLinkAlt />

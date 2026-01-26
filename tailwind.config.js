@@ -8,14 +8,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Muted, earthy color palette
-        'light-blue-grey': '#E8E8E8',      // Very light blue-grey
-        'dusty-rose': '#D4A5A5',           // Dusty rose / muted pink
-        'taupe': '#8B7D7D',                // Medium brownish-grey / taupe
-        'slate-blue': '#6B8FA3',           // Muted blue / slate blue
-        'charcoal': '#2C2C2C',             // Dark navy / charcoal
-        'dark-bg': '#1A1A1A',              // Dark background
-        'dark-surface': '#2A2A2A',          // Elevated surfaces
+        // Autumn color palette (Azalea Design Co.)
+        'main-rose': '#8B5B6D',             // Main Color 1: Deep muted rose
+        'main-blue': '#3E5C76',            // Main Color 2: Dark slate blue
+        'accent-peach': '#D09E8B',          // Accent Color: Muted peach/terracotta
+        'neutral-grey': '#C7C4C2',          // Neutral Color 1: Light warm grey
+        'neutral-pink': '#E4D4D2',          // Neutral Color 2: Very light desaturated pink
+        
+        // Legacy color mappings (for backward compatibility)
+        'cream-beige': '#E4D4D2',          // Mapped to neutral-pink
+        'warm-gold': '#D09E8B',             // Mapped to accent-peach
+        'medium-brown': '#8B5B6D',          // Mapped to main-rose
+        'dark-brown': '#3E5C76',            // Mapped to main-blue
+        'dark-brown-bg': '#1A1A1A',         // Dark background (from map reference)
+        'dark-surface': '#2A2A2A',          // Elevated surfaces (from map reference)
+        'light-text': '#E8E8E8',            // Light text color
+        'dusty-rose': '#8B5B6D',            // Alias for main-rose
       },
       fontFamily: {
         'sans': ['Inter', 'sans-serif'],
