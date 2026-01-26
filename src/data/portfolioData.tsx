@@ -222,6 +222,28 @@ export const projectsData: ProjectItem[] = [
     linkText: 'View the full analysis',
   },
   {
+    title: 'Weekly Capital Markets Tracker',
+    category: 'Projects',
+    description: () => (
+      <div className="space-y-4">
+        <p>
+          An automated fintech solution designed to track and analyze U.S. financial conditions. By replacing manual spreadsheets with a programmatic pipeline, the project provides real-time visibility into market-moving trends.
+        </p>
+        <div>
+          <span className="font-semibold text-accent-gold">Key Features:</span>
+          <ul className="mt-2 space-y-2 list-disc list-inside">
+            <li><strong>Automated Data Pipeline:</strong> Pulls weekly closing prices and percentage changes for the S&P 500, 10-Year Treasury Yields, Gold, and Bitcoin using the yfinance API.</li>
+            <li><strong>AI Narrative Engine:</strong> Uses Large Language Models (LLMs) to synthesize market data into a 450-word narrative, connecting quantitative shifts to broader macro themes like Fed policy and geopolitical events.</li>
+            <li><strong>Transmission Mechanism Analysis:</strong> Automatically identifies global events and explains their specific impact on U.S. risk sentiment and FX markets.</li>
+            <li><strong>Interactive Interface:</strong> A GitHub Pages-hosted frontend that allows users to visualize market volatility and explore advanced corporate finance concepts through an interactive library.</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    link: 'https://poojalohit.github.io/Weekly-Capital-Markets/',
+    linkText: 'View the Tracker',
+  },
+  {
     title: 'Behind the Build with Pooja Lohit',
     category: 'Initiatives',
     description: () => (
