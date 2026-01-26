@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaTimes, FaExternalLinkAlt } from 'react-icons/fa'
+import { projectsData, projectCategories } from '../data/portfolioData'
 
 interface Project {
   title: string
@@ -14,9 +15,27 @@ const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('Published Work')
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
-  const categories = ['Published Work', 'Projects', 'Initiatives']
+  const categories = projectCategories
 
-  const projects: Project[] = [
+  // Convert data file projects to component format
+  const projects: Project[] = projectsData.map(proj => {
+    let description: string | JSX.Element
+    
+    if (typeof proj.description === 'string') {
+      description = proj.description
+    } else {
+      // Call the function to get JSX element
+      description = proj.description()
+    }
+    
+    return {
+      title: proj.title,
+      category: proj.category,
+      description,
+      link: proj.link,
+      linkText: proj.linkText,
+    }
+  })
     {
       title: 'Machine Learning Algorithms',
       category: 'Published Work',

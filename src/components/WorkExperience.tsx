@@ -1,46 +1,9 @@
 import { motion } from 'framer-motion'
 import { FaExternalLinkAlt } from 'react-icons/fa'
-
-interface WorkExperience {
-  company: string
-  role: string
-  period: string
-  link: string
-  description: string[]
-  isIntern?: boolean
-}
+import { workExperienceData } from '../data/portfolioData'
 
 const WorkExperience = () => {
-  const experiences: WorkExperience[] = [
-    {
-      company: 'Thales Group',
-      role: 'Inside Sales Rep',
-      period: '2022-2025',
-      link: 'https://www.thalesgroup.com',
-      description: [
-        'Spearheaded IAM ecosystem growth across the META region, earning global recognition in 2025. Turned user feedback into revenue, notably driving a 20% increase in renewals for a $3M ARR portfolio, while leveraging Power BI and Salesforce to maintain 94% sales forecasting accuracy for senior leadership.',
-      ],
-    },
-    {
-      company: 'Beta Information Technology',
-      role: 'Sales Account Manager',
-      period: '2021-2022',
-      link: 'https://www.betait.net',
-      description: [
-        'Managed the end-to-end cybersecurity sales lifecycle for 15 enterprise accounts, identifying infrastructure gaps and conducting competitive research to align modernizations with evolving security standards.',
-      ],
-    },
-    {
-      company: 'Beta Information Technology',
-      role: 'Intern',
-      period: 'June 2020 - August 2020',
-      link: 'https://www.betait.net',
-      isIntern: true,
-      description: [
-        'Led a team of five to analyze AI and Data Infrastructure trends, delivering weekly strategic insights to senior leadership that shaped the company\'s long-term solution roadmap.',
-      ],
-    },
-  ]
+  const experiences = workExperienceData
 
   return (
     <section
@@ -91,7 +54,7 @@ const WorkExperience = () => {
                 {exp.description.map((desc, idx) => (
                   <div key={idx} className="flex items-start gap-2 text-gray-300 text-sm">
                     <span className="text-nyu-purple-light mt-1 flex-shrink-0">▸</span>
-                    <span>{desc}</span>
+                    <span className="whitespace-pre-line">{desc}</span>
                   </div>
                 ))}
               </div>

@@ -1,27 +1,9 @@
 import { motion } from 'framer-motion'
 import { FaExternalLinkAlt } from 'react-icons/fa'
+import { currentlyReading, bookRecommendations, goodreadsLink } from '../data/portfolioData'
 
 const Books = () => {
-  const recommendations = [
-    {
-      rank: 1,
-      title: 'Sapiens',
-      author: 'Yuval Noah Harari',
-      coverUrl: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1705594966i/23692271.jpg',
-    },
-    {
-      rank: 2,
-      title: 'Empire of Pain',
-      author: 'Patrick Radden Keefe',
-      coverUrl: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1602088484i/52770198.jpg',
-    },
-    {
-      rank: 3,
-      title: 'Everybody Lies',
-      author: 'Seth Stephens-Davidowitz',
-      coverUrl: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1490807962i/34890015.jpg',
-    },
-  ]
+  const recommendations = bookRecommendations
 
   return (
     <section
@@ -51,7 +33,7 @@ const Books = () => {
             <span className="text-nyu-purple-light font-semibold">
               Currently Reading:
             </span>{' '}
-            <span className="font-semibold">Orbital</span> by Samantha Harvey
+            <span className="font-semibold">{currentlyReading.title}</span> by {currentlyReading.author}
           </p>
         </motion.div>
 
@@ -99,7 +81,7 @@ const Books = () => {
           className="text-center"
         >
           <a
-            href="https://www.goodreads.com/poojalohit"
+            href={goodreadsLink}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-nyu-purple-light hover:text-nyu-purple transition-colors text-lg font-semibold hover:underline"

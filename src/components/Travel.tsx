@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps'
 import { FaInstagram, FaPlus, FaMinus } from 'react-icons/fa'
+import { travelCountries, travelPhotos as travelPhotosData, travelStats, instagramLink, countryNameToISO } from '../data/portfolioData'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -85,139 +86,11 @@ const Travel = () => {
     }
   }
 
-  const countries = [
-    { name: 'Jordan', flag: '🇯🇴', iso: 'JOR' },
-    { name: 'Spain', flag: '🇪🇸', iso: 'ESP' },
-    { name: 'Morocco', flag: '🇲🇦', iso: 'MAR' },
-    { name: 'Georgia', flag: '🇬🇪', iso: 'GEO' },
-    { name: 'Azerbaijan', flag: '🇦🇿', iso: 'AZE' },
-    { name: 'Hungary', flag: '🇭🇺', iso: 'HUN' },
-    { name: 'Maldives', flag: '🇲🇻', iso: 'MDV' },
-    { name: 'Nepal', flag: '🇳🇵', iso: 'NPL' },
-    { name: 'Oman', flag: '🇴🇲', iso: 'OMN' },
-    { name: 'Ukraine', flag: '🇺🇦', iso: 'UKR' },
-    { name: 'Zanzibar', flag: '🇹🇿', iso: 'TZA' },
-    { name: 'Portugal', flag: '🇵🇹', iso: 'PRT' },
-    { name: 'Kenya', flag: '🇰🇪', iso: 'KEN' },
-    { name: 'Egypt', flag: '🇪🇬', iso: 'EGY' },
-    { name: 'Turkey', flag: '🇹🇷', iso: 'TUR' },
-    { name: 'Greece', flag: '🇬🇷', iso: 'GRC' },
-    { name: 'United Kingdom', flag: '🇬🇧', iso: 'GBR' },
-    { name: 'Argentina', flag: '🇦🇷', iso: 'ARG' },
-    { name: 'Brazil', flag: '🇧🇷', iso: 'BRA' },
-    { name: 'Peru', flag: '🇵🇪', iso: 'PER' },
-    { name: 'United Arab Emirates', flag: '🇦🇪', iso: 'ARE' },
-    { name: 'United States', flag: '🇺🇸', iso: 'USA' },
-    { name: 'India', flag: '🇮🇳', iso: 'IND' },
-    { name: 'Cyprus', flag: '🇨🇾', iso: 'CYP' },
-    { name: 'Mexico', flag: '🇲🇽', iso: 'MEX' },
-  ]
+  const countries = travelCountries
+  const travelPhotos = travelPhotosData
 
   // ISO codes for visited countries (for map highlighting)
   const visitedCountryCodes = new Set(countries.map(c => c.iso))
-  
-  // Comprehensive country name to ISO code mapping (for world atlas matching)
-  const countryNameToISO: Record<string, string> = {
-    'Jordan': 'JOR',
-    'Hashemite Kingdom of Jordan': 'JOR',
-    'Spain': 'ESP',
-    'Kingdom of Spain': 'ESP',
-    'Morocco': 'MAR',
-    'Kingdom of Morocco': 'MAR',
-    'Georgia': 'GEO',
-    'Azerbaijan': 'AZE',
-    'Republic of Azerbaijan': 'AZE',
-    'Hungary': 'HUN',
-    'Maldives': 'MDV',
-    'Republic of Maldives': 'MDV',
-    'Nepal': 'NPL',
-    'Federal Democratic Republic of Nepal': 'NPL',
-    'Oman': 'OMN',
-    'Sultanate of Oman': 'OMN',
-    'Ukraine': 'UKR',
-    'Tanzania': 'TZA', // Zanzibar is part of Tanzania
-    'United Republic of Tanzania': 'TZA',
-    'Portugal': 'PRT',
-    'Portuguese Republic': 'PRT',
-    'Kenya': 'KEN',
-    'Republic of Kenya': 'KEN',
-    'Egypt': 'EGY',
-    'Arab Republic of Egypt': 'EGY',
-    'Turkey': 'TUR',
-    'Republic of Turkey': 'TUR',
-    'Greece': 'GRC',
-    'Hellenic Republic': 'GRC',
-    'United Kingdom': 'GBR',
-    'United Kingdom of Great Britain and Northern Ireland': 'GBR',
-    'Argentina': 'ARG',
-    'Argentine Republic': 'ARG',
-    'Brazil': 'BRA',
-    'Federative Republic of Brazil': 'BRA',
-    'Peru': 'PER',
-    'Republic of Peru': 'PER',
-    'United Arab Emirates': 'ARE',
-    'U.A.E.': 'ARE',
-    'United States of America': 'USA',
-    'United States': 'USA',
-    'U.S.A.': 'USA',
-    'India': 'IND',
-    'Republic of India': 'IND',
-    'Cyprus': 'CYP',
-    'Republic of Cyprus': 'CYP',
-    'Mexico': 'MEX',
-    'United Mexican States': 'MEX',
-  }
-
-  // Travel photos by city - all images from public/travel/ folder
-  const travelPhotos = [
-    // Greece
-    { city: 'Athens, Greece', filename: 'Athens - 1.jpeg', alt: 'Athens, Greece' },
-    { city: 'Mykonos, Greece', filename: 'Mykonos - 1.jpeg', alt: 'Mykonos, Greece' },
-    { city: 'Santorini, Greece', filename: 'Santorini -1.jpeg', alt: 'Santorini, Greece' },
-    
-    // Brazil
-    { city: 'Rio De Janeiro, Brazil', filename: 'Brazil -2.jpg', alt: 'Rio De Janeiro, Brazil' },
-    { city: 'Rio De Janeiro, Brazil', filename: 'Rio De Janeiro - 1.JPG', alt: 'Rio De Janeiro, Brazil' },
-    { city: 'Iguazu Falls, Brazil', filename: 'Iquazu Falls Brazil -1.JPG', alt: 'Iguazu Falls, Brazil' },
-    
-    // Argentina
-    { city: 'Buenos Aires, Argentina', filename: 'Buenos Aires - 1.JPG', alt: 'Buenos Aires, Argentina' },
-    
-    // Cyprus
-    { city: 'Cyprus', filename: 'Cyprus - 1.jpg', alt: 'Cyprus' },
-    { city: 'Cyprus', filename: 'Cyprus - 2.JPG', alt: 'Cyprus' },
-    
-    // Egypt
-    { city: 'Abu Simbel, Egypt', filename: 'Egypt - 1.jpeg', alt: 'Egypt' },
-    { city: 'Abu Simbel, Egypt', filename: 'Egypt -2.jpeg', alt: 'Egypt' },
-    
-    // Kenya
-    { city: 'Masai Mara, Kenya', filename: 'Kenya -1.jpg', alt: 'Kenya' },
-    { city: 'Masai Mara, Kenya', filename: 'Kenya -2.jpg', alt: 'Kenya' },
-    { city: 'Masai Mara, Kenya', filename: 'Kenya -3.jpg', alt: 'Kenya' },
-    { city: 'Masai Mara, Kenya', filename: 'Kenya - 4.JPG', alt: 'Kenya' },
-    
-    // United Kingdom
-    { city: 'London, United Kingdom', filename: 'London - 1.jpeg', alt: 'London, United Kingdom' },
-    { city: 'Oxford, United Kingdom', filename: 'Oxford - 1.JPG', alt: 'Oxford, United Kingdom' },
-    
-    // Spain
-    { city: 'Madrid, Spain', filename: 'Madrid - 1.jpeg', alt: 'Madrid, Spain' },
-    
-    // United States
-    { city: 'San Francisco, United States', filename: 'San Francisco - 1.jpeg', alt: 'San Francisco, United States' },
-    { city: 'Yosemite National Park, United States', filename: 'Yosemite National Park - 1.jpeg', alt: 'Yosemite National Park, United States' },
-    
-    // Peru
-    { city: 'Nazca Lines, Peru', filename: 'Peru - 1.JPG', alt: 'Peru' },
-    { city: 'The Quechua people of Peru', filename: 'Peru - 2.JPG', alt: 'Peru' },
-    { city: 'Machu Picchu, Peru', filename: 'Peru - 3.jpg', alt: 'Peru' },
-    { city: 'Rainbow Mountain, Peru', filename: 'Peru - 4.jpg', alt: 'Peru' },
-    
-    // India
-    { city: 'Valley of Flowers, Uttarakhand', filename: 'Uttarakhand - 1.jpeg', alt: 'Uttarakhand, India' },
-    { city: 'Valley of Flowers, Uttarakhand', filename: 'Uttarakhand - 2.jpeg', alt: 'Uttarakhand, India' },
-  ]
 
   return (
     <section
@@ -242,7 +115,7 @@ const Travel = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-center text-gray-400 mb-12 text-lg"
         >
-          Currently been to: <span className="text-nyu-purple-light font-bold">25/195 countries</span>
+          Currently been to: <span className="text-nyu-purple-light font-bold">{travelStats.visited}/{travelStats.total} countries</span>
         </motion.p>
 
         {/* Countries List */}
@@ -545,7 +418,7 @@ const Travel = () => {
             className="mt-8 text-center"
           >
             <a
-              href="https://www.instagram.com/poojalohit/"
+              href={instagramLink}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-nyu-purple-light hover:text-nyu-purple transition-colors text-lg font-semibold hover:underline group"

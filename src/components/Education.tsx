@@ -1,27 +1,7 @@
 import { motion } from 'framer-motion'
+import { educationData } from '../data/portfolioData'
 
 const Education = () => {
-  const educationData = [
-    {
-      university: 'NYU',
-      degree: "Master's Degree in Management of Technology",
-      period: '2025-2027',
-      gpa: 'GPA: 4.0/4.0',
-      details: [
-        'Graduate Student Advisory Board Member',
-        'Alumni Relations Coordinator for Women in Business and Entrepreneurship',
-      ],
-      color: 'nyu-purple',
-    },
-    {
-      university: 'Amity University Dubai',
-      degree: 'Bachelor\'s Degree in Electronics and Telecommunication Engineering',
-      period: '2017-2021',
-      gpa: 'GPA: 9.51/10.00',
-      details: ['100% Scholarship across all four years of study'],
-      color: 'yellow',
-    },
-  ]
 
   return (
     <section

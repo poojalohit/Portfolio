@@ -1,27 +1,18 @@
 import { motion } from 'framer-motion'
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa'
+import { contactData } from '../data/portfolioData'
 
 const Contact = () => {
-  const contactInfo = [
-    {
-      icon: FaEnvelope,
-      label: 'Email',
-      value: 'pooja.lohit6@gmail.com',
-      link: 'mailto:pooja.lohit6@gmail.com',
-    },
-    {
-      icon: FaPhone,
-      label: 'Mobile',
-      value: '+13473687729',
-      link: 'tel:+13473687729',
-    },
-    {
-      icon: FaMapMarkerAlt,
-      label: 'Location',
-      value: 'New York City, New York, United States',
-      link: null,
-    },
-  ]
+  const iconMap = {
+    email: FaEnvelope,
+    phone: FaPhone,
+    location: FaMapMarkerAlt,
+  }
+
+  const contactInfo = contactData.map(item => ({
+    ...item,
+    icon: iconMap[item.icon],
+  }))
 
   return (
     <section
