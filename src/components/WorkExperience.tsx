@@ -18,7 +18,7 @@ const WorkExperience = () => {
       period: '2022-2025',
       link: 'https://www.thalesgroup.com',
       description: [
-        'Spearheaded IAM ecosystem growth across the META region, earning global recognition in 2025. I specialize in turning user feedback into revenue, notably driving a 20% increase in renewals for a $3M portfolio, while leveraging Power BI and Salesforce to maintain 94% forecasting accuracy for senior leadership.',
+        'Spearheaded IAM ecosystem growth across the META region, earning global recognition in 2025. Turned user feedback into revenue, notably driving a 20% increase in renewals for a $3M ARR portfolio, while leveraging Power BI and Salesforce to maintain 94% sales forecasting accuracy for senior leadership.',
       ],
     },
     {
@@ -27,7 +27,7 @@ const WorkExperience = () => {
       period: '2021-2022',
       link: 'https://www.betait.net',
       description: [
-        'Managed the end-to-end cybersecurity lifecycle for 15 enterprise accounts, identifying infrastructure gaps and conducting competitive research to align modernizations with evolving security standards.',
+        'Managed the end-to-end cybersecurity sales lifecycle for 15 enterprise accounts, identifying infrastructure gaps and conducting competitive research to align modernizations with evolving security standards.',
       ],
     },
     {
