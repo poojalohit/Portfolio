@@ -52,7 +52,7 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold mb-16 text-center"
+          className="text-4xl md:text-5xl font-serif font-bold mb-16 text-center text-white"
         >
           Projects
         </motion.h2>
@@ -65,8 +65,8 @@ const Projects = () => {
               onClick={() => setSelectedCategory(category)}
               className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                 selectedCategory === category
-                  ? 'bg-nyu-purple text-white shadow-lg shadow-nyu-purple/50'
-                  : 'glass text-gray-300 hover:bg-gray-700/50 hover:text-white'
+                  ? 'bg-lime text-dark-bg shadow-lg shadow-lime/50'
+                  : 'glass text-white/70 hover:bg-white/10 hover:text-white'
               }`}
             >
               {category}
@@ -88,20 +88,20 @@ const Projects = () => {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 onClick={() => setSelectedProject(project)}
-                className={`glass-strong rounded-2xl p-6 cursor-pointer hover:shadow-2xl hover:shadow-nyu-purple/20 transition-all duration-300 hover:scale-105 ${
+                className={`glass-strong rounded-2xl p-6 cursor-pointer hover:shadow-2xl hover:shadow-lime/20 transition-all duration-300 hover:scale-105 ${
                   filteredProjects.length < 3 ? 'w-full max-w-md' : ''
                 }`}
               >
-                <h3 className="text-xl font-bold mb-3 text-nyu-purple-light">
+                <h3 className="text-xl font-serif font-bold mb-3 text-lime">
                   {project.title}
                 </h3>
-                <p className="text-gray-300 text-sm line-clamp-3">
+                <p className="text-white/80 text-sm line-clamp-3">
                   {typeof project.description === 'string'
                     ? project.description
                     : 'Click to view details...'}
                 </p>
                 {project.link && (
-                  <div className="mt-4 text-nyu-purple-light text-sm flex items-center gap-2">
+                  <div className="mt-4 text-cyan text-sm flex items-center gap-2">
                     <FaExternalLinkAlt className="text-xs" />
                     <span>View Project</span>
                   </div>
@@ -137,11 +137,11 @@ const Projects = () => {
                 <FaTimes className="text-2xl" />
               </button>
 
-              <h3 className="text-3xl font-bold mb-4 text-nyu-purple-light">
+              <h3 className="text-3xl font-serif font-bold mb-4 text-lime">
                 {selectedProject.title}
               </h3>
 
-              <div className="text-gray-300 space-y-4">
+              <div className="text-white/80 space-y-4">
                 {typeof selectedProject.description === 'string' ? (
                   <p>{selectedProject.description}</p>
                 ) : (
@@ -154,7 +154,7 @@ const Projects = () => {
                   href={selectedProject.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center gap-2 text-nyu-purple-light hover:text-nyu-purple transition-colors font-semibold"
+                  className="mt-6 inline-flex items-center gap-2 text-cyan hover:text-cyan-dark transition-colors font-semibold"
                 >
                   <FaExternalLinkAlt />
                   <span>{selectedProject.linkText || 'View Project'}</span>

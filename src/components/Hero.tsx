@@ -27,7 +27,7 @@ const Hero = ({ activeSection }: HeroProps) => {
       className="min-h-screen flex flex-col justify-center items-center px-6 py-20 relative overflow-hidden"
     >
       {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-nyu-purple/20 opacity-50" />
+      <div className="absolute inset-0 bg-gradient-to-br from-dark-bg via-dark-surface to-cyan/10 opacity-50" />
       
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
@@ -42,7 +42,7 @@ const Hero = ({ activeSection }: HeroProps) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-gray-100 to-nyu-purple-light bg-clip-text text-transparent"
+              className="text-5xl md:text-7xl font-serif font-bold text-white"
             >
               Hi, I'm Pooja Lohit!
             </motion.h1>
@@ -50,7 +50,7 @@ const Hero = ({ activeSection }: HeroProps) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-xl md:text-2xl text-gray-300"
+              className="text-xl md:text-2xl text-white/80 font-sans"
             >
               Building at the intersection of technology, business, and innovation.
             </motion.p>
@@ -70,7 +70,7 @@ const Hero = ({ activeSection }: HeroProps) => {
                   y: mousePosition.y,
                 }}
                 transition={{ type: 'spring', stiffness: 50, damping: 20 }}
-                className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden glass-strong border-4 border-nyu-purple/30 shadow-2xl"
+                className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden glass-strong border-4 border-lime/30 shadow-2xl"
               >
                 <img
                   src={`${import.meta.env.BASE_URL}headshot.png`}
@@ -80,7 +80,7 @@ const Hero = ({ activeSection }: HeroProps) => {
                     // Fallback if image doesn't exist
                     const target = e.target as HTMLImageElement
                     target.style.display = 'none'
-                    target.parentElement!.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-nyu-purple to-purple-600 flex items-center justify-center text-4xl">PL</div>'
+                    target.parentElement!.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-lime to-cyan flex items-center justify-center text-4xl text-dark-bg font-bold">PL</div>'
                   }}
                 />
               </motion.div>
@@ -93,7 +93,7 @@ const Hero = ({ activeSection }: HeroProps) => {
                   repeat: Infinity,
                   ease: 'linear',
                 }}
-                className="absolute inset-0 rounded-full border-2 border-nyu-purple/20"
+                className="absolute inset-0 rounded-full border-2 border-lime/20"
               />
             </div>
           </motion.div>

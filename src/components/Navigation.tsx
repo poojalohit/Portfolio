@@ -74,8 +74,8 @@ const Navigation = ({ activeSection }: NavigationProps) => {
                 whileTap={{ scale: 0.95 }}
                 className={`relative flex items-center gap-2 px-3 py-2 rounded-full transition-all duration-300 ${
                   isActive
-                    ? 'bg-nyu-purple/20 border-2 border-nyu-purple text-nyu-purple-light shadow-lg shadow-nyu-purple/50'
-                    : 'text-gray-300 hover:text-white hover:bg-gray-700/50 border-2 border-transparent'
+                    ? 'bg-lime/20 border-2 border-lime text-lime shadow-lg shadow-lime/50'
+                    : 'text-white/70 hover:text-white hover:bg-white/10 border-2 border-transparent'
                 }`}
                 aria-label={item.label}
               >
@@ -115,8 +115,8 @@ const Navigation = ({ activeSection }: NavigationProps) => {
                 whileTap={{ scale: 0.95 }}
                 className={`relative flex flex-col items-center gap-1 p-3 rounded-lg transition-all duration-300 w-full min-w-[80px] ${
                   isActive
-                    ? 'bg-nyu-purple/20 border-2 border-nyu-purple text-nyu-purple-light shadow-lg shadow-nyu-purple/50'
-                    : 'text-gray-300 hover:text-white hover:bg-gray-700/50 border-2 border-transparent'
+                    ? 'bg-lime/20 border-2 border-lime text-lime shadow-lg shadow-lime/50'
+                    : 'text-white/70 hover:text-white hover:bg-white/10 border-2 border-transparent'
                 }`}
                 aria-label={item.label}
                 title={item.label}
