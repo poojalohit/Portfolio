@@ -74,7 +74,10 @@ export async function fetchBookCover(
     return { coverUrl: null, thumbnailUrl: null, goodreadsUrl }
   } catch (error) {
     console.error(`Error fetching cover for "${title}":`, error)
-    return { coverUrl: null, thumbnailUrl: null }
+    // Construct Goodreads search URL even on error
+    const searchQuery = encodeURIComponent(`${title} ${author || ''}`.trim())
+    const goodreadsUrl = `https://www.goodreads.com/search?q=${searchQuery}`
+    return { coverUrl: null, thumbnailUrl: null, goodreadsUrl }
   }
 }
 
