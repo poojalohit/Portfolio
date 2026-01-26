@@ -394,6 +394,8 @@ export interface BookRecommendation {
   title: string
   author: string
   coverUrl?: string
+  whyILikeIt?: string
+  goodreadsUrl?: string
 }
 
 export const currentlyReading = {
@@ -407,18 +409,24 @@ export const bookRecommendations: BookRecommendation[] = [
     title: 'Sapiens',
     author: 'Yuval Noah Harari',
     coverUrl: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1705594966i/23692271.jpg',
+    whyILikeIt: 'I love how this book walks through the evolution of mankind by deconstructing the "stories" we all buy into, like religion, money, and politics. Looking at the world through this historical lens puts everything into perspective and completely changed how I see the systems we live in today.',
+    goodreadsUrl: 'https://www.goodreads.com/search?q=Sapiens+Yuval+Noah+Harari',
   },
   {
     rank: 2,
     title: 'Empire of Pain',
     author: 'Patrick Radden Keefe',
     coverUrl: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1602088484i/52770198.jpg',
+    whyILikeIt: 'It was truly shocking to see how far-reaching the devastating effects of a marketing strategy can be. This was a heavy but necessary read for me because it highlights exactly why accountability and integrity within corporations are absolutely essential.',
+    goodreadsUrl: 'https://www.goodreads.com/search?q=Empire+of+Pain+Patrick+Radden+Keefe',
   },
   {
     rank: 3,
     title: 'Everybody Lies',
     author: 'Seth Stephens-Davidowitz',
     coverUrl: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1490807962i/34890015.jpg',
+    whyILikeIt: 'This is such a fascinating look at how big data acts as a digital truth serum for the things people are too afraid to say out loud. It\'s a reminder that if you really want to understand the human condition, you have to look at the data people leave behind rather than just what they tell the world.',
+    goodreadsUrl: 'https://www.goodreads.com/search?q=Everybody+Lies+Seth+Stephens-Davidowitz',
   },
 ]
 

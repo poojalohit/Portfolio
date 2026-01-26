@@ -65,15 +65,22 @@ const Books = () => {
             {loading ? (
               <div className="w-32 h-48 bg-gray-700 rounded-lg animate-pulse flex-shrink-0" />
             ) : currentlyReadingCover?.coverUrl ? (
-              <img
-                src={currentlyReadingCover.coverUrl}
-                alt={`${currentlyReading.title} cover`}
-                className="w-32 h-48 object-cover rounded-lg shadow-lg flex-shrink-0"
-                onError={(e) => {
-                  // Hide image if it fails to load
-                  e.currentTarget.style.display = 'none'
-                }}
-              />
+              <a
+                href={currentlyReadingCover.goodreadsUrl || `https://www.goodreads.com/search?q=${encodeURIComponent(`${currentlyReading.title} ${currentlyReading.author}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 hover:scale-105 transition-transform duration-300 cursor-pointer"
+              >
+                <img
+                  src={currentlyReadingCover.coverUrl}
+                  alt={`${currentlyReading.title} cover`}
+                  className="w-32 h-48 object-contain rounded-lg shadow-lg"
+                  onError={(e) => {
+                    // Hide image if it fails to load
+                    e.currentTarget.style.display = 'none'
+                  }}
+                />
+              </a>
             ) : null}
             
             {/* Book Info */}
@@ -114,21 +121,28 @@ const Books = () => {
                 >
                   {/* Book Cover */}
                   {loading ? (
-                    <div className="w-full h-64 bg-gray-700 rounded-lg animate-pulse mb-4" />
+                    <div className="w-full h-80 bg-gray-700 rounded-lg animate-pulse mb-4" />
                   ) : cover?.coverUrl ? (
-                    <img
-                      src={cover.coverUrl}
-                      alt={`${book.title} cover`}
-                      className="w-full h-64 object-cover rounded-lg shadow-lg mb-4"
-                      onError={(e) => {
-                        // Hide image if it fails to load
-                        e.currentTarget.style.display = 'none'
-                      }}
-                    />
+                    <a
+                      href={cover.goodreadsUrl || book.goodreadsUrl || `https://www.goodreads.com/search?q=${encodeURIComponent(`${book.title} ${book.author}`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block mb-4 hover:scale-105 transition-transform duration-300 cursor-pointer"
+                    >
+                      <img
+                        src={cover.coverUrl}
+                        alt={`${book.title} cover`}
+                        className="w-full h-80 object-contain rounded-lg shadow-lg bg-gray-800/50"
+                        onError={(e) => {
+                          // Hide image if it fails to load
+                          e.currentTarget.style.display = 'none'
+                        }}
+                      />
+                    </a>
                   ) : null}
                   
                   {/* Book Info */}
-                  <div className="flex items-center gap-3 mb-2">
+                  <div className="flex items-center gap-3 mb-3">
                     <div className="bg-nyu-purple text-white rounded-full w-10 h-10 flex items-center justify-center font-bold shadow-lg flex-shrink-0">
                       #{book.rank}
                     </div>
@@ -137,6 +151,14 @@ const Books = () => {
                       <p className="text-gray-400">by {book.author}</p>
                     </div>
                   </div>
+                  
+                  {/* Why I Like It */}
+                  {book.whyILikeIt && (
+                    <div className="pt-3 border-t border-gray-700/50">
+                      <p className="text-sm font-semibold text-nyu-purple-light mb-2">Why I like it:</p>
+                      <p className="text-sm text-gray-300 leading-relaxed">{book.whyILikeIt}</p>
+                    </div>
+                  )}
                 </motion.div>
               )
             })}

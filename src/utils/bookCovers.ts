@@ -4,6 +4,7 @@
 export interface BookCoverResult {
   coverUrl: string | null
   thumbnailUrl: string | null
+  goodreadsUrl: string | null
 }
 
 /**
@@ -35,22 +36,42 @@ export async function fetchBookCover(
       const book = data.items[0]
       const volumeInfo = book.volumeInfo
       
-      // Try to get the largest available image
-      const coverUrl = volumeInfo.imageLinks?.large || 
-                      volumeInfo.imageLinks?.medium || 
-                      volumeInfo.imageLinks?.small ||
-                      volumeInfo.imageLinks?.thumbnail ||
-                      null
+      // Get the highest quality image available
+      // Google Books API provides: thumbnail, small, medium, large, extraLarge
+      // Enhance thumbnail URLs to get higher quality (replace zoom=1 with zoom=5)
+      let coverUrl = volumeInfo.imageLinks?.extraLarge || 
+                     volumeInfo.imageLinks?.large || 
+                     volumeInfo.imageLinks?.medium || 
+                     volumeInfo.imageLinks?.small ||
+                     volumeInfo.imageLinks?.thumbnail ||
+                     null
+      
+      // Enhance image quality by replacing zoom parameter if it's a thumbnail
+      if (coverUrl && coverUrl.includes('zoom=')) {
+        coverUrl = coverUrl.replace(/zoom=\d+/, 'zoom=5')
+      } else if (coverUrl && coverUrl.includes('books.google.com')) {
+        // For Google Books images, try to get higher quality
+        coverUrl = coverUrl.replace('&edge=curl', '').replace('&edge=curl', '')
+      }
       
       const thumbnailUrl = volumeInfo.imageLinks?.thumbnail || null
+      
+      // Construct Goodreads search URL
+      const searchQuery = encodeURIComponent(`${title} ${author || ''}`.trim())
+      const goodreadsUrl = `https://www.goodreads.com/search?q=${searchQuery}`
       
       return {
         coverUrl,
         thumbnailUrl,
+        goodreadsUrl,
       }
     }
     
-    return { coverUrl: null, thumbnailUrl: null }
+    // Fallback: construct Goodreads search URL even if book not found
+    const searchQuery = encodeURIComponent(`${title} ${author || ''}`.trim())
+    const goodreadsUrl = `https://www.goodreads.com/search?q=${searchQuery}`
+    
+    return { coverUrl: null, thumbnailUrl: null, goodreadsUrl }
   } catch (error) {
     console.error(`Error fetching cover for "${title}":`, error)
     return { coverUrl: null, thumbnailUrl: null }
