@@ -25,10 +25,10 @@ const WorkExperience = () => {
           {experiences.map((exp, index) => (
             <motion.div
               key={`${exp.company}-${exp.period}`}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
               className="glass-strong rounded-2xl p-6 hover:shadow-2xl hover:shadow-accent-blue/20 transition-all duration-300 hover:scale-105 focus-ring"
             >
               <div className="flex items-start justify-between mb-4">

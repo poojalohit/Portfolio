@@ -46,6 +46,43 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hardware acceleration for smoother animations on mobile */
+section,
+.glass,
+.glass-strong {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Smoother animations on mobile */
+@media (max-width: 768px) {
+  section {
+    will-change: auto;
+  }
+  
+  /* Reduce backdrop blur on mobile for performance */
+  .glass {
+    @apply backdrop-blur-sm;
+  }
+  
+  .glass-strong {
+    @apply backdrop-blur-md;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;

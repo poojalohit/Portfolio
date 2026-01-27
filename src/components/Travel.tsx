@@ -138,10 +138,10 @@ const Travel = () => {
 
         {/* Countries List */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           className="glass-strong rounded-2xl p-8 mb-12"
         >
           <h3 className="text-2xl font-bold mb-6 text-center text-text-primary">
@@ -170,10 +170,10 @@ const Travel = () => {
 
         {/* World Map */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
           className="glass-strong rounded-2xl p-6 mb-12"
         >
           <h3 className="text-2xl font-light mb-6 text-center text-text-primary">
@@ -413,10 +413,10 @@ const Travel = () => {
 
         {/* Travel Photos Carousel */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.15 }}
           className="glass-strong rounded-2xl p-6"
         >
           <h3 className="text-2xl font-bold mb-6 text-center text-text-primary">

@@ -31,10 +31,10 @@ const Contact = () => {
         </motion.h2>
 
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4 }}
           className="glass-strong rounded-2xl p-8 md:p-12 max-w-3xl mx-auto"
         >
           <div className="space-y-6">
