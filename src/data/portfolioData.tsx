@@ -427,6 +427,7 @@ export interface BookRecommendation {
 export const currentlyReading = {
   title: 'Orbital',
   author: 'Samantha Harvey',
+  coverUrl: 'https://covers.openlibrary.org/b/isbn/9781529922936-L.jpg',
 }
 
 export const bookRecommendations: BookRecommendation[] = [
@@ -450,7 +451,7 @@ export const bookRecommendations: BookRecommendation[] = [
     rank: 3,
     title: 'Everybody Lies',
     author: 'Seth Stephens-Davidowitz',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780062390851-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/isbn/9781408894736-L.jpg',
     whyILikeIt: 'This is such a fascinating look at how big data acts as a digital truth serum for the things people are too afraid to say out loud. It\'s a reminder that if you really want to understand the human condition, you have to look at the data people leave behind rather than just what they tell the world.',
     goodreadsUrl: 'https://www.goodreads.com/search?q=Everybody+Lies+Seth+Stephens-Davidowitz',
   },

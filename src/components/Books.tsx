@@ -30,6 +30,24 @@ const Books = () => {
           className="glass-strong rounded-2xl p-8 mb-12"
         >
           <div className="flex flex-col md:flex-row items-center gap-6">
+            {/* Book Cover */}
+            {currentlyReading.coverUrl && (
+              <a
+                href={`https://www.goodreads.com/search?q=${encodeURIComponent(`${currentlyReading.title} ${currentlyReading.author}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 hover:scale-105 transition-transform duration-300 cursor-pointer"
+              >
+                <img
+                  src={currentlyReading.coverUrl}
+                  alt={`${currentlyReading.title} cover`}
+                  className="w-32 h-48 object-contain rounded-lg shadow-lg"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none'
+                  }}
+                />
+              </a>
+            )}
             {/* Book Info */}
             <div className="text-center md:text-left">
               <p className="text-xl text-text-secondary mb-2">
