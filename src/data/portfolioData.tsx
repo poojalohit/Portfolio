@@ -427,7 +427,7 @@ export interface BookRecommendation {
 export const currentlyReading = {
   title: 'Orbital',
   author: 'Samantha Harvey',
-  coverUrl: 'https://covers.openlibrary.org/b/isbn/9781529922936-L.jpg',
+  coverUrl: 'https://covers.openlibrary.org/b/id/14829832-L.jpg',
 }
 
 export const bookRecommendations: BookRecommendation[] = [
