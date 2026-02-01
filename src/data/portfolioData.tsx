@@ -425,9 +425,10 @@ export interface BookRecommendation {
 }
 
 export const currentlyReading = {
-  title: 'Orbital',
-  author: 'Samantha Harvey',
-  coverUrl: 'https://covers.openlibrary.org/b/id/14829832-L.jpg',
+  title: 'Butter',
+  author: 'Asako Yuzuki',
+  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1698348373l/200776812.jpg',
+  goodreadsUrl: 'https://www.goodreads.com/book/show/200776812',
 }
 
 export const bookRecommendations: BookRecommendation[] = [
