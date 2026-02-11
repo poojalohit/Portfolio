@@ -97,12 +97,31 @@ export const workExperienceData: WorkExperienceItem[] = [
 // ============================================
 // PROJECTS
 // ============================================
+export interface BehindTheBuildPost {
+  episode: number
+  title: string
+  image: string
+  link: string
+}
+
+export const behindTheBuildPosts: BehindTheBuildPost[] = [
+  { episode: 8, title: 'Krista Peryer — brb App', image: 'behind-the-build/episode-8.png', link: 'https://www.linkedin.com/posts/pooja-lohit_behind-the-build-8-activity-7404197819823083520-Frgj?utm_source=share&utm_medium=member_desktop&rcm=ACoAACeKAz0BNGEAS-3V0tVv6BvGu4x-9L4MPvQ' },
+  { episode: 7, title: 'Elton Coutinho — ButlerAI', image: 'behind-the-build/episode-7.png', link: 'https://www.linkedin.com/posts/pooja-lohit_behind-the-build-with-pooja-lohit-7-activity-7401760826342318080-U28T?utm_source=share&utm_medium=member_desktop&rcm=ACoAACeKAz0BNGEAS-3V0tVv6BvGu4x-9L4MPvQ' },
+  { episode: 6, title: 'Brodey Wang — OnlyWorks', image: 'behind-the-build/episode-6.png', link: 'https://www.linkedin.com/posts/pooja-lohit_behind-the-build-with-pooja-lohit-6-activity-7396907465893830656-BmrW?utm_source=share&utm_medium=member_desktop&rcm=ACoAACeKAz0BNGEAS-3V0tVv6BvGu4x-9L4MPvQ' },
+  { episode: 5, title: 'Kareem El — 4RL', image: 'behind-the-build/episode-5.png', link: 'https://www.linkedin.com/posts/pooja-lohit_behind-the-build-with-pooja-lohit-5-activity-7394033396387069952-XOKt?utm_source=share&utm_medium=member_desktop&rcm=ACoAACeKAz0BNGEAS-3V0tVv6BvGu4x-9L4MPvQ' },
+  { episode: 4, title: 'Rami Maalouf — Audora', image: 'behind-the-build/episode-4.png', link: 'https://www.linkedin.com/posts/pooja-lohit_behind-the-build-4-activity-7391551717013786625-tCej?utm_source=share&utm_medium=member_desktop&rcm=ACoAACeKAz0BNGEAS-3V0tVv6BvGu4x-9L4MPvQ' },
+  { episode: 3, title: 'Deborah Lee — AI Empath', image: 'behind-the-build/episode-3.png', link: 'https://www.linkedin.com/posts/pooja-lohit_behind-the-build-with-pooja-lohit-activity-7388975711707025408-hbMG?utm_source=share&utm_medium=member_desktop&rcm=ACoAACeKAz0BNGEAS-3V0tVv6BvGu4x-9L4MPvQ' },
+  { episode: 2, title: 'Noah Habtemichael — GenAIxSwipe', image: 'behind-the-build/episode-2.png', link: 'https://www.linkedin.com/posts/pooja-lohit_behind-the-build-with-pooja-lohit-activity-7385777407355420672-a1y5?utm_source=share&utm_medium=member_desktop&rcm=ACoAACeKAz0BNGEAS-3V0tVv6BvGu4x-9L4MPvQ' },
+  { episode: 1, title: 'Hannah Carlson — Inertia Growth', image: 'behind-the-build/episode-1.png', link: 'https://www.linkedin.com/posts/pooja-lohit_behind-the-build-with-pooja-lohit-activity-7383273925230714880-cdqp?utm_source=share&utm_medium=member_desktop&rcm=ACoAACeKAz0BNGEAS-3V0tVv6BvGu4x-9L4MPvQ' },
+]
+
 export interface ProjectItem {
   title: string
   category: 'Published Work' | 'Projects' | 'Initiatives'
   description: string | (() => React.ReactElement)
   link?: string
   linkText?: string
+  posts?: BehindTheBuildPost[]
 }
 
 export const projectsData: ProjectItem[] = [
@@ -255,6 +274,7 @@ export const projectsData: ProjectItem[] = [
     ),
     link: 'https://www.linkedin.com/in/pooja-lohit/',
     linkText: 'Link to my LinkedIn',
+    posts: behindTheBuildPosts,
   },
 ]
 

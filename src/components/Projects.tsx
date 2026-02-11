@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaTimes, FaExternalLinkAlt } from 'react-icons/fa'
-import { projectsData, projectCategories } from '../data/portfolioData'
+import { projectsData, projectCategories, type BehindTheBuildPost } from '../data/portfolioData'
 
 interface Project {
   title: string
@@ -9,6 +9,7 @@ interface Project {
   description: string | JSX.Element
   link?: string
   linkText?: string
+  posts?: BehindTheBuildPost[]
 }
 
 const Projects = () => {
@@ -41,6 +42,7 @@ const Projects = () => {
       description,
       link,
       linkText: proj.linkText,
+      posts: proj.posts,
     }
   })
 
@@ -155,6 +157,44 @@ const Projects = () => {
                   selectedProject.description
                 )}
               </div>
+
+              {selectedProject.posts && selectedProject.posts.length > 0 && (
+                <div className="mt-6">
+                  <p className="text-sm font-light text-text-muted mb-4">
+                    Click on any episode to view the full post on LinkedIn
+                  </p>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {selectedProject.posts.map((post) => (
+                      <a
+                        key={post.episode}
+                        href={post.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block rounded-lg overflow-hidden border border-border hover:border-accent-blue/50 transition-all hover:shadow-lg hover:shadow-accent-blue/20 focus-ring group"
+                      >
+                        <div className="aspect-[3/4] bg-surface-elevated relative overflow-hidden">
+                          <img
+                            src={`${import.meta.env.BASE_URL}${post.image}`}
+                            alt={`Behind the Build Episode ${post.episode} - ${post.title}`}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              e.currentTarget.src = `https://placehold.co/300x400/1a1a2e/6366f1?text=Episode+${post.episode}`;
+                              e.currentTarget.alt = `Episode ${post.episode} placeholder`;
+                            }}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <div className="absolute bottom-0 left-0 right-0 p-2 text-white text-xs font-light opacity-0 group-hover:opacity-100 transition-opacity">
+                            {post.title}
+                          </div>
+                        </div>
+                        <div className="p-2 bg-surface text-center">
+                          <span className="text-xs text-accent-blue">Ep. {post.episode}</span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {selectedProject.link && (
                 <a
