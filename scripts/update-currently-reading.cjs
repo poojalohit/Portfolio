@@ -12,7 +12,17 @@ const RSS_URL = `https://www.goodreads.com/review/list_rss/${GOODREADS_USER_ID}?
 
 function fetchRSS(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
+    const options = {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; PortfolioBot/1.0)',
+        'Accept': 'application/rss+xml, application/xml, text/xml, */*'
+      }
+    };
+    https.get(url, options, (res) => {
+      if (res.statusCode !== 200) {
+        reject(new Error(`HTTP ${res.statusCode}: ${res.statusMessage}`));
+        return;
+      }
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => resolve(data));
@@ -159,6 +169,7 @@ async function main() {
     
   } catch (error) {
     console.error('Error:', error.message);
+    console.error('Stack:', error.stack);
     process.exit(1);
   }
 }
