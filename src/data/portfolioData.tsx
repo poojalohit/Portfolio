@@ -263,6 +263,48 @@ export const projectsData: ProjectItem[] = [
     linkText: 'View the Tracker',
   },
   {
+    title: 'AI-Powered Daily Intelligence Briefing',
+    category: 'Projects',
+    description: () => (
+      <div className="space-y-4">
+        <p>
+          Built an automated news aggregation system using n8n and Google Gemini AI that replaces 45 minutes of daily manual scanning with a curated, AI-scored intelligence briefing delivered straight to my inbox every morning.
+        </p>
+        <div>
+          <span className="font-semibold text-accent-gold">The Problem:</span>
+          <p className="mt-1">
+            Tracking 224+ daily articles across Foreign Affairs, TechCrunch, BBC World, and other sources was overwhelming and unsustainable. Most content was irrelevant noise.
+          </p>
+        </div>
+        <div>
+          <span className="font-light text-accent-blue">How It Works:</span>
+          <ul className="mt-2 space-y-2 list-disc list-inside">
+            <li><strong>Multi-Source Aggregation:</strong> 6 RSS feeds pull articles in parallel from Foreign Affairs, TechCrunch AI, BBC World, Gothamist, The Hindu, and The Record.</li>
+            <li><strong>Gemini AI Scoring:</strong> Each article is scored 1-10 by Google Gemini based on relevance to tech management, cybersecurity, and global business.</li>
+            <li><strong>Smart Filtering:</strong> Only articles scoring 7+/10 make it through, reducing noise by 94%.</li>
+            <li><strong>Priority Email:</strong> A styled HTML briefing categorizes stories as Critical (9-10), Important (8), or High (7) and is delivered at 8:00 AM EST.</li>
+          </ul>
+        </div>
+        <div>
+          <span className="font-light text-dusty-rose">Tech Stack:</span>
+          <p className="mt-1">
+            n8n (workflow automation), Google Gemini API, JavaScript (async/await, Fetch API), Gmail API, RSS feeds, Cron scheduling.
+          </p>
+        </div>
+        <div>
+          <span className="font-semibold text-accent-gold">Results:</span>
+          <ul className="mt-2 space-y-1 list-disc list-inside">
+            <li>~45 minutes saved daily — zero manual scanning required</li>
+            <li>224 articles filtered down to 12-15 high-priority picks</li>
+            <li>100% of delivered content scores 7+/10 on relevance</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    link: 'https://github.com/poojalohit/Daily-Newsletter-',
+    linkText: 'View on GitHub',
+  },
+  {
     title: 'Behind the Build with Pooja Lohit',
     category: 'Initiatives',
     description: () => (

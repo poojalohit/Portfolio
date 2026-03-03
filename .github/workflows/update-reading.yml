@@ -2,8 +2,8 @@ name: Update Currently Reading
 
 on:
   schedule:
-    # Run daily at 8 AM UTC (3 AM EST / 12 AM PST)
-    - cron: '0 8 * * *'
+    # Run weekly on Monday at 8 AM UTC (3 AM EST / 12 AM PST)
+    - cron: '0 8 * * 1'
   workflow_dispatch: # Allow manual trigger
 
 permissions:
