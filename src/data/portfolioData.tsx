@@ -487,10 +487,10 @@ export interface BookRecommendation {
 }
 
 export const currentlyReading = {
-  title: 'Butter',
-  author: 'Asako Yuzuki',
-  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1698348373l/200776812.jpg',
-  goodreadsUrl: 'https://www.goodreads.com/book/show/200776812',
+  title: 'What I Talk About When I Talk About Running',
+  author: 'Haruki Murakami',
+  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1473397159l/2195464.jpg',
+  goodreadsUrl: 'https://www.goodreads.com/book/show/2195464',
 }
 
 export const bookRecommendations: BookRecommendation[] = [
