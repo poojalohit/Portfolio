@@ -487,10 +487,10 @@ export interface BookRecommendation {
 }
 
 export const currentlyReading = {
-  title: 'What I Talk About When I Talk About Running',
-  author: 'Haruki Murakami',
-  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1473397159l/2195464.jpg',
-  goodreadsUrl: 'https://www.goodreads.com/book/show/2195464',
+  title: 'The Lowland',
+  author: 'Jhumpa Lahiri',
+  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1366930267l/17262100.jpg',
+  goodreadsUrl: 'https://www.goodreads.com/book/show/17262100',
 }
 
 export const bookRecommendations: BookRecommendation[] = [
