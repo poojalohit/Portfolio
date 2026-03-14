@@ -263,6 +263,25 @@ export const projectsData: ProjectItem[] = [
     linkText: 'View the Tracker',
   },
   {
+    title: 'AI-First GTM Engineering',
+    category: 'Projects',
+    description: () => (
+      <div className="space-y-4">
+        <p>
+          Designed a GTM engineering framework built around AI-driven automation across the entire revenue pipeline — from signal generation to CRM feedback loops — spanning six pillars: Signal Generation, Scoring, Enrichment, Routing, AI Outreach & Follow-ups, and CRM Feedback Loops.
+        </p>
+        <p>
+          As a proof of concept, built the signal detection layer end-to-end on n8n: a workflow that continuously scans fraud-related news to surface high-intent prospects (financial institutions experiencing scam incidents, impersonation attacks, or mule network exposure), scores and prioritizes them by severity, and pushes top-ranked accounts directly into the CRM for contextual outbound — no manual intervention required.
+        </p>
+        <p>
+          The broader framework is designed to be fully extendable, with AI handling urgency scoring at qualification, personalizing outreach sequences, and summarizing CRM activity for leadership.
+        </p>
+      </div>
+    ),
+    link: '/pdfs/AI-First GTM Engineering.pdf',
+    linkText: 'View the Deck',
+  },
+  {
     title: 'AI-Powered Daily Intelligence Briefing',
     category: 'Projects',
     description: () => (
