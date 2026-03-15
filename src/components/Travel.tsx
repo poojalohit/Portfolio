@@ -150,7 +150,7 @@ const Travel = () => {
 
             {/* Back: Map */}
             <div className="flip-card-back bg-surface rounded-2xl p-6 flex flex-col border border-accent-blue/20 shadow-lg shadow-accent-blue/5">
-              <div className="relative flex items-center mb-4 h-12 w-full">
+              <div className="relative flex items-center justify-between mb-4 py-2">
                 <button
                   onClick={handleBackToList}
                   className="flex items-center gap-2 px-5 py-2.5 rounded-full glass text-accent-blue hover:bg-surface-elevated transition-all text-sm font-medium z-10"
@@ -158,12 +158,10 @@ const Travel = () => {
                   <FaArrowLeft className="text-xs" /> 
                   Back to list
                 </button>
-                <h3 
-                  className="absolute text-2xl font-serif text-accent-gold whitespace-nowrap pointer-events-none"
-                  style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}
-                >
+                <h3 className="text-2xl font-serif text-accent-gold absolute left-1/2 -translate-x-1/2">
                   {highlightedCountryISO ? countries.find(c => c.iso === highlightedCountryISO)?.name : 'World Map'}
                 </h3>
+                <div className="w-[120px]"></div>
               </div>
               
               <div 
