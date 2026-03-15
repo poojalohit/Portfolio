@@ -6,7 +6,7 @@ const Education = () => {
   return (
     <section
       id="education"
-      className="min-h-screen py-20 px-6 relative"
+      className="min-h-screen py-20 px-6 relative bg-charcoal"
     >
       <div className="container mx-auto max-w-6xl">
         <motion.h2

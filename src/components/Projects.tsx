@@ -97,7 +97,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen py-20 px-6 relative section-glow section-glow-gold"
+      className="min-h-screen py-20 px-6 relative bg-charcoal"
     >
       <div className="container mx-auto max-w-6xl">
           <motion.h2

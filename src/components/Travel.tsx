@@ -101,7 +101,7 @@ const Travel = () => {
   const visitedCountryCodes = new Set(countries.map(c => c.iso))
 
   return (
-    <section id="travel" className="min-h-screen py-20 px-6 relative section-glow">
+    <section id="travel" className="min-h-screen py-20 px-6 relative bg-charcoal">
       <div className="container mx-auto max-w-6xl">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -159,18 +159,20 @@ const Travel = () => {
 
             {/* Back: Map */}
             <div className="flip-card-back glass-strong rounded-2xl p-6 flex flex-col">
-              <div className="flex items-center justify-between mb-4 px-2">
-                <button
-                  onClick={handleBackToList}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-full glass text-accent-blue hover:bg-surface-elevated transition-all text-sm font-medium"
-                >
-                  <FaArrowLeft className="text-xs" /> 
-                  Back to list
-                </button>
-                <h3 className="text-2xl font-serif text-accent-gold flex-1 text-center">
+              <div className="grid grid-cols-3 items-center mb-4">
+                <div className="justify-self-start">
+                  <button
+                    onClick={handleBackToList}
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-full glass text-accent-blue hover:bg-surface-elevated transition-all text-sm font-medium"
+                  >
+                    <FaArrowLeft className="text-xs" /> 
+                    Back to list
+                  </button>
+                </div>
+                <h3 className="text-2xl font-serif text-accent-gold text-center justify-self-center">
                   {highlightedCountryISO ? countries.find(c => c.iso === highlightedCountryISO)?.name : 'World Map'}
                 </h3>
-                <div className="w-[120px]"></div>
+                <div className="justify-self-end w-[120px]"></div>
               </div>
               
               <div 

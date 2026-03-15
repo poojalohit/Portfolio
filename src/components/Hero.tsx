@@ -24,10 +24,8 @@ const Hero = ({ activeSection }: HeroProps) => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center items-center px-6 py-20 relative overflow-hidden"
+      className="min-h-screen flex flex-col justify-center items-center px-6 py-20 relative overflow-hidden bg-charcoal"
     >
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-charcoal" />
       
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
