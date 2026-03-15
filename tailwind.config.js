@@ -40,7 +40,8 @@ export default {
         'cream-beige': '#2A2A2A',
       },
       fontFamily: {
-        'sans': ['Inter', 'sans-serif'],
+        'serif': ['Cormorant Garamond', 'Georgia', 'serif'],
+        'sans': ['DM Sans', 'Inter', 'sans-serif'],
       },
       backdropBlur: {
         xs: '2px',

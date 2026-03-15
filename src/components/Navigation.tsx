@@ -54,34 +54,43 @@ const Navigation = ({ activeSection }: NavigationProps) => {
 
   return (
     <>
-      {/* Navigation in Hero (initial display) */}
+      {/* Navigation in Hero - Editorial Style */}
       <motion.nav
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="flex items-center justify-center gap-4 mt-12"
       >
-        <div className="flex items-center gap-2 glass-strong rounded-full px-4 py-3 shadow-2xl">
-          {navItems.map((item) => {
-            const Icon = item.icon
+        <div className="flex items-center gap-1 md:gap-6 px-6 py-4">
+          {navItems.map((item, index) => {
             const isActive = activeSection === item.id
             
             return (
-              <motion.button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`relative flex items-center gap-2 px-3 py-2 rounded-full transition-all duration-300 focus-ring ${
-                  isActive
-                    ? 'bg-accent-gold/20 border-2 border-accent-gold text-accent-gold shadow-lg shadow-accent-gold/30'
-                    : 'text-text-secondary hover:text-text-primary hover:bg-surface-elevated border-2 border-transparent'
-                }`}
-                aria-label={item.label}
-              >
-                <Icon className="text-lg relative z-10" />
-                <span className="text-sm font-medium hidden sm:inline">{item.label}</span>
-              </motion.button>
+              <div key={item.id} className="flex items-center">
+                <motion.button
+                  onClick={() => scrollToSection(item.id)}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`relative px-2 md:px-4 py-2 transition-all duration-300 focus-ring ${
+                    isActive
+                      ? 'text-accent-gold'
+                      : 'text-text-secondary hover:text-text-primary'
+                  }`}
+                  aria-label={item.label}
+                >
+                  <span className="font-serif text-xs md:text-sm tracking-widest uppercase">{item.label}</span>
+                  {isActive && (
+                    <motion.div 
+                      layoutId="activeIndicator"
+                      className="absolute bottom-0 left-0 right-0 h-px bg-accent-gold"
+                      transition={{ duration: 0.3 }}
+                    />
+                  )}
+                </motion.button>
+                {index < navItems.length - 1 && (
+                  <span className="text-text-muted/30 mx-1 md:mx-2 hidden md:inline">|</span>
+                )}
+              </div>
             )
           })}
         </div>
@@ -102,7 +111,7 @@ const Navigation = ({ activeSection }: NavigationProps) => {
           exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.3 }}
         >
-        <div className="flex flex-col items-center gap-3 glass-strong rounded-2xl px-3 py-4 shadow-2xl">
+        <div className="flex flex-col items-start gap-1 glass-strong rounded-xl px-4 py-5 shadow-2xl border border-surface-light/20">
           {navItems.map((item) => {
             const Icon = item.icon
             const isActive = activeSection === item.id
@@ -111,18 +120,25 @@ const Navigation = ({ activeSection }: NavigationProps) => {
               <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className={`relative flex flex-col items-center gap-1 p-3 rounded-lg transition-all duration-300 w-full min-w-[80px] focus-ring ${
+                whileHover={{ x: 4 }}
+                whileTap={{ scale: 0.98 }}
+                className={`relative flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-300 w-full focus-ring ${
                   isActive
-                    ? 'bg-accent-gold/20 border-2 border-accent-gold text-accent-gold shadow-lg shadow-accent-gold/30'
-                    : 'text-text-secondary hover:text-text-primary hover:bg-surface-elevated border-2 border-transparent'
+                    ? 'text-accent-gold'
+                    : 'text-text-muted hover:text-text-primary'
                 }`}
                 aria-label={item.label}
                 title={item.label}
               >
-                <Icon className="text-xl relative z-10" />
-                <span className="text-xs font-medium text-center leading-tight">{item.label}</span>
+                {isActive && (
+                  <motion.div 
+                    layoutId="stickyActiveIndicator"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-4 bg-accent-gold rounded-full"
+                    transition={{ duration: 0.2 }}
+                  />
+                )}
+                <Icon className="text-sm" />
+                <span className="font-serif text-xs tracking-wider uppercase">{item.label}</span>
               </motion.button>
             )
           })}

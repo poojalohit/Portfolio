@@ -42,15 +42,15 @@ const Hero = ({ activeSection }: HeroProps) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-5xl md:text-7xl font-light text-white"
+              className="text-5xl md:text-7xl font-serif font-medium text-white"
             >
-              Hi, I'm Pooja Lohit!
+              Hi, I'm Pooja Lohit
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-xl md:text-2xl text-text-secondary font-light"
+              className="text-xl md:text-2xl text-text-secondary"
             >
               Building at the intersection of technology, business, and innovation.
             </motion.p>

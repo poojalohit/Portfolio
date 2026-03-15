@@ -14,7 +14,7 @@ const Education = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-light mb-16 text-center text-text-primary"
+          className="text-4xl md:text-5xl font-serif mb-16 text-center text-text-primary"
         >
           Education
         </motion.h2>

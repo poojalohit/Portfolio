@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaTimes, FaExternalLinkAlt } from 'react-icons/fa'
+import { FaTimes, FaExternalLinkAlt, FaArrowRight } from 'react-icons/fa'
 import { projectsData, projectCategories, type BehindTheBuildPost } from '../data/portfolioData'
 
 interface Project {
@@ -10,6 +10,33 @@ interface Project {
   link?: string
   linkText?: string
   posts?: BehindTheBuildPost[]
+  tags?: string[]
+}
+
+const getProjectTags = (title: string): string[] => {
+  const tagMap: Record<string, string[]> = {
+    'Weekly Capital Markets Tracker': ['Finance', 'Data Analysis', 'AI'],
+    'AI-First GTM Engineering': ['GTM', 'AI', 'Automation'],
+    'AI-Powered Daily Intelligence Briefing': ['AI', 'Automation', 'Product'],
+    'ReSKUe': ['Product', 'E-Commerce', 'Strategy'],
+    'Economic Analysis': ['Economics', 'Finance', 'Research'],
+    'Behind the Build': ['Product', 'Content', 'Strategy'],
+  }
+  
+  for (const [key, tags] of Object.entries(tagMap)) {
+    if (title.toLowerCase().includes(key.toLowerCase())) {
+      return tags
+    }
+  }
+  
+  if (title.toLowerCase().includes('economic') || title.toLowerCase().includes('finance')) {
+    return ['Economics', 'Finance']
+  }
+  if (title.toLowerCase().includes('ai') || title.toLowerCase().includes('automation')) {
+    return ['AI', 'Automation']
+  }
+  
+  return ['Project']
 }
 
 const Projects = () => {
@@ -53,15 +80,15 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen py-20 px-6 relative"
+      className="min-h-screen py-20 px-6 relative section-glow section-glow-gold"
     >
       <div className="container mx-auto max-w-6xl">
-        <motion.h2
+          <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-light mb-16 text-center text-text-primary"
+          className="text-4xl md:text-5xl font-serif mb-16 text-center text-text-primary"
         >
           Projects
         </motion.h2>
@@ -97,20 +124,42 @@ const Projects = () => {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 onClick={() => setSelectedProject(project)}
-                className={`glass-strong rounded-2xl p-6 cursor-pointer hover:shadow-2xl hover:shadow-accent-blue/20 transition-all duration-300 hover:scale-105 focus-ring ${
+                className={`glass-strong rounded-2xl p-6 cursor-pointer hover:shadow-2xl hover:shadow-accent-gold/10 transition-all duration-300 group border border-transparent hover:border-accent-gold/20 focus-ring ${
                   filteredProjects.length < 3 ? 'w-full max-w-md' : ''
                 }`}
               >
-                <h3 className="text-xl font-light mb-3 text-accent-blue">
-                  {project.title}
-                </h3>
-                <p className="text-text-secondary text-sm line-clamp-3">
-                  {typeof project.description === 'string'
-                    ? project.description
-                    : 'Click to view details...'}
-                </p>
+                {/* Category Tags */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {getProjectTags(project.title).map((tag) => (
+                    <span
+                      key={tag}
+                      className="category-tag text-[10px] px-2 py-0.5"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <h3 className="text-xl font-serif mb-3 text-text-primary group-hover:text-accent-gold transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-text-secondary text-sm line-clamp-3">
+                      {typeof project.description === 'string'
+                        ? project.description
+                        : 'Click to view details...'}
+                    </p>
+                  </div>
+                  
+                  {/* Arrow Icon */}
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-surface-light/50 flex items-center justify-center group-hover:bg-accent-gold group-hover:text-charcoal transition-all duration-300">
+                    <FaArrowRight className="text-sm text-text-muted group-hover:text-charcoal transition-colors" />
+                  </div>
+                </div>
+                
                 {project.link && (
-                  <div className="mt-4 text-accent-blue text-sm flex items-center gap-2">
+                  <div className="mt-4 pt-4 border-t border-surface-light/30 text-accent-blue text-sm flex items-center gap-2 group-hover:text-accent-gold transition-colors">
                     <FaExternalLinkAlt className="text-xs" />
                     <span>View Project</span>
                   </div>
@@ -146,7 +195,16 @@ const Projects = () => {
                 <FaTimes className="text-2xl" />
               </button>
 
-              <h3 className="text-3xl font-light mb-4 text-accent-blue">
+              {/* Tags in Modal */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {getProjectTags(selectedProject.title).map((tag) => (
+                  <span key={tag} className="category-tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              
+              <h3 className="text-3xl font-serif mb-4 text-text-primary">
                 {selectedProject.title}
               </h3>
 
