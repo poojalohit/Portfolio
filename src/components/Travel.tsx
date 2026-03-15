@@ -285,7 +285,7 @@ const Travel = () => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
           {/* Travel Photos Carousel */}
           <div className="bg-surface/50 rounded-2xl p-6 border border-surface-light/10">
