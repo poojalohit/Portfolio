@@ -125,7 +125,7 @@ const Travel = () => {
           >
             <div className="flip-card-inner">
               {/* Front: Countries List */}
-              <div className="flip-card-front bg-surface/50 rounded-2xl p-8 border border-surface-light/10">
+              <div className="flip-card-front bg-surface rounded-2xl p-8 border border-accent-blue/20 shadow-lg shadow-accent-blue/5">
               <h3 className="text-2xl font-serif mb-6 text-center text-text-primary">
                 Countries Visited
               </h3>
@@ -149,7 +149,7 @@ const Travel = () => {
             </div>
 
             {/* Back: Map */}
-            <div className="flip-card-back bg-surface/50 rounded-2xl p-6 flex flex-col border border-surface-light/10">
+            <div className="flip-card-back bg-surface rounded-2xl p-6 flex flex-col border border-accent-blue/20 shadow-lg shadow-accent-blue/5">
               <div className="relative flex items-center justify-center mb-4 h-12">
                 <button
                   onClick={handleBackToList}
@@ -288,7 +288,7 @@ const Travel = () => {
         </div>
 
           {/* Travel Photos Carousel */}
-          <div className="bg-surface/50 rounded-2xl p-6 border border-surface-light/10">
+          <div className="bg-surface rounded-2xl p-6 border border-accent-blue/20 shadow-lg shadow-accent-blue/5">
           <h3 className="text-2xl font-serif mb-6 text-center text-text-primary">
             Travel Photos
           </h3>

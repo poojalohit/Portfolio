@@ -31,14 +31,14 @@ const Contact = () => {
             Contact Me
           </h2>
 
-          <div className="bg-surface/50 rounded-2xl p-8 md:p-12 max-w-3xl mx-auto border border-surface-light/10">
+          <div className="bg-surface rounded-2xl p-8 md:p-12 max-w-3xl mx-auto border border-accent-blue/20 shadow-lg shadow-accent-blue/5">
             <div className="space-y-6">
               {contactInfo.map((info, index) => {
                 const Icon = info.icon
                 const content = info.link ? (
                   <a
                     href={info.link}
-                    className="flex items-center gap-4 p-4 rounded-lg hover:bg-surface/70 transition-colors group focus-ring"
+                    className="flex items-center gap-4 p-4 rounded-lg hover:bg-surface-elevated transition-colors group focus-ring"
                   >
                     <div className="w-12 h-12 rounded-full bg-accent-gold/20 border-2 border-accent-gold/50 flex items-center justify-center flex-shrink-0">
                       <Icon className="text-accent-gold text-xl" />

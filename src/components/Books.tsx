@@ -23,7 +23,7 @@ const Books = () => {
           </h2>
 
           {/* Currently Reading */}
-          <div className="bg-surface/50 rounded-2xl p-8 mb-12 border border-surface-light/10">
+          <div className="bg-surface rounded-2xl p-8 mb-12 border border-accent-gold/20 shadow-lg shadow-accent-gold/5">
           <div className="flex flex-col md:flex-row items-center gap-6">
             {/* Book Cover */}
             {currentlyReading.coverUrl && (
@@ -69,7 +69,7 @@ const Books = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="bg-surface/50 rounded-2xl p-6 hover:bg-surface/70 transition-all duration-300 focus-ring border border-surface-light/10"
+                  className="bg-surface rounded-2xl p-6 hover:bg-surface-elevated transition-all duration-300 focus-ring border border-accent-gold/20 shadow-lg shadow-accent-gold/5"
                 >
                 {/* Book Cover */}
                 {book.coverUrl && (

@@ -31,7 +31,7 @@ const Education = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="bg-surface/50 rounded-2xl p-8 hover:bg-surface/70 transition-all duration-300 relative focus-ring border border-surface-light/10"
+                className="bg-surface rounded-2xl p-8 hover:bg-surface-elevated transition-all duration-300 relative focus-ring border border-accent-blue/20 shadow-lg shadow-accent-blue/5"
               >
                 {/* University Name */}
                 <div className="mb-6">

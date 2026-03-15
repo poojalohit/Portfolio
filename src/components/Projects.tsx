@@ -117,11 +117,11 @@ const Projects = () => {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-full font-light transition-all duration-300 focus-ring ${
-                  selectedCategory === category
-                    ? 'bg-accent-gold text-charcoal shadow-lg shadow-accent-gold/30'
-                    : 'bg-surface/50 text-text-secondary hover:bg-surface/70 hover:text-text-primary border border-surface-light/10'
-                }`}
+className={`px-6 py-3 rounded-full font-light transition-all duration-300 focus-ring ${
+                selectedCategory === category
+                  ? 'bg-accent-gold text-charcoal shadow-lg shadow-accent-gold/30'
+                  : 'bg-surface text-text-secondary hover:bg-surface-elevated hover:text-text-primary border border-surface-light/30'
+              }`}
               >
                 {category}
               </button>
@@ -142,7 +142,7 @@ const Projects = () => {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 onClick={() => setSelectedProject(project)}
-                className={`bg-surface/50 rounded-2xl p-6 cursor-pointer hover:bg-surface/70 transition-all duration-300 group border border-surface-light/10 hover:border-accent-gold/20 focus-ring ${
+                className={`bg-surface rounded-2xl p-6 cursor-pointer hover:bg-surface-elevated transition-all duration-300 group border border-accent-gold/20 hover:border-accent-gold/40 shadow-lg shadow-accent-gold/5 focus-ring ${
                   filteredProjects.length < 3 ? 'w-full max-w-md' : ''
                 }`}
               >
