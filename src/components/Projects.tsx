@@ -97,41 +97,42 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen py-20 px-6 relative bg-charcoal"
+      className="py-20 px-6 relative bg-charcoal"
     >
       <div className="container mx-auto max-w-6xl">
-          <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-serif mb-16 text-center text-text-primary"
+          className="glass-strong rounded-3xl p-8 md:p-12 border border-surface-light/20"
         >
-          Projects
-        </motion.h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-12 text-center text-text-primary">
+            Projects
+          </h2>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-full font-light transition-all duration-300 focus-ring ${
-                selectedCategory === category
-                  ? 'bg-accent-gold text-charcoal shadow-lg shadow-accent-gold/30'
-                  : 'glass text-text-secondary hover:bg-surface-elevated hover:text-text-primary'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+          {/* Category Tabs */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-3 rounded-full font-light transition-all duration-300 focus-ring ${
+                  selectedCategory === category
+                    ? 'bg-accent-gold text-charcoal shadow-lg shadow-accent-gold/30'
+                    : 'bg-surface/50 text-text-secondary hover:bg-surface/70 hover:text-text-primary border border-surface-light/10'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
 
-        {/* Project Cards */}
-        <div className={filteredProjects.length < 3 
-          ? 'flex flex-wrap justify-center gap-6' 
-          : 'grid md:grid-cols-2 lg:grid-cols-3 gap-6'
-        }>
+          {/* Project Cards */}
+          <div className={filteredProjects.length < 3 
+            ? 'flex flex-wrap justify-center gap-6' 
+            : 'grid md:grid-cols-2 lg:grid-cols-3 gap-6'
+          }>
           <AnimatePresence mode="wait">
             {filteredProjects.map((project, index) => (
               <motion.div
@@ -141,7 +142,7 @@ const Projects = () => {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 onClick={() => setSelectedProject(project)}
-                className={`glass-strong rounded-2xl p-6 cursor-pointer hover:shadow-2xl hover:shadow-accent-gold/10 transition-all duration-300 group border border-transparent hover:border-accent-gold/20 focus-ring ${
+                className={`bg-surface/50 rounded-2xl p-6 cursor-pointer hover:bg-surface/70 transition-all duration-300 group border border-surface-light/10 hover:border-accent-gold/20 focus-ring ${
                   filteredProjects.length < 3 ? 'w-full max-w-md' : ''
                 }`}
               >
@@ -185,6 +186,7 @@ const Projects = () => {
             ))}
           </AnimatePresence>
         </div>
+        </motion.div>
       </div>
 
       {/* Project Detail Modal */}

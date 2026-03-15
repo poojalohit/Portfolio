@@ -101,40 +101,31 @@ const Travel = () => {
   const visitedCountryCodes = new Set(countries.map(c => c.iso))
 
   return (
-    <section id="travel" className="min-h-screen py-20 px-6 relative bg-charcoal">
+    <section id="travel" className="py-20 px-6 relative bg-charcoal">
       <div className="container mx-auto max-w-6xl">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-serif mb-4 text-center text-text-primary"
+          className="glass-strong rounded-3xl p-8 md:p-12 border border-surface-light/20"
         >
-          Travel
-        </motion.h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-4 text-center text-text-primary">
+            Travel
+          </h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-center text-text-muted mb-12 text-lg"
-        >
-          Currently been to: <span className="text-accent-gold font-medium">{travelStats.visited}/{travelStats.total} countries</span>
-        </motion.p>
+          <p className="text-center text-text-muted mb-12 text-lg">
+            Currently been to: <span className="text-accent-gold font-medium">{travelStats.visited}/{travelStats.total} countries</span>
+          </p>
 
-        {/* Flip Card Container */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className={`flip-card mb-12 ${isFlipped ? 'flipped' : ''}`}
-          style={{ minHeight: '600px' }}
-        >
-          <div className="flip-card-inner">
-            {/* Front: Countries List */}
-            <div className="flip-card-front glass-strong rounded-2xl p-8">
+          {/* Flip Card Container */}
+          <div 
+            className={`flip-card mb-12 ${isFlipped ? 'flipped' : ''}`}
+            style={{ minHeight: '600px' }}
+          >
+            <div className="flip-card-inner">
+              {/* Front: Countries List */}
+              <div className="flip-card-front bg-surface/50 rounded-2xl p-8 border border-surface-light/10">
               <h3 className="text-2xl font-serif mb-6 text-center text-text-primary">
                 Countries Visited
               </h3>
@@ -158,7 +149,7 @@ const Travel = () => {
             </div>
 
             {/* Back: Map */}
-            <div className="flip-card-back glass-strong rounded-2xl p-6 flex flex-col">
+            <div className="flip-card-back bg-surface/50 rounded-2xl p-6 flex flex-col border border-surface-light/10">
               <div className="relative flex items-center justify-center mb-4 h-12">
                 <button
                   onClick={handleBackToList}
@@ -167,7 +158,7 @@ const Travel = () => {
                   <FaArrowLeft className="text-xs" /> 
                   Back to list
                 </button>
-                <h3 className="text-2xl font-serif text-accent-gold text-center">
+                <h3 className="text-2xl font-serif text-accent-gold">
                   {highlightedCountryISO ? countries.find(c => c.iso === highlightedCountryISO)?.name : 'World Map'}
                 </h3>
               </div>
@@ -296,14 +287,8 @@ const Travel = () => {
           </div>
         </motion.div>
 
-        {/* Travel Photos Carousel */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.4, delay: 0.15 }}
-          className="glass-strong rounded-2xl p-6"
-        >
+          {/* Travel Photos Carousel */}
+          <div className="bg-surface/50 rounded-2xl p-6 border border-surface-light/10">
           <h3 className="text-2xl font-serif mb-6 text-center text-text-primary">
             Travel Photos
           </h3>
@@ -340,13 +325,7 @@ const Travel = () => {
             ))}
           </Swiper>
           
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-8 text-center"
-          >
+          <div className="mt-8 text-center">
             <a
               href={instagramLink}
               target="_blank"
@@ -356,7 +335,8 @@ const Travel = () => {
               <FaInstagram className="text-2xl group-hover:scale-110 transition-transform" />
               <span>Follow my travels on Instagram</span>
             </a>
-          </motion.div>
+          </div>
+        </div>
         </motion.div>
       </div>
     </section>

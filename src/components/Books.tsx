@@ -8,27 +8,22 @@ const Books = () => {
   return (
     <section
       id="books"
-      className="min-h-screen py-20 px-6 relative bg-charcoal"
+      className="py-20 px-6 relative bg-charcoal"
     >
       <div className="container mx-auto max-w-6xl">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-serif mb-16 text-center text-text-primary"
+          className="glass-strong rounded-3xl p-8 md:p-12 border border-surface-light/20"
         >
-          Books
-        </motion.h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-12 text-center text-text-primary">
+            Books
+          </h2>
 
-        {/* Currently Reading */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.4 }}
-          className="glass-strong rounded-2xl p-8 mb-12"
-        >
+          {/* Currently Reading */}
+          <div className="bg-surface/50 rounded-2xl p-8 mb-12 border border-surface-light/10">
           <div className="flex flex-col md:flex-row items-center gap-6">
             {/* Book Cover */}
             {currentlyReading.coverUrl && (
@@ -59,29 +54,23 @@ const Books = () => {
               <p className="text-lg text-text-muted">by {currentlyReading.author}</p>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Top Recommendations */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="mb-12"
-        >
-          <h3 className="text-3xl font-light mb-8 text-center text-text-primary">
-            My Top Book Recommendations
-          </h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            {recommendations.map((book, index) => (
-              <motion.div
-                key={book.title}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="glass-strong rounded-2xl p-6 hover:shadow-2xl hover:shadow-accent-blue/20 transition-all duration-300 hover:scale-105 focus-ring"
-              >
+          {/* Top Recommendations */}
+          <div className="mb-12">
+            <h3 className="text-3xl font-light mb-8 text-center text-text-primary">
+              My Top Book Recommendations
+            </h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {recommendations.map((book, index) => (
+                <motion.div
+                  key={book.title}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  className="bg-surface/50 rounded-2xl p-6 hover:bg-surface/70 transition-all duration-300 focus-ring border border-surface-light/10"
+                >
                 {/* Book Cover */}
                 {book.coverUrl && (
                   <a
@@ -120,28 +109,23 @@ const Books = () => {
                     <p className="text-sm text-text-secondary leading-relaxed">{book.whyILikeIt}</p>
                   </div>
                 )}
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </motion.div>
 
-        {/* Goodreads Link */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center"
-        >
-          <a
-            href={goodreadsLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-accent-blue hover:text-accent-blue-hover transition-colors text-lg font-light hover:underline focus-ring"
-          >
-            <span>Link to my Goodreads</span>
-            <FaExternalLinkAlt />
-          </a>
+          {/* Goodreads Link */}
+          <div className="text-center">
+            <a
+              href={goodreadsLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-accent-blue hover:text-accent-blue-hover transition-colors text-lg font-light hover:underline focus-ring"
+            >
+              <span>Link to my Goodreads</span>
+              <FaExternalLinkAlt />
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>
