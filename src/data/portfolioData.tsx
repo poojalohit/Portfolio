@@ -70,7 +70,7 @@ export const workExperienceData: WorkExperienceItem[] = [
     period: '2022-2025',
     link: 'https://www.thalesgroup.com',
     description: [
-      'Spearheaded IAM ecosystem growth across the META region, earning global recognition in 2025. Turned user feedback into revenue, notably driving a 20% increase in renewals for a $3M ARR portfolio, while leveraging Power BI and Salesforce to maintain 94% sales forecasting accuracy for senior leadership.',
+      'Grew sales for identity & access management (IAM) software - the technology that controls who can access what systems and data inside large organizations. Drove a 20% increase in contract renewals across a $3M annual portfolio in the Middle East, Africa, and Turkey region, while using Power BI and Salesforce to forecast revenue with 94% accuracy.',
     ],
   },
   {
@@ -79,7 +79,7 @@ export const workExperienceData: WorkExperienceItem[] = [
     period: '2021-2022',
     link: 'https://www.betait.net',
     description: [
-      'Managed the end-to-end cybersecurity sales lifecycle for 15 enterprise accounts, identifying infrastructure gaps and conducting competitive research to align modernizations with evolving security standards.',
+      'Managed end-to-end sales for cybersecurity solutions - including network security, cloud protection, and infrastructure monitoring tools - across 15 enterprise clients. Identified gaps in clients\' existing setups and recommended products to modernize their defenses against evolving threats.',
     ],
   },
   {
@@ -89,7 +89,7 @@ export const workExperienceData: WorkExperienceItem[] = [
     link: 'https://www.betait.net',
     isIntern: true,
     description: [
-      'Led a team of five to analyze AI and Data Infrastructure trends, delivering weekly strategic insights to senior leadership that shaped the company\'s long-term solution roadmap.',
+      'Researched emerging cybersecurity technologies (AI-driven threat detection, data infrastructure, and cloud security tools) to help leadership decide which solutions to bring to market. Delivered weekly competitive analysis reports to a team of five that shaped the company\'s long-term product and vendor roadmap.',
     ],
   },
 ]

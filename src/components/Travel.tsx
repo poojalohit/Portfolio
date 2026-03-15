@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useState, useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
-import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps'
+import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
 import { FaInstagram, FaPlus, FaMinus, FaArrowLeft } from 'react-icons/fa'
 import { travelCountries, travelPhotos as travelPhotosData, travelStats, instagramLink, countryNameToISO } from '../data/portfolioData'
 import 'swiper/css'
@@ -159,17 +159,18 @@ const Travel = () => {
 
             {/* Back: Map */}
             <div className="flip-card-back glass-strong rounded-2xl p-6 flex flex-col">
-              <div className="flex items-center justify-center gap-6 mb-4">
+              <div className="flex items-center justify-between mb-4 px-2">
                 <button
                   onClick={handleBackToList}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full glass text-accent-blue hover:bg-surface-elevated transition-all"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full glass text-accent-blue hover:bg-surface-elevated transition-all text-sm font-medium"
                 >
-                  <FaArrowLeft className="text-sm" /> 
-                  <span className="text-sm font-medium">Back to list</span>
+                  <FaArrowLeft className="text-xs" /> 
+                  Back to list
                 </button>
-                <h3 className="text-xl font-serif text-accent-gold">
+                <h3 className="text-2xl font-serif text-accent-gold flex-1 text-center">
                   {highlightedCountryISO ? countries.find(c => c.iso === highlightedCountryISO)?.name : 'World Map'}
                 </h3>
+                <div className="w-[120px]"></div>
               </div>
               
               <div 
@@ -258,23 +259,6 @@ const Travel = () => {
                                 pressed: { fill: isHighlighted ? '#D4AF37' : (isVisited ? '#7BAED9' : '#5A5A5A'), outline: 'none' },
                               }}
                             />
-                            {(clickedCountry?.name === countryName || isHighlighted) && centerCoords && (
-                              <Marker coordinates={centerCoords}>
-                                {(() => {
-                                  const labelWidth = Math.max(80, countryName.length * 9 + 20)
-                                  const halfWidth = labelWidth / 2
-                                  return (
-                                    <g style={{ transition: 'all 0.2s ease' }}>
-                                      <rect x={-halfWidth} y={-14} width={labelWidth} height={28} fill="#000000" fillOpacity={0.4} rx={14} transform="translate(2, 2)" />
-                                      <rect x={-halfWidth} y={-14} width={labelWidth} height={28} fill={isHighlighted ? '#D4AF37' : '#2A2A2A'} rx={14} stroke={isHighlighted ? '#E5C04A' : '#5B8DB8'} strokeWidth={1.5} />
-                                      <text textAnchor="middle" y={5} fontSize={12} fill={isHighlighted ? '#1E1E1E' : '#F5F5F5'} fontWeight="500" fontFamily="DM Sans, sans-serif" style={{ pointerEvents: 'none', userSelect: 'none' }}>
-                                        {countryName}
-                                      </text>
-                                    </g>
-                                  )
-                                })()}
-                              </Marker>
-                            )}
                           </g>
                         )
                       })
