@@ -159,17 +159,17 @@ const Travel = () => {
 
             {/* Back: Map */}
             <div className="flip-card-back glass-strong rounded-2xl p-6 flex flex-col">
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-center gap-6 mb-4">
                 <button
                   onClick={handleBackToList}
-                  className="flex items-center gap-2 text-accent-blue hover:text-accent-blue-hover transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 rounded-full glass text-accent-blue hover:bg-surface-elevated transition-all"
                 >
-                  <FaArrowLeft /> Back to list
+                  <FaArrowLeft className="text-sm" /> 
+                  <span className="text-sm font-medium">Back to list</span>
                 </button>
-                <h3 className="text-xl font-serif text-text-primary">
+                <h3 className="text-xl font-serif text-accent-gold">
                   {highlightedCountryISO ? countries.find(c => c.iso === highlightedCountryISO)?.name : 'World Map'}
                 </h3>
-                <div className="w-24" />
               </div>
               
               <div 
@@ -260,13 +260,19 @@ const Travel = () => {
                             />
                             {(clickedCountry?.name === countryName || isHighlighted) && centerCoords && (
                               <Marker coordinates={centerCoords}>
-                                <g>
-                                  <rect x={-52} y={-14} width={104} height={28} fill="#000000" fillOpacity={0.3} rx={6} transform="translate(2, 2)" />
-                                  <rect x={-52} y={-14} width={104} height={28} fill={isHighlighted ? '#D4AF37' : '#2A2A2A'} fillOpacity={0.95} rx={6} stroke={isHighlighted ? '#E5C04A' : '#5B8DB8'} strokeWidth={2} />
-                                  <text textAnchor="middle" y={5} fontSize={14} fill={isHighlighted ? '#1E1E1E' : '#F5F5F5'} fontWeight="600" fontFamily="DM Sans, sans-serif" style={{ pointerEvents: 'none', userSelect: 'none' }}>
-                                    {countryName}
-                                  </text>
-                                </g>
+                                {(() => {
+                                  const labelWidth = Math.max(80, countryName.length * 9 + 20)
+                                  const halfWidth = labelWidth / 2
+                                  return (
+                                    <g style={{ transition: 'all 0.2s ease' }}>
+                                      <rect x={-halfWidth} y={-14} width={labelWidth} height={28} fill="#000000" fillOpacity={0.4} rx={14} transform="translate(2, 2)" />
+                                      <rect x={-halfWidth} y={-14} width={labelWidth} height={28} fill={isHighlighted ? '#D4AF37' : '#2A2A2A'} rx={14} stroke={isHighlighted ? '#E5C04A' : '#5B8DB8'} strokeWidth={1.5} />
+                                      <text textAnchor="middle" y={5} fontSize={12} fill={isHighlighted ? '#1E1E1E' : '#F5F5F5'} fontWeight="500" fontFamily="DM Sans, sans-serif" style={{ pointerEvents: 'none', userSelect: 'none' }}>
+                                        {countryName}
+                                      </text>
+                                    </g>
+                                  )
+                                })()}
                               </Marker>
                             )}
                           </g>

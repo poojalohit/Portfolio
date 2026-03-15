@@ -21,6 +21,9 @@ const getProjectTags = (title: string): string[] => {
     'ReSKUe': ['Product', 'E-Commerce', 'Strategy'],
     'Economic Analysis': ['Economics', 'Finance', 'Research'],
     'Behind the Build': ['Product', 'Content', 'Strategy'],
+    'Machine Learning': ['Machine Learning', 'Digital Twins'],
+    'Human-Computer Interaction': ['Human-Computer Interaction', 'UX'],
+    'Tableau': ['Analytics', 'Data Visualization'],
   }
   
   for (const [key, tags] of Object.entries(tagMap)) {
@@ -44,6 +47,16 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   const categories = projectCategories
+  
+  // Custom order for Projects category
+  const projectOrder: Record<string, number> = {
+    'AI-First GTM Engineering': 1,
+    'Economic Analysis': 2,
+    'Weekly Capital Markets Tracker': 3,
+    'ReSKUe': 4,
+    'AI-Powered Daily Intelligence Briefing': 5,
+    'Tableau Analysis': 6,
+  }
 
   // Convert data file projects to component format
   const projects: Project[] = projectsData.map(proj => {
@@ -73,9 +86,13 @@ const Projects = () => {
     }
   })
 
-  const filteredProjects = projects.filter(
-    (p) => p.category === selectedCategory
-  )
+  const filteredProjects = projects
+    .filter((p) => p.category === selectedCategory)
+    .sort((a, b) => {
+      const orderA = Object.entries(projectOrder).find(([key]) => a.title.includes(key))?.[1] || 99
+      const orderB = Object.entries(projectOrder).find(([key]) => b.title.includes(key))?.[1] || 99
+      return orderA - orderB
+    })
 
   return (
     <section

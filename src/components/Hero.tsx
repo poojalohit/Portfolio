@@ -27,7 +27,7 @@ const Hero = ({ activeSection }: HeroProps) => {
       className="min-h-screen flex flex-col justify-center items-center px-6 py-20 relative overflow-hidden"
     >
       {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-charcoal-dark to-surface/20 opacity-50" />
+      <div className="absolute inset-0 bg-charcoal" />
       
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
@@ -44,7 +44,7 @@ const Hero = ({ activeSection }: HeroProps) => {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="text-5xl md:text-7xl font-serif font-medium text-white"
             >
-              Hi, I'm Pooja Lohit
+              Hi, I'm Pooja Lohit!
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

@@ -30,12 +30,12 @@ const Navigation = ({ activeSection }: NavigationProps) => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
   const navItems = [
-    { id: 'education', icon: FaGraduationCap, label: 'Education' },
-    { id: 'work', icon: FaBriefcase, label: 'Work Experience' },
-    { id: 'projects', icon: FaTools, label: 'Projects' },
-    { id: 'travel', icon: FaPlane, label: 'Travel' },
-    { id: 'books', icon: FaBook, label: 'Books' },
-    { id: 'contact', icon: FaEnvelope, label: 'Contact Me' },
+    { id: 'education', icon: FaGraduationCap, label: 'Education', emoji: '🎓' },
+    { id: 'work', icon: FaBriefcase, label: 'Work Experience', emoji: '💼' },
+    { id: 'projects', icon: FaTools, label: 'Projects', emoji: '🚀' },
+    { id: 'travel', icon: FaPlane, label: 'Travel', emoji: '✈️' },
+    { id: 'books', icon: FaBook, label: 'Books', emoji: '📚' },
+    { id: 'contact', icon: FaEnvelope, label: 'Contact Me', emoji: '✉️' },
   ]
 
   const scrollToSection = (sectionId: string) => {
@@ -54,43 +54,33 @@ const Navigation = ({ activeSection }: NavigationProps) => {
 
   return (
     <>
-      {/* Navigation in Hero - Editorial Style */}
+      {/* Navigation in Hero - Pill Buttons with Emojis */}
       <motion.nav
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex items-center justify-center gap-4 mt-12"
+        className="flex items-center justify-center mt-12"
       >
-        <div className="flex items-center gap-1 md:gap-6 px-6 py-4">
-          {navItems.map((item, index) => {
+        <div className="flex flex-wrap items-center justify-center gap-3 px-4">
+          {navItems.map((item) => {
             const isActive = activeSection === item.id
             
             return (
-              <div key={item.id} className="flex items-center">
-                <motion.button
-                  onClick={() => scrollToSection(item.id)}
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`relative px-2 md:px-4 py-2 transition-all duration-300 focus-ring ${
-                    isActive
-                      ? 'text-accent-gold'
-                      : 'text-text-secondary hover:text-text-primary'
-                  }`}
-                  aria-label={item.label}
-                >
-                  <span className="font-serif text-xs md:text-sm tracking-widest uppercase">{item.label}</span>
-                  {isActive && (
-                    <motion.div 
-                      layoutId="activeIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-px bg-accent-gold"
-                      transition={{ duration: 0.3 }}
-                    />
-                  )}
-                </motion.button>
-                {index < navItems.length - 1 && (
-                  <span className="text-text-muted/30 mx-1 md:mx-2 hidden md:inline">|</span>
-                )}
-              </div>
+              <motion.button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-300 focus-ring ${
+                  isActive
+                    ? 'bg-accent-gold text-charcoal shadow-lg shadow-accent-gold/30'
+                    : 'glass text-text-secondary hover:bg-surface-elevated hover:text-text-primary'
+                }`}
+                aria-label={item.label}
+              >
+                <span className="text-base">{item.emoji}</span>
+                <span className="text-sm font-medium">{item.label}</span>
+              </motion.button>
             )
           })}
         </div>
