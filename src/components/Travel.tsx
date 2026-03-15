@@ -125,43 +125,44 @@ const Travel = () => {
           >
             <div className="flip-card-inner">
               {/* Front: Countries List */}
-              <div className="flip-card-front bg-surface rounded-2xl p-8 border border-accent-blue/20 shadow-lg shadow-accent-blue/5">
-              <h3 className="text-2xl font-serif mb-6 text-center text-text-primary">
-                Countries Visited
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                {countries.map((country) => (
-                  <motion.div
-                    key={country.name}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => handleCountryListClick(country.name, country.iso)}
-                    className="flex items-center gap-2 p-3 rounded-lg transition-all duration-300 cursor-pointer glass hover:bg-surface-elevated border-2 border-transparent hover:border-accent-gold/30"
-                  >
-                    <span className="text-lg text-accent-gold">✓</span>
-                    <span className="text-text-secondary hover:text-text-primary transition-colors">{country.name}</span>
-                  </motion.div>
-                ))}
+              <div className="flip-card-front bg-surface rounded-2xl p-8 border border-accent-blue/20 shadow-lg shadow-accent-blue/5 flex flex-col justify-start">
+                <h3 className="text-2xl font-serif mb-6 text-center text-text-primary">
+                  Countries Visited
+                </h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                  {countries.map((country) => (
+                    <motion.div
+                      key={country.name}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => handleCountryListClick(country.name, country.iso)}
+                      className="flex items-center gap-2 p-3 rounded-lg transition-all duration-300 cursor-pointer glass hover:bg-surface-elevated border-2 border-transparent hover:border-accent-gold/30"
+                    >
+                      <span className="text-lg text-accent-gold">✓</span>
+                      <span className="text-text-secondary hover:text-text-primary transition-colors">{country.name}</span>
+                    </motion.div>
+                  ))}
+                </div>
+                <p className="text-center text-text-muted text-sm mt-6">
+                  Click a country to see it on the map →
+                </p>
               </div>
-              <p className="text-center text-text-muted text-sm mt-6">
-                Click a country to see it on the map →
-              </p>
-            </div>
 
             {/* Back: Map */}
-            <div className="flip-card-back bg-surface rounded-2xl p-6 flex flex-col border border-accent-blue/20 shadow-lg shadow-accent-blue/5">
-              <div className="relative flex items-center justify-between mb-4 py-2">
-                <button
-                  onClick={handleBackToList}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-full glass text-accent-blue hover:bg-surface-elevated transition-all text-sm font-medium z-10"
-                >
-                  <FaArrowLeft className="text-xs" /> 
-                  Back to list
-                </button>
-                <h3 className="text-2xl font-serif text-accent-gold absolute left-1/2 -translate-x-1/2">
-                  {highlightedCountryISO ? countries.find(c => c.iso === highlightedCountryISO)?.name : 'World Map'}
-                </h3>
-                <div className="w-[120px]"></div>
+            <div className="flip-card-back bg-surface rounded-2xl p-6 flex flex-col justify-start border border-accent-blue/20 shadow-lg shadow-accent-blue/5">
+              <div className="w-full mb-4">
+                <div className="flex items-center">
+                  <button
+                    onClick={handleBackToList}
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-full glass text-accent-blue hover:bg-surface-elevated transition-all text-sm font-medium shrink-0"
+                  >
+                    <FaArrowLeft className="text-xs" /> 
+                    Back to list
+                  </button>
+                  <h3 className="flex-1 text-2xl font-serif text-accent-gold text-center -ml-[120px]">
+                    {highlightedCountryISO ? countries.find(c => c.iso === highlightedCountryISO)?.name : 'World Map'}
+                  </h3>
+                </div>
               </div>
               
               <div 
