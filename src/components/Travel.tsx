@@ -149,8 +149,8 @@ const Travel = () => {
               </div>
 
             {/* Back: Map */}
-            <div className="flip-card-back bg-surface rounded-2xl px-6 pb-6 pt-0 flex flex-col justify-start border border-accent-blue/20 shadow-lg shadow-accent-blue/5">
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', height: '56px' }}>
+            <div className="flip-card-back bg-surface rounded-2xl px-6 pb-6 pt-6 flex flex-col justify-start border border-accent-blue/20 shadow-lg shadow-accent-blue/5">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', marginBottom: '0.75rem' }}>
                 <div style={{ justifySelf: 'start' }}>
                   <button
                     onClick={handleBackToList}
