@@ -118,14 +118,10 @@ const Travel = () => {
             Currently been to: <span className="text-accent-gold font-medium">{travelStats.visited}/{travelStats.total} countries</span>
           </p>
 
-          {/* Flip Card Container */}
-          <div 
-            className={`flip-card mb-12 ${isFlipped ? 'flipped' : ''}`}
-            style={{ minHeight: '600px' }}
-          >
-            <div className="flip-card-inner">
-              {/* Front: Countries List */}
-              <div className="flip-card-front bg-surface rounded-2xl p-8 border border-accent-blue/20 shadow-lg shadow-accent-blue/5 flex flex-col justify-start">
+          {/* Countries List / Map Toggle */}
+          <div className="mb-12">
+            {!isFlipped ? (
+              <div>
                 <h3 className="text-2xl font-serif mb-6 text-center text-text-primary">
                   Countries Visited
                 </h3>
@@ -147,146 +143,145 @@ const Travel = () => {
                   Click a country to see it on the map →
                 </p>
               </div>
-
-            {/* Back: Map */}
-            <div className="flip-card-back bg-surface rounded-2xl px-6 pb-6 flex flex-col border border-accent-blue/20 shadow-lg shadow-accent-blue/5" style={{ paddingTop: 0 }}>
-              <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '56px', flexShrink: 0 }}>
-                <button
-                  onClick={handleBackToList}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-full glass text-accent-blue hover:bg-surface-elevated transition-all text-sm font-medium"
-                  style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)' }}
+            ) : (
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <button
+                    onClick={handleBackToList}
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-full glass text-accent-blue hover:bg-surface-elevated transition-all text-sm font-medium"
+                  >
+                    <FaArrowLeft className="text-xs" /> 
+                    Back to list
+                  </button>
+                  <h3 className="text-2xl font-serif text-accent-gold text-center flex-1">
+                    {highlightedCountryISO ? countries.find(c => c.iso === highlightedCountryISO)?.name : 'World Map'}
+                  </h3>
+                  <div className="w-[120px]"></div>
+                </div>
+                
+                <div 
+                  ref={mapRef}
+                  className="overflow-hidden rounded-lg relative" 
+                  style={{ height: '500px', backgroundColor: '#1E1E1E' }}
+                  onMouseDown={handleMouseDown}
+                  onMouseMove={handleMouseMove}
+                  onMouseUp={handleMouseUp}
+                  onMouseLeave={handleMouseUp}
+                  onWheel={handleWheel}
                 >
-                  <FaArrowLeft className="text-xs" /> 
-                  Back to list
-                </button>
-                <h3 className="text-2xl font-serif text-accent-gold whitespace-nowrap" style={{ margin: 0, padding: 0, lineHeight: '56px' }}>
-                  {highlightedCountryISO ? countries.find(c => c.iso === highlightedCountryISO)?.name : 'World Map'}
-                </h3>
-              </div>
-              
-              <div 
-                ref={mapRef}
-                className="flex-1 overflow-hidden rounded-lg relative" 
-                style={{ minHeight: '450px', backgroundColor: '#1E1E1E' }}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseUp}
-                onWheel={handleWheel}
-              >
-                <ComposableMap
-                  projectionConfig={{ scale: zoom, center: position }}
-                  className="w-full h-full"
-                  style={{ width: '100%', height: '100%', cursor: isDragging ? 'grabbing' : 'grab' }}
-                >
-                  <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
-                    {({ geographies }) =>
-                      geographies.map((geo) => {
-                        const props = geo.properties as Record<string, unknown>
-                        const countryName = (props.NAME as string) || (props.NAME_LONG as string) || (props.name as string) || ''
-                        
-                        let isoCode = (props.ISO_A3 as string) || (props.ISO_A2 as string) || (props.ADM0_A3 as string) || ''
-                        isoCode = isoCode.toUpperCase()
-                        
-                        if (!isoCode && countryName) {
-                          isoCode = countryNameToISO[countryName] || ''
-                          if (!isoCode) {
-                            for (const [name, code] of Object.entries(countryNameToISO)) {
-                              if (countryName.toLowerCase().includes(name.toLowerCase()) || 
-                                  name.toLowerCase().includes(countryName.toLowerCase())) {
-                                isoCode = code
-                                break
+                  <ComposableMap
+                    projectionConfig={{ scale: zoom, center: position }}
+                    className="w-full h-full"
+                    style={{ width: '100%', height: '100%', cursor: isDragging ? 'grabbing' : 'grab' }}
+                  >
+                    <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
+                      {({ geographies }) =>
+                        geographies.map((geo) => {
+                          const props = geo.properties as Record<string, unknown>
+                          const countryName = (props.NAME as string) || (props.NAME_LONG as string) || (props.name as string) || ''
+                          
+                          let isoCode = (props.ISO_A3 as string) || (props.ISO_A2 as string) || (props.ADM0_A3 as string) || ''
+                          isoCode = isoCode.toUpperCase()
+                          
+                          if (!isoCode && countryName) {
+                            isoCode = countryNameToISO[countryName] || ''
+                            if (!isoCode) {
+                              for (const [name, code] of Object.entries(countryNameToISO)) {
+                                if (countryName.toLowerCase().includes(name.toLowerCase()) || 
+                                    name.toLowerCase().includes(countryName.toLowerCase())) {
+                                  isoCode = code
+                                  break
+                                }
                               }
                             }
                           }
-                        }
-                        
-                        const isVisited = isoCode ? visitedCountryCodes.has(isoCode) : false
-                        const isHighlighted = isoCode === highlightedCountryISO
-                        
-                        let centerCoords: [number, number] | null = null
-                        try {
-                          const geometry = geo.geometry as { type: string; coordinates: unknown }
-                          if (geometry.type === 'Polygon' && Array.isArray(geometry.coordinates)) {
-                            const coords = (geometry.coordinates[0] as [number, number][]) || []
-                            if (coords.length > 0) {
-                              const sum = coords.reduce((acc, coord) => [acc[0] + coord[0], acc[1] + coord[1]], [0, 0])
-                              centerCoords = [sum[0] / coords.length, sum[1] / coords.length] as [number, number]
+                          
+                          const isVisited = isoCode ? visitedCountryCodes.has(isoCode) : false
+                          const isHighlighted = isoCode === highlightedCountryISO
+                          
+                          let centerCoords: [number, number] | null = null
+                          try {
+                            const geometry = geo.geometry as { type: string; coordinates: unknown }
+                            if (geometry.type === 'Polygon' && Array.isArray(geometry.coordinates)) {
+                              const coords = (geometry.coordinates[0] as [number, number][]) || []
+                              if (coords.length > 0) {
+                                const sum = coords.reduce((acc, coord) => [acc[0] + coord[0], acc[1] + coord[1]], [0, 0])
+                                centerCoords = [sum[0] / coords.length, sum[1] / coords.length] as [number, number]
+                              }
+                            } else if (geometry.type === 'MultiPolygon' && Array.isArray(geometry.coordinates)) {
+                              const firstPolygon = (geometry.coordinates[0] as [number, number][][])?.[0] || []
+                              if (firstPolygon.length > 0) {
+                                const sum = firstPolygon.reduce((acc, coord) => [acc[0] + coord[0], acc[1] + coord[1]], [0, 0])
+                                centerCoords = [sum[0] / firstPolygon.length, sum[1] / firstPolygon.length] as [number, number]
+                              }
                             }
-                          } else if (geometry.type === 'MultiPolygon' && Array.isArray(geometry.coordinates)) {
-                            const firstPolygon = (geometry.coordinates[0] as [number, number][][])?.[0] || []
-                            if (firstPolygon.length > 0) {
-                              const sum = firstPolygon.reduce((acc, coord) => [acc[0] + coord[0], acc[1] + coord[1]], [0, 0])
-                              centerCoords = [sum[0] / firstPolygon.length, sum[1] / firstPolygon.length] as [number, number]
-                            }
+                          } catch {
+                            centerCoords = null
                           }
-                        } catch {
-                          centerCoords = null
-                        }
-                        
-                        let fillColor = '#3A3A3A'
-                        if (isHighlighted) fillColor = '#D4AF37'
-                        else if (isVisited) fillColor = '#5B8DB8'
-                        
-                        let hoverColor = '#4A4A4A'
-                        if (isHighlighted) hoverColor = '#E5C04A'
-                        else if (isVisited) hoverColor = '#6B9BD1'
-                        
-                        return (
-                          <g key={geo.rsmKey}>
-                            <Geography
-                              geography={geo}
-                              fill={fillColor}
-                              stroke="#1E1E1E"
-                              strokeWidth={0.5}
-                              onClick={() => {
-                                if (centerCoords && countryName) {
-                                  handleCountryClick(countryName, centerCoords, isoCode)
-                                }
-                              }}
-                              style={{
-                                default: { outline: 'none' },
-                                hover: { fill: hoverColor, outline: 'none', cursor: 'pointer' },
-                                pressed: { fill: isHighlighted ? '#D4AF37' : (isVisited ? '#7BAED9' : '#5A5A5A'), outline: 'none' },
-                              }}
-                            />
-                          </g>
-                        )
-                      })
-                    }
-                  </Geographies>
-                </ComposableMap>
+                          
+                          let fillColor = '#3A3A3A'
+                          if (isHighlighted) fillColor = '#D4AF37'
+                          else if (isVisited) fillColor = '#5B8DB8'
+                          
+                          let hoverColor = '#4A4A4A'
+                          if (isHighlighted) hoverColor = '#E5C04A'
+                          else if (isVisited) hoverColor = '#6B9BD1'
+                          
+                          return (
+                            <g key={geo.rsmKey}>
+                              <Geography
+                                geography={geo}
+                                fill={fillColor}
+                                stroke="#1E1E1E"
+                                strokeWidth={0.5}
+                                onClick={() => {
+                                  if (centerCoords && countryName) {
+                                    handleCountryClick(countryName, centerCoords, isoCode)
+                                  }
+                                }}
+                                style={{
+                                  default: { outline: 'none' },
+                                  hover: { fill: hoverColor, outline: 'none', cursor: 'pointer' },
+                                  pressed: { fill: isHighlighted ? '#D4AF37' : (isVisited ? '#7BAED9' : '#5A5A5A'), outline: 'none' },
+                                }}
+                              />
+                            </g>
+                          )
+                        })
+                      }
+                    </Geographies>
+                  </ComposableMap>
+                  
+                  <div className="absolute top-4 right-4 flex flex-col gap-2">
+                    <button onClick={handleZoomIn} className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-text-primary hover:bg-surface-elevated transition-colors" aria-label="Zoom in">
+                      <FaPlus />
+                    </button>
+                    <button onClick={handleZoomOut} className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-text-primary hover:bg-surface-elevated transition-colors" aria-label="Zoom out">
+                      <FaMinus />
+                    </button>
+                    <button onClick={handleReset} className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-text-primary hover:bg-surface-elevated transition-colors text-xs" aria-label="Reset view">
+                      ↺
+                    </button>
+                  </div>
+                </div>
                 
-                <div className="absolute top-4 right-4 flex flex-col gap-2">
-                  <button onClick={handleZoomIn} className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-text-primary hover:bg-surface-elevated transition-colors" aria-label="Zoom in">
-                    <FaPlus />
-                  </button>
-                  <button onClick={handleZoomOut} className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-text-primary hover:bg-surface-elevated transition-colors" aria-label="Zoom out">
-                    <FaMinus />
-                  </button>
-                  <button onClick={handleReset} className="glass-strong w-10 h-10 rounded-lg flex items-center justify-center text-text-primary hover:bg-surface-elevated transition-colors text-xs" aria-label="Reset view">
-                    ↺
-                  </button>
+                <div className="mt-4 flex items-center justify-center gap-6 text-sm flex-wrap">
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded" style={{ backgroundColor: '#5B8DB8' }}></div>
+                    <span className="text-text-secondary">Visited</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded" style={{ backgroundColor: '#D4AF37' }}></div>
+                    <span className="text-text-secondary">Selected</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded" style={{ backgroundColor: '#3A3A3A' }}></div>
+                    <span className="text-text-secondary">Not Visited</span>
+                  </div>
                 </div>
               </div>
-              
-              <div className="mt-4 flex items-center justify-center gap-6 text-sm flex-wrap">
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded" style={{ backgroundColor: '#5B8DB8' }}></div>
-                  <span className="text-text-secondary">Visited</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded" style={{ backgroundColor: '#D4AF37' }}></div>
-                  <span className="text-text-secondary">Selected</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded" style={{ backgroundColor: '#3A3A3A' }}></div>
-                  <span className="text-text-secondary">Not Visited</span>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
-        </div>
 
           {/* Travel Photos Carousel */}
           <div className="bg-surface rounded-2xl p-6 border border-accent-blue/20 shadow-lg shadow-accent-blue/5">
