@@ -150,19 +150,20 @@ const Travel = () => {
 
             {/* Back: Map */}
             <div className="flip-card-back bg-surface rounded-2xl p-6 flex flex-col justify-start border border-accent-blue/20 shadow-lg shadow-accent-blue/5">
-              <div className="w-full mb-4">
-                <div className="flex items-center">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', marginBottom: '1rem' }}>
+                <div style={{ justifySelf: 'start' }}>
                   <button
                     onClick={handleBackToList}
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-full glass text-accent-blue hover:bg-surface-elevated transition-all text-sm font-medium shrink-0"
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-full glass text-accent-blue hover:bg-surface-elevated transition-all text-sm font-medium"
                   >
                     <FaArrowLeft className="text-xs" /> 
                     Back to list
                   </button>
-                  <h3 className="flex-1 text-2xl font-serif text-accent-gold text-center -ml-[120px]">
-                    {highlightedCountryISO ? countries.find(c => c.iso === highlightedCountryISO)?.name : 'World Map'}
-                  </h3>
                 </div>
+                <h3 style={{ textAlign: 'center' }} className="text-2xl font-serif text-accent-gold whitespace-nowrap">
+                  {highlightedCountryISO ? countries.find(c => c.iso === highlightedCountryISO)?.name : 'World Map'}
+                </h3>
+                <div></div>
               </div>
               
               <div 
