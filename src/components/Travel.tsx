@@ -149,21 +149,19 @@ const Travel = () => {
               </div>
 
             {/* Back: Map */}
-            <div className="flip-card-back bg-surface rounded-2xl px-6 pb-6 pt-6 flex flex-col justify-start border border-accent-blue/20 shadow-lg shadow-accent-blue/5">
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', marginBottom: '0.75rem' }}>
-                <div style={{ justifySelf: 'start' }}>
-                  <button
-                    onClick={handleBackToList}
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-full glass text-accent-blue hover:bg-surface-elevated transition-all text-sm font-medium"
-                  >
-                    <FaArrowLeft className="text-xs" /> 
-                    Back to list
-                  </button>
-                </div>
-                <h3 style={{ textAlign: 'center' }} className="text-2xl font-serif text-accent-gold whitespace-nowrap">
+            <div className="flip-card-back bg-surface rounded-2xl px-6 pb-6 flex flex-col border border-accent-blue/20 shadow-lg shadow-accent-blue/5" style={{ paddingTop: 0 }}>
+              <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '56px', flexShrink: 0 }}>
+                <button
+                  onClick={handleBackToList}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full glass text-accent-blue hover:bg-surface-elevated transition-all text-sm font-medium"
+                  style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)' }}
+                >
+                  <FaArrowLeft className="text-xs" /> 
+                  Back to list
+                </button>
+                <h3 className="text-2xl font-serif text-accent-gold whitespace-nowrap" style={{ margin: 0, padding: 0, lineHeight: '56px' }}>
                   {highlightedCountryISO ? countries.find(c => c.iso === highlightedCountryISO)?.name : 'World Map'}
                 </h3>
-                <div></div>
               </div>
               
               <div 
