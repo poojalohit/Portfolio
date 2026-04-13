@@ -506,10 +506,10 @@ export interface BookRecommendation {
 }
 
 export const currentlyReading = {
-  title: 'The Lowland',
-  author: 'Jhumpa Lahiri',
-  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1366930267l/17262100.jpg',
-  goodreadsUrl: 'https://www.goodreads.com/book/show/17262100',
+  title: 'All About Love: New Visions',
+  author: 'bell hooks',
+  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1757107647l/17607.jpg',
+  goodreadsUrl: 'https://www.goodreads.com/book/show/17607',
 }
 
 export const bookRecommendations: BookRecommendation[] = [
