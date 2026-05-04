@@ -550,10 +550,10 @@ export interface BookRecommendation {
 }
 
 export const currentlyReading = {
-  title: 'Interpreter of Maladies',
-  author: 'Jhumpa Lahiri',
-  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1442586143l/5439.jpg',
-  goodreadsUrl: 'https://www.goodreads.com/book/show/5439',
+  title: 'The Loneliness of Sonia and Sunny',
+  author: 'Kiran Desai',
+  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1754044242l/222683974.jpg',
+  goodreadsUrl: 'https://www.goodreads.com/book/show/222683974',
 }
 
 export const bookRecommendations: BookRecommendation[] = [
