@@ -331,14 +331,14 @@ export const projectsData: ProjectItem[] = [
         <p>
           Volunteered with{' '}
           <a
-            href="https://sharingexcess.org"
+            href="https://www.sharingexcess.com/about"
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent-blue hover:underline"
           >
             Sharing Excess
           </a>{' '}
-          to distribute free produce to neighbors—food that would otherwise have gone to landfills. The pop-up distributions connect surplus with people who need it and keep good food in the community.
+          to distribute free produce to neighbors, this was food that would otherwise have gone to landfills. The pop-up distributions connect surplus with people who need it.
         </p>
         <p className="text-sm text-text-muted">
           Photos from an outdoor distribution event in New York City.
@@ -364,7 +364,7 @@ export const projectsData: ProjectItem[] = [
         </div>
       </div>
     ),
-    link: 'https://sharingexcess.org',
+    link: 'https://www.sharingexcess.com/about',
     linkText: 'Sharing Excess',
   },
   {
