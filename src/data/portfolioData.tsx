@@ -550,10 +550,10 @@ export interface BookRecommendation {
 }
 
 export const currentlyReading = {
-  title: 'All About Love: New Visions',
-  author: 'bell hooks',
-  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1757107647l/17607.jpg',
-  goodreadsUrl: 'https://www.goodreads.com/book/show/17607',
+  title: 'Interpreter of Maladies',
+  author: 'Jhumpa Lahiri',
+  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1442586143l/5439.jpg',
+  goodreadsUrl: 'https://www.goodreads.com/book/show/5439',
 }
 
 export const bookRecommendations: BookRecommendation[] = [
