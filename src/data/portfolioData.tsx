@@ -324,6 +324,50 @@ export const projectsData: ProjectItem[] = [
     linkText: 'View on GitHub',
   },
   {
+    title: 'Sharing Excess — Food Rescue Volunteering',
+    category: 'Initiatives',
+    description: () => (
+      <div className="space-y-4">
+        <p>
+          Volunteered with{' '}
+          <a
+            href="https://sharingexcess.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent-blue hover:underline"
+          >
+            Sharing Excess
+          </a>{' '}
+          to distribute free produce to neighbors—food that would otherwise have gone to landfills. The pop-up distributions connect surplus with people who need it and keep good food in the community.
+        </p>
+        <p className="text-sm text-text-muted">
+          Photos from an outdoor distribution event in New York City.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-2">
+          {[
+            { file: 'volunteer-1.png', alt: 'Sharing Excess tent and produce distribution on a city sidewalk' },
+            { file: 'volunteer-2.png', alt: 'Volunteers and community members at a Sharing Excess produce table' },
+            { file: 'volunteer-3.png', alt: 'Fresh citrus and vegetables at a Sharing Excess free food event' },
+          ].map(({ file, alt }) => (
+            <div
+              key={file}
+              className="rounded-lg overflow-hidden border border-surface-light/30 bg-surface-elevated aspect-[3/4] sm:aspect-square"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}initiatives/sharing-excess/${file}`}
+                alt={alt}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
+    link: 'https://sharingexcess.org',
+    linkText: 'Sharing Excess',
+  },
+  {
     title: 'Behind the Build with Pooja Lohit',
     category: 'Initiatives',
     description: () => (

@@ -21,6 +21,7 @@ const getProjectTags = (title: string): string[] => {
     'ReSKUe': ['Product', 'E-Commerce', 'Strategy'],
     'Economic Analysis': ['Economics', 'Finance', 'Research'],
     'Behind the Build': ['Product', 'Content', 'Strategy'],
+    'Sharing Excess': ['Volunteering', 'Sustainability', 'Community'],
     'Machine Learning': ['Machine Learning', 'Digital Twins'],
     'Human-Computer Interaction': ['Human-Computer Interaction', 'UX'],
     'Tableau': ['Analytics', 'Data Visualization'],
