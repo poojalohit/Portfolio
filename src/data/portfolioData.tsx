@@ -37,7 +37,7 @@ export const educationData: EducationItem[] = [
     gpa: 'GPA: 4.0/4.0',
     details: [
       'Graduate Student Advisory Board Member',
-      'Alumni Relations Coordinator for Women in Business and Entrepreneurship',
+      'Alumni Relations Manager for Women in Business and Entrepreneurship',
     ],
     color: 'nyu-purple',
   },
@@ -65,12 +65,25 @@ export interface WorkExperienceItem {
 
 export const workExperienceData: WorkExperienceItem[] = [
   {
+    company: 'Commvault',
+    role: 'Global Partner Marketing Intern',
+    period: 'May 2026 - Aug 2026',
+    link: 'https://www.commvault.com',
+    isIntern: true,
+    description: [
+      'Support strategic execution for the Global Partner Marketing team—campaigns, events, and digital programs—with ownership lanes across portal content, Salesforce reporting, automation requests, and cross-functional coordination.',
+      'Contribute partner-facing insight through research on partners, competitors, and products; assist with nurtures, social, and in-person and virtual event logistics in a high-tempo environment.',
+      'Watch this space—more to share after the summer.',
+    ],
+  },
+  {
     company: 'Thales Group',
     role: 'Inside Sales Rep',
     period: '2022-2025',
     link: 'https://www.thalesgroup.com',
     description: [
-      'Grew sales for identity & access management (IAM) software - the technology that controls who can access what systems and data inside large organizations. Drove a 20% increase in contract renewals across a $3M annual portfolio in the Middle East, Africa, and Turkey region, while using Power BI and Salesforce to forecast revenue with 94% accuracy.',
+      'Grew sales for identity & access management (IAM) software - the technology that controls who can access what systems and data inside large organizations.',
+      'Drove a 20% increase in contract renewals across a $3M annual portfolio in the Middle East, Africa, and Turkey region, while using Power BI and Salesforce to forecast revenue with 94% accuracy.',
     ],
   },
   {
@@ -79,7 +92,8 @@ export const workExperienceData: WorkExperienceItem[] = [
     period: '2021-2022',
     link: 'https://www.betait.net',
     description: [
-      'Managed end-to-end sales for cybersecurity solutions - including network security, cloud protection, and infrastructure monitoring tools - across 15 enterprise clients. Identified gaps in clients\' existing setups and recommended products to modernize their defenses against evolving threats.',
+      'Managed end-to-end sales for cybersecurity solutions - including network security, cloud protection, and infrastructure monitoring tools - across 15 enterprise clients.',
+      'Identified gaps in clients\' existing setups and recommended products to modernize their defenses against evolving threats.',
     ],
   },
   {
@@ -89,7 +103,8 @@ export const workExperienceData: WorkExperienceItem[] = [
     link: 'https://www.betait.net',
     isIntern: true,
     description: [
-      'Researched emerging cybersecurity technologies (AI-driven threat detection, data infrastructure, and cloud security tools) to help leadership decide which solutions to bring to market. Delivered weekly competitive analysis reports to a team of five that shaped the company\'s long-term product and vendor roadmap.',
+      'Researched emerging cybersecurity technologies (AI-driven threat detection, data infrastructure, and cloud security tools) to help leadership decide which solutions to bring to market.',
+      'Delivered weekly competitive analysis reports to a team of five that shaped the company\'s long-term product and vendor roadmap.',
     ],
   },
 ]
@@ -138,6 +153,38 @@ export const projectsData: ProjectItem[] = [
     description: 'Co-authored the chapter: Challenges in Human-Computer Interaction in the book "Industry 4.0 and Intelligent Business Analytics for Healthcare". Published by Nova Publishers. Feb 2022.',
     link: 'https://novapublishers.com/shop/industry-4-0-and-intelligent-business-analytics-for-healthcare/',
     linkText: 'Click here to access',
+  },
+  {
+    title: 'OptiSecure — NYU Vertically Integrated Project',
+    category: 'Projects',
+    description: () => (
+      <div className="space-y-3">
+        <p>
+          Worked on OptiSecure as part of NYU&apos;s Vertically Integrated Project (VIP): research and implementation with a public whitepaper and interactive dashboard on the project site.
+        </p>
+        <p className="text-sm text-text-muted">
+          <a
+            href="https://github.com/poojalohit/OptiSecure"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent-blue hover:underline"
+          >
+            GitHub repository
+          </a>
+          <span className="mx-2">·</span>
+          <a
+            href="https://poojalohit.github.io/OptiSecure/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent-blue hover:underline"
+          >
+            Live site (whitepaper &amp; dashboard)
+          </a>
+        </p>
+      </div>
+    ),
+    link: 'https://poojalohit.github.io/OptiSecure/',
+    linkText: 'View OptiSecure site',
   },
   {
     title: 'Tableau Analysis: Dietary Patterns & Biometric Outcomes',
