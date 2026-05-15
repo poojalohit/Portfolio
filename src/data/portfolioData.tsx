@@ -67,7 +67,7 @@ export const workExperienceData: WorkExperienceItem[] = [
   {
     company: 'Commvault',
     role: 'Global Partner Marketing Intern',
-    period: 'May 2026 - August 2026',
+    period: 'May 2026 - Aug 2026',
     link: 'https://www.commvault.com',
     isIntern: true,
     description: [
