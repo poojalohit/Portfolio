@@ -22,7 +22,7 @@ const WorkExperience = () => {
             Work Experience
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
             {experiences.map((exp, index) => (
               <motion.div
                 key={`${exp.company}-${exp.period}`}

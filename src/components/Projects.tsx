@@ -25,6 +25,7 @@ const getProjectTags = (title: string): string[] => {
     'Machine Learning': ['Machine Learning', 'Digital Twins'],
     'Human-Computer Interaction': ['Human-Computer Interaction', 'UX'],
     'Tableau': ['Analytics', 'Data Visualization'],
+    'OptiSecure': ['NYU VIP', 'Security', 'Research'],
   }
   
   for (const [key, tags] of Object.entries(tagMap)) {
@@ -51,6 +52,7 @@ const Projects = () => {
   
   // Custom order for Projects category
   const projectOrder: Record<string, number> = {
+    'OptiSecure': 0,
     'AI-First GTM Engineering': 1,
     'Economic Analysis': 2,
     'Weekly Capital Markets Tracker': 3,
