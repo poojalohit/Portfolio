@@ -54,6 +54,13 @@ export const educationData: EducationItem[] = [
 // ============================================
 // WORK EXPERIENCE
 // ============================================
+export interface WorkExperienceRole {
+  role: string
+  period: string
+  description: string[]
+  isIntern?: boolean
+}
+
 export interface WorkExperienceItem {
   company: string
   role: string
@@ -61,6 +68,9 @@ export interface WorkExperienceItem {
   link: string
   description: string[]
   isIntern?: boolean
+  // Optional: when a single company spans multiple roles, list them here.
+  // If present, the card renders these stacked instead of the top-level role/period/description.
+  roles?: WorkExperienceRole[]
 }
 
 export const workExperienceData: WorkExperienceItem[] = [
@@ -71,9 +81,7 @@ export const workExperienceData: WorkExperienceItem[] = [
     link: 'https://www.commvault.com',
     isIntern: true,
     description: [
-      'Support strategic execution for the Global Partner Marketing team—campaigns, events, and digital programs—with ownership lanes across portal content, Salesforce reporting, automation requests, and cross-functional coordination.',
-      'Contribute partner-facing insight through research on partners, competitors, and products; assist with nurtures, social, and in-person and virtual event logistics in a high-tempo environment.',
-      'Watch this space—more to share after the summer.',
+      'Interning at Commvault this summer - watch this space post-summer for more details',
     ],
   },
   {
@@ -91,20 +99,25 @@ export const workExperienceData: WorkExperienceItem[] = [
     role: 'Sales Account Manager',
     period: '2021-2022',
     link: 'https://www.betait.net',
-    description: [
-      'Managed end-to-end sales for cybersecurity solutions - including network security, cloud protection, and infrastructure monitoring tools - across 15 enterprise clients.',
-      'Identified gaps in clients\' existing setups and recommended products to modernize their defenses against evolving threats.',
-    ],
-  },
-  {
-    company: 'Beta Information Technology',
-    role: 'Intern',
-    period: 'June 2020 - August 2020',
-    link: 'https://www.betait.net',
-    isIntern: true,
-    description: [
-      'Researched emerging cybersecurity technologies (AI-driven threat detection, data infrastructure, and cloud security tools) to help leadership decide which solutions to bring to market.',
-      'Delivered weekly competitive analysis reports to a team of five that shaped the company\'s long-term product and vendor roadmap.',
+    description: [],
+    roles: [
+      {
+        role: 'Sales Account Manager',
+        period: '2021-2022',
+        description: [
+          'Managed end-to-end sales for cybersecurity solutions - including network security, cloud protection, and infrastructure monitoring tools - across 15 enterprise clients.',
+          'Identified gaps in clients\' existing setups and recommended products to modernize their defenses against evolving threats.',
+        ],
+      },
+      {
+        role: 'Intern',
+        period: 'June 2020 - August 2020',
+        isIntern: true,
+        description: [
+          'Researched emerging cybersecurity technologies (AI-driven threat detection, data infrastructure, and cloud security tools) to help leadership decide which solutions to bring to market.',
+          'Delivered weekly competitive analysis reports to a team of five that shaped the company\'s long-term product and vendor roadmap.',
+        ],
+      },
     ],
   },
 ]
