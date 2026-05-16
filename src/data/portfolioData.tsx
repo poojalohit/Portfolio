@@ -106,7 +106,6 @@ export const workExperienceData: WorkExperienceItem[] = [
         period: '2021-2022',
         description: [
           'Managed end-to-end sales for cybersecurity solutions - including network security, cloud protection, and infrastructure monitoring tools - across 15 enterprise clients.',
-          'Identified gaps in clients\' existing setups and recommended products to modernize their defenses against evolving threats.',
         ],
       },
       {
@@ -114,8 +113,7 @@ export const workExperienceData: WorkExperienceItem[] = [
         period: 'June 2020 - August 2020',
         isIntern: true,
         description: [
-          'Researched emerging cybersecurity technologies (AI-driven threat detection, data infrastructure, and cloud security tools) to help leadership decide which solutions to bring to market.',
-          'Delivered weekly competitive analysis reports to a team of five that shaped the company\'s long-term product and vendor roadmap.',
+          'Researched emerging cybersecurity technologies to help leadership decide which solutions to bring to market.',
         ],
       },
     ],
