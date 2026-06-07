@@ -644,6 +644,60 @@ export const bookRecommendations: BookRecommendation[] = [
 export const goodreadsLink = 'https://www.goodreads.com/poojalohit'
 
 // ============================================
+// RUNNING
+// ============================================
+// `recentRuns` is auto-refreshed weekly from Strava (see scripts/update-running.cjs).
+// The first run below mirrors a real Strava activity; the rest are placeholders that
+// get replaced automatically once the Strava sync runs.
+export interface RecentRun {
+  title: string
+  date: string
+  location?: string
+  distance: string
+  pace: string
+  time: string
+  achievements?: number
+  polyline?: string
+  photoUrl?: string
+  activityUrl?: string
+}
+
+export const stravaLink = 'https://www.strava.com/athletes/185115752'
+
+export const recentRuns: RecentRun[] = [
+  {
+    title: 'Interval Run',
+    date: 'Jun 6, 2026',
+    location: 'Manhattan, New York',
+    distance: '4.01 km',
+    pace: '8:49 /km',
+    time: '35m 24s',
+    achievements: 9,
+    activityUrl: 'https://www.strava.com/athletes/185115752',
+  },
+  {
+    title: 'Morning Run',
+    date: 'Jun 3, 2026',
+    location: 'Central Park, New York',
+    distance: '5.20 km',
+    pace: '8:30 /km',
+    time: '44m 12s',
+    achievements: 4,
+    activityUrl: 'https://www.strava.com/athletes/185115752',
+  },
+  {
+    title: 'Long Run',
+    date: 'Jun 1, 2026',
+    location: 'Hudson River Greenway, New York',
+    distance: '8.05 km',
+    pace: '8:58 /km',
+    time: '1h 12m',
+    achievements: 6,
+    activityUrl: 'https://www.strava.com/athletes/185115752',
+  },
+]
+
+// ============================================
 // CONTACT
 // ============================================
 export interface ContactItem {

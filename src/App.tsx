@@ -5,6 +5,7 @@ import WorkExperience from './components/WorkExperience'
 import Projects from './components/Projects'
 import Travel from './components/Travel'
 import Books from './components/Books'
+import Running from './components/Running'
 import Contact from './components/Contact'
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
         <Projects />
         <Travel />
         <Books />
+        <Running />
         <Contact />
       </main>
     </div>

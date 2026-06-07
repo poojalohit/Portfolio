@@ -28,6 +28,7 @@ const Navigation = ({ activeSection }: NavigationProps) => {
     { id: 'projects', label: 'Projects', emoji: '🚀' },
     { id: 'travel', label: 'Travel', emoji: '✈️' },
     { id: 'books', label: 'Books', emoji: '📚' },
+    { id: 'running', label: 'Running', emoji: '🏃' },
     { id: 'contact', label: 'Contact Me', emoji: '✉️' },
   ]
 

@@ -1,4 +1,4 @@
-name: Update Currently Reading
+name: Update Currently Reading & Running
 
 on:
   schedule:
@@ -28,6 +28,13 @@ jobs:
       - name: Fetch and update currently reading
         run: node scripts/update-currently-reading.cjs
       
+      - name: Fetch and update recent runs
+        run: node scripts/update-running.cjs
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+      
       - name: Check for changes
         id: git-check
         run: |
@@ -39,7 +46,7 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add src/data/portfolioData.tsx
-          git commit -m "Update currently reading from Goodreads"
+          git commit -m "Update currently reading and recent runs"
           git push
       
       - name: Trigger deploy workflow
