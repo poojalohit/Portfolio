@@ -24,12 +24,12 @@ const Navigation = ({ activeSection }: NavigationProps) => {
 
   const navItems = [
     { id: 'education', label: 'Education', emoji: '🎓' },
-    { id: 'work', label: 'Work Experience', emoji: '💼' },
+    { id: 'work', label: 'Work', emoji: '💼' },
     { id: 'projects', label: 'Projects', emoji: '🚀' },
     { id: 'travel', label: 'Travel', emoji: '✈️' },
     { id: 'books', label: 'Books', emoji: '📚' },
     { id: 'running', label: 'Running', emoji: '🏃' },
-    { id: 'contact', label: 'Contact Me', emoji: '✉️' },
+    { id: 'contact', label: 'Contact', emoji: '✉️' },
   ]
 
   const scrollToSection = (sectionId: string) => {

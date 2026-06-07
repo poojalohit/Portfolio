@@ -658,6 +658,7 @@ export interface RecentRun {
   time: string
   achievements?: number
   polyline?: string
+  mapUrl?: string
   photoUrl?: string
   activityUrl?: string
 }

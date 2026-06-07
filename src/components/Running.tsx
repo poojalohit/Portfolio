@@ -1,3 +1,4 @@
+import type { SyntheticEvent } from 'react'
 import { motion } from 'framer-motion'
 import { FaExternalLinkAlt, FaStrava } from 'react-icons/fa'
 import { recentRuns, stravaLink, type RecentRun } from '../data/portfolioData'
@@ -78,21 +79,49 @@ function buildRoutePath(
 const FALLBACK_PATH =
   'M40 140 C70 110, 60 80, 95 70 S150 60, 150 35 S120 15, 160 18 S240 40, 260 25'
 
+const hideOnError = (e: SyntheticEvent<HTMLImageElement>) => {
+  e.currentTarget.style.display = 'none'
+}
+
 const RouteThumbnail = ({ run }: { run: RecentRun }) => {
-  if (run.photoUrl) {
+  const hasMap = !!run.mapUrl
+  const hasPhoto = !!run.photoUrl
+
+  // Map + uploaded photo, side by side (mirrors the Strava activity card).
+  if (hasMap && hasPhoto) {
+    return (
+      <div className="grid grid-cols-2 gap-2">
+        <img
+          src={run.mapUrl}
+          alt={`${run.title} route map`}
+          className="w-full h-36 object-cover rounded-xl"
+          loading="lazy"
+          onError={hideOnError}
+        />
+        <img
+          src={run.photoUrl}
+          alt={`${run.title} photo`}
+          className="w-full h-36 object-cover rounded-xl"
+          loading="lazy"
+          onError={hideOnError}
+        />
+      </div>
+    )
+  }
+
+  if (hasMap || hasPhoto) {
     return (
       <img
-        src={run.photoUrl}
-        alt={`${run.title} route`}
+        src={(run.mapUrl || run.photoUrl) as string}
+        alt={`${run.title} ${hasMap ? 'route map' : 'photo'}`}
         className="w-full h-44 object-cover rounded-xl"
         loading="lazy"
-        onError={(e) => {
-          e.currentTarget.style.display = 'none'
-        }}
+        onError={hideOnError}
       />
     )
   }
 
+  // Fallback: draw the route from the polyline, or a decorative squiggle.
   const routePath = run.polyline ? buildRoutePath(run.polyline) : null
 
   return (
