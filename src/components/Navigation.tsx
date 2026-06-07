@@ -53,9 +53,9 @@ const Navigation = ({ activeSection }: NavigationProps) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex items-center justify-center mt-12"
+        className="flex items-center justify-center mt-12 w-full"
       >
-        <div className="glass-strong rounded-full px-4 py-3 shadow-2xl border border-surface-light/30 flex items-center gap-2">
+        <div className="glass-strong rounded-full px-2.5 sm:px-4 py-2 sm:py-3 shadow-2xl border border-surface-light/30 flex items-center gap-1 sm:gap-2 max-w-full overflow-x-auto no-scrollbar">
           {navItems.map((item) => {
             const isActive = activeSection === item.id
             
@@ -65,15 +65,15 @@ const Navigation = ({ activeSection }: NavigationProps) => {
                 onClick={() => scrollToSection(item.id)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`flex items-center gap-2.5 px-6 py-3.5 rounded-full transition-all duration-300 focus-ring ${
+                className={`flex items-center gap-2.5 px-3 sm:px-5 lg:px-6 py-2.5 sm:py-3.5 rounded-full transition-all duration-300 focus-ring flex-shrink-0 whitespace-nowrap ${
                   isActive
                     ? 'bg-accent-gold text-charcoal shadow-lg shadow-accent-gold/30'
                     : 'text-text-secondary hover:bg-surface-elevated hover:text-text-primary'
                 }`}
                 aria-label={item.label}
               >
-                <span className="text-xl leading-none">{item.emoji}</span>
-                <span className="text-base font-medium hidden md:inline">{item.label}</span>
+                <span className="text-lg sm:text-xl leading-none">{item.emoji}</span>
+                <span className="text-sm lg:text-base font-medium hidden lg:inline">{item.label}</span>
               </motion.button>
             )
           })}

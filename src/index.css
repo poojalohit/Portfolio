@@ -39,6 +39,15 @@
   .hover-lift {
     @apply transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl;
   }
+
+  /* Hide scrollbar but keep scrolling (used by the mobile nav pill) */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* Smooth scrolling */

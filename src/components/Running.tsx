@@ -150,30 +150,30 @@ const RouteThumbnail = ({ run }: { run: RecentRun }) => {
 
 const Stat = ({ label, value }: { label: string; value: string }) => (
   <div>
-    <p className="text-text-muted text-xs mb-1">{label}</p>
-    <p className="text-text-primary text-lg font-light">{value}</p>
+    <p className="text-text-muted text-[11px] sm:text-xs mb-1">{label}</p>
+    <p className="text-text-primary text-base sm:text-lg font-light whitespace-nowrap">{value}</p>
   </div>
 )
 
 const Running = () => {
   return (
-    <section id="running" className="py-20 px-6 relative bg-charcoal">
+    <section id="running" className="py-16 sm:py-20 px-4 sm:px-6 relative bg-charcoal">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="glass-strong rounded-3xl p-8 md:p-12 border border-surface-light/20"
+          className="glass-strong rounded-3xl p-6 sm:p-8 md:p-12 border border-surface-light/20"
         >
           <h2 className="text-4xl md:text-5xl font-serif mb-4 text-center text-text-primary">
             Running
           </h2>
-          <p className="text-center text-text-muted mb-12 text-lg">
+          <p className="text-center text-text-muted mb-8 sm:mb-12 text-base sm:text-lg">
             My most recent runs, straight from Strava.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {recentRuns.map((run, index) => (
               <motion.a
                 key={`${run.title}-${run.date}`}
@@ -184,7 +184,7 @@ const Running = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="block bg-surface rounded-2xl p-6 hover:bg-surface-elevated transition-all duration-300 focus-ring border border-accent-gold/20 shadow-lg shadow-accent-gold/5"
+                className="block bg-surface rounded-2xl p-5 sm:p-6 hover:bg-surface-elevated transition-all duration-300 focus-ring border border-accent-gold/20 shadow-lg shadow-accent-gold/5"
               >
                 {/* Header */}
                 <div className="flex items-start gap-3 mb-5">
@@ -192,10 +192,10 @@ const Running = () => {
                     <FaStrava className="text-[#FC4C02] text-lg" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-xl font-light text-text-primary truncate">
+                    <h3 className="text-lg sm:text-xl font-light text-text-primary truncate">
                       {run.title}
                     </h3>
-                    <p className="text-text-muted text-sm truncate">
+                    <p className="text-text-muted text-xs sm:text-sm truncate">
                       {run.date}
                       {run.location ? ` · ${run.location}` : ''}
                     </p>
@@ -203,14 +203,14 @@ const Running = () => {
                 </div>
 
                 {/* Stats */}
-                <div className="flex items-start justify-between gap-2 mb-5">
+                <div className="flex flex-wrap items-start justify-between gap-x-2 gap-y-3 mb-5">
                   <Stat label="Distance" value={run.distance} />
                   <Stat label="Pace" value={run.pace} />
                   <Stat label="Time" value={run.time} />
                   {typeof run.achievements === 'number' && (
                     <div className="text-right">
-                      <p className="text-text-muted text-xs mb-1">Achievements</p>
-                      <p className="text-text-primary text-lg font-light">
+                      <p className="text-text-muted text-[11px] sm:text-xs mb-1">Achievements</p>
+                      <p className="text-text-primary text-base sm:text-lg font-light whitespace-nowrap">
                         🏆 {run.achievements}
                       </p>
                     </div>
