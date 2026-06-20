@@ -50,7 +50,7 @@ const Hero = ({ activeSection }: HeroProps) => {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-xl md:text-2xl text-text-secondary"
             >
-              Building at the intersection of technology, business, and innovation.
+              Career in Cybersecurity GTM. Life outside it, measured in countries visited, miles run, and books finished. Scroll to see both.
             </motion.p>
           </motion.div>
 
