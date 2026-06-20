@@ -1,6 +1,8 @@
-import type { SyntheticEvent } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { FaExternalLinkAlt, FaStrava } from 'react-icons/fa'
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
 import { recentRuns, stravaLink, type RecentRun } from '../data/portfolioData'
 
 // Decode a Google-encoded polyline into [lat, lng] pairs (keyless, no map provider needed).
@@ -36,103 +38,102 @@ function decodePolyline(str: string, precision = 5): [number, number][] {
   return coordinates
 }
 
-// Build an SVG path string that fits the route inside the viewBox.
-function buildRoutePath(
-  polyline: string,
-  width = 300,
-  height = 170,
-  pad = 14
-): string | null {
-  let points: [number, number][] = []
-  try {
-    points = decodePolyline(polyline)
-  } catch {
-    return null
-  }
-  if (points.length < 2) return null
-
-  const lats = points.map((p) => p[0])
-  const lngs = points.map((p) => p[1])
-  const minLat = Math.min(...lats)
-  const maxLat = Math.max(...lats)
-  const minLng = Math.min(...lngs)
-  const maxLng = Math.max(...lngs)
-  const spanLat = maxLat - minLat || 1e-6
-  const spanLng = maxLng - minLng || 1e-6
-
-  const w = width - pad * 2
-  const h = height - pad * 2
-  const scale = Math.min(w / spanLng, h / spanLat)
-  const offsetX = pad + (w - spanLng * scale) / 2
-  const offsetY = pad + (h - spanLat * scale) / 2
-
-  return points
-    .map(([lat, lng], i) => {
-      const x = offsetX + (lng - minLng) * scale
-      const y = offsetY + (maxLat - lat) * scale // flip Y so north is up
-      return `${i === 0 ? 'M' : 'L'}${x.toFixed(1)} ${y.toFixed(1)}`
-    })
-    .join(' ')
-}
-
 // Decorative fallback squiggle for runs that don't have a route polyline yet.
 const FALLBACK_PATH =
   'M40 140 C70 110, 60 80, 95 70 S150 60, 150 35 S120 15, 160 18 S240 40, 260 25'
 
-const hideOnError = (e: SyntheticEvent<HTMLImageElement>) => {
-  e.currentTarget.style.display = 'none'
-}
+// Real street map (OpenStreetMap tiles via Leaflet, no API key) with the run's
+// route drawn on top — the same look as a Strava activity map. The map is fully
+// static (no zoom/drag) so the whole card stays a single click target.
+const RouteMap = ({ polyline }: { polyline: string }) => {
+  const containerRef = useRef<HTMLDivElement>(null)
 
-// Geoapify key is injected at build time (VITE_GEOAPIFY_API_KEY). When present we
-// render a real street map with the route drawn on it, built straight from the
-// Strava polyline. The key is restricted to the site's domain in Geoapify.
-const GEOAPIFY_KEY = import.meta.env.VITE_GEOAPIFY_API_KEY as string | undefined
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
 
-function buildGeoapifyMapUrl(polyline?: string): string | null {
-  if (!polyline || !GEOAPIFY_KEY) return null
-  const geometry = `polyline:${encodeURIComponent(
-    polyline
-  )};linecolor:%23fc4c02;linewidth:5;linestyle:solid`
+    let points: [number, number][] = []
+    try {
+      points = decodePolyline(polyline)
+    } catch {
+      points = []
+    }
+    if (points.length < 2) return
+
+    const map = L.map(el, {
+      zoomControl: false,
+      attributionControl: true,
+      dragging: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      touchZoom: false,
+      // @ts-expect-error - `tap` exists at runtime but is missing from the types
+      tap: false,
+      fadeAnimation: false,
+    })
+    map.attributionControl.setPrefix('')
+
+    L.tileLayer(
+      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+      {
+        attribution: '© OpenStreetMap © CARTO',
+        maxZoom: 19,
+      }
+    ).addTo(map)
+
+    const route = L.polyline(points, {
+      color: '#FC4C02',
+      weight: 4,
+      opacity: 0.95,
+      lineJoin: 'round',
+      lineCap: 'round',
+    }).addTo(map)
+
+    map.fitBounds(route.getBounds(), { padding: [16, 16] })
+    // Container size can settle a frame after mount; re-measure to avoid gray tiles.
+    setTimeout(() => {
+      map.invalidateSize()
+      map.fitBounds(route.getBounds(), { padding: [16, 16] })
+    }, 0)
+
+    return () => {
+      map.remove()
+    }
+  }, [polyline])
+
   return (
-    'https://maps.geoapify.com/v1/staticmap' +
-    '?style=osm-bright&width=600&height=400&scaleFactor=2' +
-    `&geometry=${geometry}` +
-    `&apiKey=${GEOAPIFY_KEY}`
+    <div
+      ref={containerRef}
+      className="absolute inset-0 w-full h-full"
+      style={{ pointerEvents: 'none' }}
+      aria-hidden="true"
+    />
   )
 }
 
 const RouteThumbnail = ({ run }: { run: RecentRun }) => {
-  // Prefer a prebuilt map URL (data), else build a street map from the polyline.
-  const mapSrc = run.mapUrl || buildGeoapifyMapUrl(run.polyline)
-  // Always have the drawn route ready as a resilient fallback layer.
-  const routePath = run.polyline ? buildRoutePath(run.polyline) : null
-
   return (
     <div className="relative w-full h-44 rounded-xl overflow-hidden bg-gradient-to-br from-surface-elevated to-surface border border-surface-light/20">
-      {/* Route outline — also shows through if the map image fails to load */}
-      <svg
-        viewBox="0 0 300 170"
-        className="absolute inset-0 w-full h-full"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        <path
-          d={routePath || FALLBACK_PATH}
-          fill="none"
-          stroke="#FC4C02"
-          strokeWidth={3}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          opacity={routePath ? 1 : 0.55}
-        />
-      </svg>
-      {mapSrc && (
-        <img
-          src={mapSrc}
-          alt={`${run.title} route map`}
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="lazy"
-          onError={hideOnError}
-        />
+      {run.polyline ? (
+        <RouteMap polyline={run.polyline} />
+      ) : (
+        <svg
+          viewBox="0 0 300 170"
+          className="absolute inset-0 w-full h-full"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <path
+            d={FALLBACK_PATH}
+            fill="none"
+            stroke="#FC4C02"
+            strokeWidth={3}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            opacity={0.55}
+          />
+        </svg>
       )}
     </div>
   )
