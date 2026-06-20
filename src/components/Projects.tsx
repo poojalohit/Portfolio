@@ -15,16 +15,14 @@ interface Project {
 
 const getProjectTags = (title: string): string[] => {
   const tagMap: Record<string, string[]> = {
-    'Weekly Capital Markets Tracker': ['Finance', 'Data Analysis', 'AI'],
     'AI-First GTM Engineering': ['GTM', 'AI', 'Automation'],
-    'AI-Powered Daily Intelligence Briefing': ['AI', 'Automation', 'Product'],
+    'Sentiment': ['Marketing', 'Data Science', 'ML'],
     'ReSKUe': ['Product', 'E-Commerce', 'Strategy'],
     'Economic Analysis': ['Economics', 'Finance', 'Research'],
     'Behind the Build': ['Product', 'Content', 'Strategy'],
     'Sharing Excess': ['Volunteering', 'Sustainability', 'Community'],
     'Machine Learning': ['Machine Learning', 'Digital Twins'],
     'Human-Computer Interaction': ['Human-Computer Interaction', 'UX'],
-    'Tableau': ['Analytics', 'Data Visualization'],
     'OptiSecure': ['NYU VIP', 'Security', 'Research'],
   }
   
@@ -52,13 +50,11 @@ const Projects = () => {
   
   // Custom order for Projects category
   const projectOrder: Record<string, number> = {
-    'OptiSecure': 0,
     'AI-First GTM Engineering': 1,
     'Economic Analysis': 2,
-    'Weekly Capital Markets Tracker': 3,
+    'Sentiment': 3,
     'ReSKUe': 4,
-    'AI-Powered Daily Intelligence Briefing': 5,
-    'Tableau Analysis': 6,
+    'OptiSecure': 5,
   }
 
   // Convert data file projects to component format

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { educationData } from '../data/portfolioData'
+import { educationData, certificationsData } from '../data/portfolioData'
 
 const Education = () => {
 
@@ -67,6 +67,50 @@ const Education = () => {
               </motion.div>
             ))}
           </div>
+
+          {certificationsData.length > 0 && (
+            <div className="mt-8 pt-8 border-t border-surface-light/20">
+              <h3 className="text-xl font-light text-center text-text-primary mb-6">
+                Certifications
+              </h3>
+              <div className="flex flex-wrap justify-center gap-4">
+                {certificationsData.map((cert, index) => {
+                  const card = (
+                    <div className="flex items-center gap-3 bg-surface rounded-2xl px-6 py-4 border border-accent-gold/20 shadow-lg shadow-accent-gold/5 hover:bg-surface-elevated transition-all duration-300 h-full">
+                      <span className="text-2xl leading-none">🛡️</span>
+                      <div>
+                        <p className="text-text-primary font-light">{cert.name}</p>
+                        <p className="text-text-muted text-sm">{cert.date}</p>
+                      </div>
+                    </div>
+                  )
+
+                  return (
+                    <motion.div
+                      key={cert.name}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                    >
+                      {cert.link ? (
+                        <a
+                          href={cert.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block focus-ring rounded-2xl"
+                        >
+                          {card}
+                        </a>
+                      ) : (
+                        card
+                      )}
+                    </motion.div>
+                  )
+                })}
+              </div>
+            </div>
+          )}
         </motion.div>
       </div>
     </section>

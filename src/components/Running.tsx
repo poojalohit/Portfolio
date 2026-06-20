@@ -161,7 +161,7 @@ const Running = () => {
             Running
           </h2>
           <p className="text-center text-text-muted mb-8 sm:mb-12 text-base sm:text-lg">
-            My most recent runs, straight from Strava.
+            Currently on a mission to see how fast my legs can move
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">

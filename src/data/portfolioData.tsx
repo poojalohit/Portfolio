@@ -46,8 +46,24 @@ export const educationData: EducationItem[] = [
     degree: 'Bachelor\'s Degree in Electronics and Telecommunication Engineering',
     period: '2017-2021',
     gpa: 'GPA: 9.51/10.00',
-    details: ['100% Scholarship across all four years of study'],
+    details: ['Full-ride Merit Scholarship across all four years of study'],
     color: 'yellow',
+  },
+]
+
+// ============================================
+// CERTIFICATIONS
+// ============================================
+export interface Certification {
+  name: string
+  date: string
+  link?: string
+}
+
+export const certificationsData: Certification[] = [
+  {
+    name: 'CompTIA Security+',
+    date: 'Certified June 2025',
   },
 ]
 
@@ -81,39 +97,44 @@ export const workExperienceData: WorkExperienceItem[] = [
     link: 'https://www.commvault.com',
     isIntern: true,
     description: [
-      'Interning at Commvault this summer - watch this space post-summer for more details',
+      'Interning at Commvault this summer!',
+      'Watch this space for more details.',
     ],
   },
   {
-    company: 'Thales Group',
-    role: 'Inside Sales Rep',
-    period: '2022-2025',
+    company: 'Thales',
+    role: 'Inside Sales – Cybersecurity Solutions',
+    period: '2022 – 2025',
     link: 'https://www.thalesgroup.com',
     description: [
-      'Grew sales for identity & access management (IAM) software - the technology that controls who can access what systems and data inside large organizations.',
-      'Drove a 20% increase in contract renewals across a $3M annual portfolio in the Middle East, Africa, and Turkey region, while using Power BI and Salesforce to forecast revenue with 94% accuracy.',
+      'Drove IAM renewal revenue growth across the META region by executing targeted messaging and value-driven positioning.',
+      'Partnered with marketing, product, and technical teams to translate customer insights into high-impact GTM campaigns.',
+      'Built Salesforce and Power BI dashboards to optimize pipeline analytics and maintain high-accuracy sales forecasting.',
+      'Awarded at Sales Kickoff 2025 for outstanding contribution to team performance and collaboration.',
     ],
   },
   {
     company: 'Beta Information Technology',
-    role: 'Sales Account Manager',
-    period: '2021-2022',
+    role: 'Account Manager – Cybersecurity Solutions',
+    period: '2021 – 2022',
     link: 'https://www.betait.net',
     description: [],
     roles: [
       {
-        role: 'Sales Account Manager',
-        period: '2021-2022',
+        role: 'Account Manager – Cybersecurity Solutions',
+        period: '2021 – 2022',
         description: [
-          'Managed end-to-end sales for cybersecurity solutions - including network security, cloud protection, and infrastructure monitoring tools - across 15 enterprise clients.',
+          'Managed 15+ high-value enterprise accounts, orchestrating tailored cybersecurity and data infrastructure solutions.',
+          'Conducted competitive and market research to inform GTM execution and consistently drive quota attainment.',
+          'Led cross-functional alignment across vendors, distributors, and technical teams to accelerate deal delivery.',
         ],
       },
       {
-        role: 'Intern',
-        period: 'June 2020 - August 2020',
+        role: 'Cybersecurity Intern',
+        period: 'Jun 2020 – Aug 2020',
         isIntern: true,
         description: [
-          'Researched emerging cybersecurity technologies to help leadership decide which solutions to bring to market.',
+          'Analyzed emerging threat landscapes and cybersecurity trends, delivering weekly strategic insights to executive leadership to guide portfolio decisions.',
         ],
       },
     ],
@@ -198,52 +219,7 @@ export const projectsData: ProjectItem[] = [
     linkText: 'View OptiSecure site',
   },
   {
-    title: 'Tableau Analysis: Dietary Patterns & Biometric Outcomes',
-    category: 'Projects',
-    description: () => (
-      <div className="space-y-4">
-        <div>
-          <span className="font-light text-accent-blue">🗂 Project Overview</span>
-          <p className="mt-1">
-            This interactive dashboard was designed for clinical nutritionists to identify correlations between patient lifestyle habits (Diet, Cooking Method, Workout Type) and key biometric health outcomes (BMI, Cholesterol, Sodium levels, and Metabolic Efficiency).
-          </p>
-        </div>
-        <div>
-          <span className="font-semibold text-accent-gold">🎯 The Business Question</span>
-          <p className="mt-1">
-            How can we move beyond generic diet prescriptions to find specific combinations of cooking methods and activity levels that maximize caloric deficit while minimizing cardiovascular risk?
-          </p>
-        </div>
-        <div>
-          <span className="font-light text-dusty-rose">🛠 Tools & Techniques</span>
-          <ul className="mt-1 space-y-1 list-disc list-inside">
-            <li>Tool: Tableau Public</li>
-            <li>Data Structure: Aggregated tabular lifestyle data</li>
-            <li>Key Features: Linked Highlighting, Cross-Filtering, Parameter Actions</li>
-            <li>Accessibility: Implemented Orange-Blue Diverging and Viridis color palettes to ensure full readability for color-blind users (Deuteranopia/Protanopia safe).</li>
-          </ul>
-        </div>
-        <div>
-          <span className="font-semibold text-accent-gold">💡 Key Insights & Findings</span>
-          <p className="mt-1">Through cross-tabulated analysis, three major patterns emerged that challenge standard dietary advice:</p>
-          <ul className="mt-2 space-y-2 list-disc list-inside">
-            <li><strong>The "Grill & Burn" Sweet Spot:</strong> Analysis reveals that a Grilled, Low-Carb diet offers the highest probability of maintaining an Ideal BMI while keeping cholesterol below average.</li>
-            <li><strong>The Metabolic Threshold:</strong> Hydration efficiency is non-linear. Metabolic burn efficiency remains stagnant until patients cross a threshold of 3.0L per day.</li>
-            <li><strong>Intensity over Duration:</strong> HIIT delivers the most consistent net caloric deficit compared to Strength training.</li>
-          </ul>
-        </div>
-        <div>
-          <span className="font-light text-dusty-rose">🚀 Conclusion</span>
-          <p className="mt-1">
-            To achieve optimal health outcomes, the data supports a protocol of Grilled Low-Carb nutrition combined with HIIT activity, supported by a strict &gt;3L daily hydration target.
-          </p>
-        </div>
-      </div>
-    ),
-    link: 'https://public.tableau.com/views/DietaryPatternsBiometricOutcomes/Dashboard3?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link',
-  },
-  {
-    title: 'ReSKUe: An AI-Powered Platform to Reduce Retail Food Waste',
+    title: 'ReSKUe: Reducing Retail Food Waste with AI',
     category: 'Projects',
     description: () => (
       <div className="space-y-3">
@@ -299,29 +275,7 @@ export const projectsData: ProjectItem[] = [
     linkText: 'View the full analysis',
   },
   {
-    title: 'Weekly Capital Markets Tracker',
-    category: 'Projects',
-    description: () => (
-      <div className="space-y-4">
-        <p>
-          An automated fintech solution designed to track and analyze U.S. financial conditions. By replacing manual spreadsheets with a programmatic pipeline, the project provides real-time visibility into market-moving trends.
-        </p>
-        <div>
-          <span className="font-semibold text-accent-gold">Key Features:</span>
-          <ul className="mt-2 space-y-2 list-disc list-inside">
-            <li><strong>Automated Data Pipeline:</strong> Pulls weekly closing prices and percentage changes for the S&P 500, 10-Year Treasury Yields, Gold, and Bitcoin using the yfinance API.</li>
-            <li><strong>AI Narrative Engine:</strong> Uses Large Language Models (LLMs) to synthesize market data into a 450-word narrative, connecting quantitative shifts to broader macro themes like Fed policy and geopolitical events.</li>
-            <li><strong>Transmission Mechanism Analysis:</strong> Automatically identifies global events and explains their specific impact on U.S. risk sentiment and FX markets.</li>
-            <li><strong>Interactive Interface:</strong> A GitHub Pages-hosted frontend that allows users to visualize market volatility and explore advanced corporate finance concepts through an interactive library.</li>
-          </ul>
-        </div>
-      </div>
-    ),
-    link: 'https://poojalohit.github.io/Weekly-Capital-Markets/',
-    linkText: 'View the Tracker',
-  },
-  {
-    title: 'AI-First GTM Engineering',
+    title: 'My Framework: AI-First GTM Engineering',
     category: 'Projects',
     description: () => (
       <div className="space-y-4">
@@ -340,45 +294,30 @@ export const projectsData: ProjectItem[] = [
     linkText: 'View the Deck',
   },
   {
-    title: 'AI-Powered Daily Intelligence Briefing',
+    title: 'Social Media Sentiment Analysis using ML Models',
     category: 'Projects',
     description: () => (
       <div className="space-y-4">
         <p>
-          Built an automated news aggregation system using n8n and Google Gemini AI that replaces 45 minutes of daily manual scanning with a curated, AI-scored intelligence briefing delivered straight to my inbox every morning.
+          Analyzed 732 social media posts across Twitter, Instagram, and Facebook to uncover how sentiment, platform, and posting behavior shape audience engagement — turning raw social data into signals a GTM or marketing team can act on.
         </p>
         <div>
-          <span className="font-semibold text-accent-gold">The Problem:</span>
-          <p className="mt-1">
-            Tracking 224+ daily articles across Foreign Affairs, TechCrunch, BBC World, and other sources was overwhelming and unsustainable. Most content was irrelevant noise.
-          </p>
-        </div>
-        <div>
-          <span className="font-light text-accent-blue">How It Works:</span>
+          <span className="font-semibold text-accent-gold">Why it matters for GTM &amp; Marketing:</span>
           <ul className="mt-2 space-y-2 list-disc list-inside">
-            <li><strong>Multi-Source Aggregation:</strong> 6 RSS feeds pull articles in parallel from Foreign Affairs, TechCrunch AI, BBC World, Gothamist, The Hindu, and The Record.</li>
-            <li><strong>Gemini AI Scoring:</strong> Each article is scored 1-10 by Google Gemini based on relevance to tech management, cybersecurity, and global business.</li>
-            <li><strong>Smart Filtering:</strong> Only articles scoring 7+/10 make it through, reducing noise by 94%.</li>
-            <li><strong>Priority Email:</strong> A styled HTML briefing categorizes stories as Critical (9-10), Important (8), or High (7) and is delivered at 8:00 AM EST.</li>
+            <li>Pinpointed which platforms and sentiment profiles drive the highest engagement — informing channel prioritization and budget allocation.</li>
+            <li>Surfaced the hashtags and posting windows that consistently lift reach, directly applicable to content calendars and campaign timing.</li>
+            <li>Quantified statistically significant regional differences in sentiment and platform preference to guide market-specific messaging.</li>
           </ul>
         </div>
         <div>
-          <span className="font-light text-dusty-rose">Tech Stack:</span>
+          <span className="font-light text-accent-blue">Approach:</span>
           <p className="mt-1">
-            n8n (workflow automation), Google Gemini API, JavaScript (async/await, Fetch API), Gmail API, RSS feeds, Cron scheduling.
+            An end-to-end workflow spanning data cleaning, EDA, hypothesis testing (Chi-Square, Kruskal-Wallis, Mann-Whitney U), and predictive modeling — comparing five classifiers, with tree-based models (Random Forest, Gradient Boosting) outperforming linear baselines for both sentiment classification and engagement prediction.
           </p>
-        </div>
-        <div>
-          <span className="font-semibold text-accent-gold">Results:</span>
-          <ul className="mt-2 space-y-1 list-disc list-inside">
-            <li>~45 minutes saved daily — zero manual scanning required</li>
-            <li>224 articles filtered down to 12-15 high-priority picks</li>
-            <li>100% of delivered content scores 7+/10 on relevance</li>
-          </ul>
         </div>
       </div>
     ),
-    link: 'https://github.com/poojalohit/Daily-Newsletter-',
+    link: 'https://github.com/poojalohit/Sentiment-Analysis-of-Social-Media',
     linkText: 'View on GitHub',
   },
   {
