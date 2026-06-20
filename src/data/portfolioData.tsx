@@ -46,7 +46,7 @@ export const educationData: EducationItem[] = [
     degree: 'Bachelor\'s Degree in Electronics and Telecommunication Engineering',
     period: '2017-2021',
     gpa: 'GPA: 9.51/10.00',
-    details: ['Full-ride Merit Scholarship across all four years of study'],
+    details: ['Full-ride merit scholarship across all four years'],
     color: 'yellow',
   },
 ]
