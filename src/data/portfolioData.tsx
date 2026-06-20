@@ -674,7 +674,6 @@ export const recentRuns: RecentRun[] = [
     time: '31m 38s',
     achievements: 5,
     polyline: '{n_xFvhkbMXYHEV]h@]j@Gp@Lv@XnAx@HDd@`@Zb@`@b@NHFJVVDJJJHDNARDRCh@UHGV}@@c@G[M_@Q]MKIO[_AIs@Dc@Ha@VYTMVA^DXVJVPz@LZJJBFLJTl@t@z@j@R`@D`@JhAPP?HGJ@XLX@FB^C^GH?PC\\Ap@Lj@b@\\t@ZX`@l@TP^n@j@r@ZRb@f@ZTj@X^VdAf@|@LNC\\@d@]`@e@HGf@Sn@OX?FHXBFFJ@LFH?n@JN@LIH@VGN@LCHBn@BPJVFJHh@Vb@^J@JHPFDH\\V`Ah@d@\\BFd@RHJ|@j@DFLD~@p@TJNRJDJHF?HLRLOUWWe@QMQIECKODIECGCBCIM?CEIYKEWWMEc@[OE]]C@GEI?GBIGC@SECEIUE?BKCGQISSQEEGc@[QEEEK?AIE?CGM?QOKCKIK?GCYEs@?[JSCm@Dm@Ma@QI@g@Cg@Dm@NUPaA~@E@W?w@Es@YKCMK_@Qi@a@YOCIYYg@]]]u@{@oBsCe@g@e@WGA]@]Hc@@c@Fq@AQGyAQ[?UKg@Ia@MQMGAUYSOQ[Ug@Ma@@GK]EEIUQ]KKc@UI@YHWZSZCLCr@?TLj@DFL\\LN@JJHPZDRDTAf@ANIVGHGNQPUHYBYEUM[_@GMKIC?KQUU',
-    photoUrl: 'https://dgtzuqphqg23d.cloudfront.net/FpN6CkB1jO1ZGB8GFy-6eDzbOAKZIjmuiMnl-bDLFBM-576x768.jpg',
     activityUrl: 'https://www.strava.com/activities/18985944698',
   },
   {
@@ -685,7 +684,6 @@ export const recentRuns: RecentRun[] = [
     time: '35m 36s',
     achievements: 21,
     polyline: '_p_xFjjkbMHQNQ^i@N[f@[DM@QDEF?TLXDLHJBHCXHFFZHPLZNHHRHHJPFZ\\HAFBX\\DTd@p@RPHNLHj@HZGTONSHQJc@@o@AOOi@MY[e@Sc@Is@?]B]J[`@a@RCP?ND^ZP\\BTl@`Bn@z@j@d@lAX\\BHAP@F@XRl@HX?\\FN?tBULBXJZTbApAZh@LJt@bA~@fA\\RBHr@h@n@^ZNH@XNJBLLz@HV?TCdA}@d@YNGVEF@`@CRBVLH?LHbANV?F@NILA|@Gb@HNFXRL@|@l@DFRHNLZNb@\\b@V`At@\\Nd@ZBFp@b@d@RnA`ANCFLPNNVPLXHRPJ@DBdAz@p@ZLN^NRRPFDHLDLLb@Tf@`@PZRrACv@K`B?HBAF_@@u@AGDS@k@AWGi@I_@EIm@c@MM]SIKWOMCeAw@m@]c@]MEQYKCK@EAE@EDGGO[SWg@WEG]UKCk@c@MEMS[WCG_CyAc@]w@e@aBiAQIEB?GUO_@Ka@QEEa@Ee@@GGQ@_@Jq@Bc@KMIUIq@Ei@Do@PGA_A`A]Pg@Fs@I}@a@c@]q@]EI]Sk@e@mByBoAkB][IQWYi@M[?W?WHq@H_@A_@Ie@EMIKAO@_AOMEYEi@Oa@[?MEEOW_@a@_@q@WmAc@c@SG[@[NSTQd@?r@Jr@Xz@Td@DDNd@F^?\\Qp@UX]Na@A]OSSAGKCUQCM}@}@CC?IIMYMYMEGi@Wk@_@{@Se@CSB',
-    photoUrl: 'https://dgtzuqphqg23d.cloudfront.net/fEoaLlhHblRcLiZO5NGIC5xKU25K6fUWy2VgAckRuwk-576x768.jpg',
     activityUrl: 'https://www.strava.com/activities/18942134062',
   },
   {
@@ -696,7 +694,6 @@ export const recentRuns: RecentRun[] = [
     time: '34m 02s',
     achievements: 11,
     polyline: 'oh_xFb~kbMGFJH@BGA@BPAb@DD?HCDB?^@VDDEDDF?RBLBZHd@AHFb@LRPJVBVEPMLMJ[D_@A_@@GAu@Og@?I@EHGPDR?RSBMRKH?LHRXA^DP?\\BHT?BDHD?B@BJAHBLFPR@?HJDD@JEFDLNPHPLJFHLH\\GRKP@JDFHDL?p@ADH`@DFHTHHNJDNBBI`@?DEHA\\HX^ZDJHb@?NDJHBFK@GLYDa@FQBSBCD@z@jA@Ht@d@NRRJD?f@^^Lt@`@J?LDbAf@h@Rf@b@XXFPNLHLDH?HDJFTN`@\\l@DLHJRPt@`@l@HVA`@IbACP@`@Rn@l@PTBLFHDXb@|AALZtAJXB@?IPKD?PJZh@?FZ^T^HBTTPHRPJDHHLFZHf@Tv@JRAb@F`BITEK?GBECCBIAEE[NKCKBEAG@EAQ?EAo@EsAQKMG?[WMGMO}@o@aA{AGQ}@gB?GDK@]GYEg@B}@Fg@Ci@BM@[AO@IE_@Ak@G]@KKu@U{@EAMQIAK@ALY^_@|@Uv@Gb@MfA@j@EVA?GCQ?SDc@?o@F]Ac@MWUWIIK_@s@S_AKIAMISGKICUYWUW]i@_@OAm@WQ?WKKK]OEGc@YMCe@][MYQ[a@YUIQS]c@kASaAKw@IUKk@[y@QYQG[W_@MMAe@USUGMMOO_@CQMUW_BUu@]w@[c@OMCGOISU[W[KM?E@ACQBIDKAMDS@GHQFMHG?OHM@KBSA]G',
-    photoUrl: 'https://dgtzuqphqg23d.cloudfront.net/7d6AfLpwhlf7U6Sh6uEZ5N3IKcy30VLm4xhJbwP_7KQ-576x768.jpg',
     activityUrl: 'https://www.strava.com/activities/18884043197',
   }
 ]

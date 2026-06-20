@@ -83,52 +83,36 @@ const hideOnError = (e: SyntheticEvent<HTMLImageElement>) => {
   e.currentTarget.style.display = 'none'
 }
 
+// Geoapify key is injected at build time (VITE_GEOAPIFY_API_KEY). When present we
+// render a real street map with the route drawn on it, built straight from the
+// Strava polyline. The key is restricted to the site's domain in Geoapify.
+const GEOAPIFY_KEY = import.meta.env.VITE_GEOAPIFY_API_KEY as string | undefined
+
+function buildGeoapifyMapUrl(polyline?: string): string | null {
+  if (!polyline || !GEOAPIFY_KEY) return null
+  const geometry = `polyline:${encodeURIComponent(
+    polyline
+  )};linecolor:%23fc4c02;linewidth:5;linestyle:solid`
+  return (
+    'https://maps.geoapify.com/v1/staticmap' +
+    '?style=osm-bright&width=600&height=400&scaleFactor=2' +
+    `&geometry=${geometry}` +
+    `&apiKey=${GEOAPIFY_KEY}`
+  )
+}
+
 const RouteThumbnail = ({ run }: { run: RecentRun }) => {
-  const hasMap = !!run.mapUrl
-  const hasPhoto = !!run.photoUrl
-
-  // Map + uploaded photo, side by side (mirrors the Strava activity card).
-  if (hasMap && hasPhoto) {
-    return (
-      <div className="grid grid-cols-2 gap-2">
-        <img
-          src={run.mapUrl}
-          alt={`${run.title} route map`}
-          className="w-full h-36 object-cover rounded-xl"
-          loading="lazy"
-          onError={hideOnError}
-        />
-        <img
-          src={run.photoUrl}
-          alt={`${run.title} photo`}
-          className="w-full h-36 object-cover rounded-xl"
-          loading="lazy"
-          onError={hideOnError}
-        />
-      </div>
-    )
-  }
-
-  if (hasMap || hasPhoto) {
-    return (
-      <img
-        src={(run.mapUrl || run.photoUrl) as string}
-        alt={`${run.title} ${hasMap ? 'route map' : 'photo'}`}
-        className="w-full h-44 object-cover rounded-xl"
-        loading="lazy"
-        onError={hideOnError}
-      />
-    )
-  }
-
-  // Fallback: draw the route from the polyline, or a decorative squiggle.
+  // Prefer a prebuilt map URL (data), else build a street map from the polyline.
+  const mapSrc = run.mapUrl || buildGeoapifyMapUrl(run.polyline)
+  // Always have the drawn route ready as a resilient fallback layer.
   const routePath = run.polyline ? buildRoutePath(run.polyline) : null
 
   return (
     <div className="relative w-full h-44 rounded-xl overflow-hidden bg-gradient-to-br from-surface-elevated to-surface border border-surface-light/20">
+      {/* Route outline — also shows through if the map image fails to load */}
       <svg
         viewBox="0 0 300 170"
-        className="w-full h-full"
+        className="absolute inset-0 w-full h-full"
         preserveAspectRatio="xMidYMid meet"
       >
         <path
@@ -141,9 +125,15 @@ const RouteThumbnail = ({ run }: { run: RecentRun }) => {
           opacity={routePath ? 1 : 0.55}
         />
       </svg>
-      <span className="absolute bottom-2 right-3 text-2xl leading-none select-none">
-        👟
-      </span>
+      {mapSrc && (
+        <img
+          src={mapSrc}
+          alt={`${run.title} route map`}
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
+          onError={hideOnError}
+        />
+      )}
     </div>
   )
 }

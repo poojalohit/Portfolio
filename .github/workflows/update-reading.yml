@@ -34,7 +34,6 @@ jobs:
           STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
           STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
           STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
-          GEOAPIFY_API_KEY: ${{ secrets.GEOAPIFY_API_KEY }}
       
       - name: Check for changes
         id: git-check

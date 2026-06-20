@@ -7,13 +7,12 @@
  *   STRAVA_CLIENT_SECRET
  *   STRAVA_REFRESH_TOKEN
  *
- * Optional (for the realistic terrain map image with the route drawn on it):
- *   GEOAPIFY_API_KEY  - free key from https://www.geoapify.com/ (static maps)
+ * The route map is rendered by the site at build time from the polyline this
+ * script stores (using the GEOAPIFY_API_KEY secret in the deploy workflow), so
+ * this script does not need a map key and never embeds one in the data file.
  *
  * If the Strava secrets are not present the script exits cleanly without changes,
  * so the build/deploy never breaks while Strava access is being set up.
- * If GEOAPIFY_API_KEY is missing, the route still renders (drawn from the
- * polyline), just without the street/terrain background.
  *
  * How to get a refresh token (one-time):
  *   1. Create an API app at https://www.strava.com/settings/api
@@ -28,7 +27,6 @@ const path = require('path')
 const CLIENT_ID = process.env.STRAVA_CLIENT_ID
 const CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET
 const REFRESH_TOKEN = process.env.STRAVA_REFRESH_TOKEN
-const GEOAPIFY_API_KEY = process.env.GEOAPIFY_API_KEY
 const MAX_RUNS = 3
 
 function request(options, body) {
@@ -86,41 +84,6 @@ function getActivities(accessToken) {
   })
 }
 
-// Detailed activity includes photos.primary.urls and the full polyline.
-function getActivityDetail(accessToken, id) {
-  return request({
-    method: 'GET',
-    hostname: 'www.strava.com',
-    path: `/api/v3/activities/${id}?include_all_efforts=false`,
-    headers: { Authorization: `Bearer ${accessToken}` },
-  })
-}
-
-// Largest available Strava photo URL for the activity (the photo the athlete uploaded).
-function pickPhotoUrl(detail) {
-  const urls = detail && detail.photos && detail.photos.primary && detail.photos.primary.urls
-  if (!urls) return null
-  const sizes = Object.keys(urls)
-    .map((k) => parseInt(k, 10))
-    .filter((n) => !isNaN(n))
-    .sort((a, b) => b - a)
-  return sizes.length ? urls[String(sizes[0])] : null
-}
-
-// Realistic street/terrain map with the route drawn on top (Geoapify static maps).
-// Geoapify accepts a standard encoded polyline directly in the geometry param.
-function buildMapUrl(polyline) {
-  if (!GEOAPIFY_API_KEY || !polyline) return null
-  const geometry = `polyline:${encodeURIComponent(polyline)};linecolor:%23fc4c02;linewidth:5;linestyle:solid`
-  return (
-    'https://maps.geoapify.com/v1/staticmap' +
-    '?style=osm-bright' +
-    '&width=600&height=400&scaleFactor=2' +
-    `&geometry=${geometry}` +
-    `&apiKey=${GEOAPIFY_API_KEY}`
-  )
-}
-
 function formatPace(distanceMeters, movingSeconds) {
   if (!distanceMeters || !movingSeconds) return '—'
   const secPerKm = movingSeconds / (distanceMeters / 1000)
@@ -176,8 +139,6 @@ function toRunObject(act) {
   }
   const polyline = act.map && (act.map.summary_polyline || act.map.polyline)
   if (polyline) fields.push(`    polyline: '${esc(polyline)}',`)
-  if (act._mapUrl) fields.push(`    mapUrl: '${esc(act._mapUrl)}',`)
-  if (act._photoUrl) fields.push(`    photoUrl: '${esc(act._photoUrl)}',`)
   fields.push(`    activityUrl: 'https://www.strava.com/activities/${act.id}',`)
   return `  {\n${fields.join('\n')}\n  }`
 }
@@ -228,24 +189,6 @@ async function main() {
     }
 
     console.log(`Found ${runs.length} run(s): ${runs.map((r) => r.name).join(', ')}`)
-
-    // Enrich each run with the uploaded photo and a realistic route map.
-    for (const run of runs) {
-      const hasPhotos = (run.total_photo_count || run.photo_count || 0) > 0
-      let detail = null
-      if (hasPhotos) {
-        try {
-          detail = await getActivityDetail(accessToken, run.id)
-          run._photoUrl = pickPhotoUrl(detail)
-        } catch (e) {
-          console.log(`  (could not fetch photo for ${run.id}: ${e.message})`)
-        }
-      }
-      const polyline =
-        (run.map && (run.map.summary_polyline || run.map.polyline)) ||
-        (detail && detail.map && (detail.map.summary_polyline || detail.map.polyline))
-      run._mapUrl = buildMapUrl(polyline)
-    }
 
     updatePortfolioData(runs)
   } catch (error) {
