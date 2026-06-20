@@ -81,14 +81,32 @@ section,
   section {
     will-change: auto;
   }
-  
-  /* Reduce backdrop blur on mobile for performance */
-  .glass {
-    @apply backdrop-blur-sm;
-  }
-  
+
+  /* Solid (no backdrop blur) glass on mobile. Animating the opacity of a
+     backdrop-blurred card forces the GPU to recompute the blur every frame,
+     which shows up as a full-screen flash/blink as sections scroll into view. */
+  .glass,
   .glass-strong {
-    @apply backdrop-blur-md;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    @apply bg-surface;
+  }
+
+  /* Drop the GPU layer hints on mobile — combined with backdrop content they
+     can cause flickering while scrolling on iOS/Android. */
+  section,
+  .glass,
+  .glass-strong {
+    -webkit-transform: none;
+    transform: none;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+  }
+
+  /* The fixed full-screen grain overlay repaints on every scroll and on every
+     address-bar show/hide, reading as a screen-wide blink. Hide it on mobile. */
+  body::before {
+    display: none;
   }
 }
 
