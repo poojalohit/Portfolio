@@ -187,7 +187,7 @@ export const projectsData: ProjectItem[] = [
     linkText: 'Click here to access',
   },
   {
-    title: 'OptiSecure — NYU Vertically Integrated Project',
+    title: 'OptiSecure: Helping CISOs Optimize Budget Spend',
     category: 'Projects',
     description: () => (
       <div className="space-y-3">
