@@ -559,7 +559,7 @@ export const bookRecommendations: BookRecommendation[] = [
     title: 'Sapiens',
     author: 'Yuval Noah Harari',
     coverUrl: 'https://covers.openlibrary.org/b/isbn/9780062316097-L.jpg',
-    whyILikeIt: 'I love how this book walks through the evolution of mankind by deconstructing the "stories" we all buy into, like religion, money, and politics. Looking at the world through this historical lens puts everything into perspective and completely changed how I see the systems we live in today.',
+    whyILikeIt: 'I love how this book tracks the evolution of mankind by exploring our powerful shared narratives - like money, governance, and belief systems that have allowed human societies to cooperate on a massive scale. Looking at the world through this historical lens completely changed how I view the complex systems we live in today.',
     goodreadsUrl: 'https://www.goodreads.com/search?q=Sapiens+Yuval+Noah+Harari',
   },
   {

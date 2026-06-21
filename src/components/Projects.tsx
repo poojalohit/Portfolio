@@ -50,11 +50,11 @@ const Projects = () => {
   
   // Custom order for Projects category
   const projectOrder: Record<string, number> = {
-    'AI-First GTM Engineering': 1,
-    'Economic Analysis': 2,
-    'Sentiment': 3,
-    'ReSKUe': 4,
-    'OptiSecure': 5,
+    'OptiSecure': 1,
+    'AI-First GTM Engineering': 2,
+    'Economic Analysis': 3,
+    'Sentiment': 4,
+    'ReSKUe': 5,
   }
 
   // Convert data file projects to component format
