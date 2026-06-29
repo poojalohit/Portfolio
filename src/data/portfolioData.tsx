@@ -606,6 +606,16 @@ export const stravaLink = 'https://www.strava.com/athletes/185115752'
 
 export const recentRuns: RecentRun[] = [
   {
+    title: 'Interval 4K w Elevation',
+    date: 'Jun 23, 2026',
+    distance: '4.28 km',
+    pace: '8:22 /km',
+    time: '35m 50s',
+    achievements: 10,
+    polyline: '_t_xFlzkbM?PAHJ`@N\\RVh@`@TDRFR@`@MVMLOLUFWBQDGBIJqARa@HIFK\\YXIPC\\FXAf@Gp@YPMJC\\?LDb@@LDr@f@ZZHNFBHTJPVh@HZJ^XlBn@lAr@d@n@RVLPBh@m@BOT]LKHMXw@Jk@Lc@@[DUCs@SkAu@sB}@{AGOAOO_@AeAL{@P_@REXBHD|@PhBNR@b@Cd@Id@EN?XHPHb@b@rBtCJJp@z@bA`A~AhAr@`@ZLVDFPZHRLBHAh@ET?VJf@DNZ^F?DJNCJ@t@`@Ll@Hx@?fBGx@Oz@AH[|@?jACTJl@L\\@LT`@b@`@LNL\\L`@Db@E|A?h@LbBAn@YBSQQAS@g@Ga@QA@DACAc@CUDIT?ZCBCCs@@e@HI?SBIACBECE@UC[SG@EC?CCAEKKEAISOQYO]Ga@IOGGa@y@GCi@s@[W[Sk@OYME?[Kg@UIIKE]U]MIKMGq@c@{@eAq@sAOm@E]e@gCQg@i@q@e@Wg@OECG?QG]][m@ESOYYcBU{@Q]e@y@s@s@[Ug@MG@ICe@?a@LWPg@NU?MDm@GI@KAODi@\\SVGLW|AARBLILK^MJGPYP]HICK@SEk@Wo@w@Ke@Cc@Hy@La@@OCIHuBPcADa@',
+    activityUrl: 'https://www.strava.com/activities/19042601055',
+  },
+  {
     title: '4K Interval Run & Walk',
     date: 'Jun 19, 2026',
     distance: '4.02 km',
@@ -624,16 +634,6 @@ export const recentRuns: RecentRun[] = [
     achievements: 21,
     polyline: '_p_xFjjkbMHQNQ^i@N[f@[DM@QDEF?TLXDLHJBHCXHFFZHPLZNHHRHHJPFZ\\HAFBX\\DTd@p@RPHNLHj@HZGTONSHQJc@@o@AOOi@MY[e@Sc@Is@?]B]J[`@a@RCP?ND^ZP\\BTl@`Bn@z@j@d@lAX\\BHAP@F@XRl@HX?\\FN?tBULBXJZTbApAZh@LJt@bA~@fA\\RBHr@h@n@^ZNH@XNJBLLz@HV?TCdA}@d@YNGVEF@`@CRBVLH?LHbANV?F@NILA|@Gb@HNFXRL@|@l@DFRHNLZNb@\\b@V`At@\\Nd@ZBFp@b@d@RnA`ANCFLPNNVPLXHRPJ@DBdAz@p@ZLN^NRRPFDHLDLLb@Tf@`@PZRrACv@K`B?HBAF_@@u@AGDS@k@AWGi@I_@EIm@c@MM]SIKWOMCeAw@m@]c@]MEQYKCK@EAE@EDGGO[SWg@WEG]UKCk@c@MEMS[WCG_CyAc@]w@e@aBiAQIEB?GUO_@Ka@QEEa@Ee@@GGQ@_@Jq@Bc@KMIUIq@Ei@Do@PGA_A`A]Pg@Fs@I}@a@c@]q@]EI]Sk@e@mByBoAkB][IQWYi@M[?W?WHq@H_@A_@Ie@EMIKAO@_AOMEYEi@Oa@[?MEEOW_@a@_@q@WmAc@c@SG[@[NSTQd@?r@Jr@Xz@Td@DDNd@F^?\\Qp@UX]Na@A]OSSAGKCUQCM}@}@CC?IIMYMYMEGi@Wk@_@{@Se@CSB',
     activityUrl: 'https://www.strava.com/activities/18942134062',
-  },
-  {
-    title: 'Interval Run',
-    date: 'Jun 11, 2026',
-    distance: '4.02 km',
-    pace: '8:28 /km',
-    time: '34m 02s',
-    achievements: 11,
-    polyline: 'oh_xFb~kbMGFJH@BGA@BPAb@DD?HCDB?^@VDDEDDF?RBLBZHd@AHFb@LRPJVBVEPMLMJ[D_@A_@@GAu@Og@?I@EHGPDR?RSBMRKH?LHRXA^DP?\\BHT?BDHD?B@BJAHBLFPR@?HJDD@JEFDLNPHPLJFHLH\\GRKP@JDFHDL?p@ADH`@DFHTHHNJDNBBI`@?DEHA\\HX^ZDJHb@?NDJHBFK@GLYDa@FQBSBCD@z@jA@Ht@d@NRRJD?f@^^Lt@`@J?LDbAf@h@Rf@b@XXFPNLHLDH?HDJFTN`@\\l@DLHJRPt@`@l@HVA`@IbACP@`@Rn@l@PTBLFHDXb@|AALZtAJXB@?IPKD?PJZh@?FZ^T^HBTTPHRPJDHHLFZHf@Tv@JRAb@F`BITEK?GBECCBIAEE[NKCKBEAG@EAQ?EAo@EsAQKMG?[WMGMO}@o@aA{AGQ}@gB?GDK@]GYEg@B}@Fg@Ci@BM@[AO@IE_@Ak@G]@KKu@U{@EAMQIAK@ALY^_@|@Uv@Gb@MfA@j@EVA?GCQ?SDc@?o@F]Ac@MWUWIIK_@s@S_AKIAMISGKICUYWUW]i@_@OAm@WQ?WKKK]OEGc@YMCe@][MYQ[a@YUIQS]c@kASaAKw@IUKk@[y@QYQG[W_@MMAe@USUGMMOO_@CQMUW_BUu@]w@[c@OMCGOISU[W[KM?E@ACQBIDKAMDS@GHQFMHG?OHM@KBSA]G',
-    activityUrl: 'https://www.strava.com/activities/18884043197',
   }
 ]
 
