@@ -547,10 +547,10 @@ export interface BookRecommendation {
 }
 
 export const currentlyReading = {
-  title: 'The Loneliness of Sonia and Sunny',
-  author: 'Kiran Desai',
-  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1754044242l/222683974.jpg',
-  goodreadsUrl: 'https://www.goodreads.com/book/show/222683974',
+  title: 'The Warmth of Other Suns: The Epic Story of America\'s Great Migration',
+  author: 'Isabel Wilkerson',
+  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1433354252l/8171378.jpg',
+  goodreadsUrl: 'https://www.goodreads.com/book/show/8171378',
 }
 
 export const bookRecommendations: BookRecommendation[] = [
@@ -606,6 +606,16 @@ export const stravaLink = 'https://www.strava.com/athletes/185115752'
 
 export const recentRuns: RecentRun[] = [
   {
+    title: 'Morning Run 🌞🔥',
+    date: 'Jun 30, 2026',
+    distance: '5.02 km',
+    pace: '7:31 /km',
+    time: '37m 42s',
+    achievements: 25,
+    polyline: 'om_xF~fkbM\\SNQTGN@LEPH\\F^RNBXNv@b@x@r@HL\\^FJp@r@VTPHXBj@CZ[Tk@Dm@?WKg@k@_AYs@Gq@@g@D_@DIb@a@NEJBJANB@APLFHN^ADL`@LVDVRd@JPH@@BBLHTPLB?RRj@PJFT@JDt@H`@H\\?PCFFTH\\?N@lAO`@?\\B\\R\\Xh@r@XTTj@NPXf@\\Xl@p@^X\\`@|A`Av@^|@N\\@XCJEl@m@\\Wh@S`@Gn@BVFHFPBHFb@Fr@Ab@Kx@@RHl@L`@Zd@PHJ`@THJPHl@d@b@RRNNFd@^DDZPLLVHl@`@f@VNR`@VJDx@l@XNn@d@RJj@d@zAz@PR^PNPRDb@Z@Fl@XDF@FB@R`@Pn@@T?l@BD@LQx@KtADKJaBDU@[Aw@QcAWg@IKOOSMSIg@a@{A}@i@c@s@a@kDaCeBcA_@Yg@Wu@o@KE}@m@SKUQSKIKOGuAaAcAe@e@IYCa@?{@H[?i@GQM[Iu@Ca@DEAq@Z[TW\\OLQHUB]AWCc@McB}@IKa@YCEYYEAEII?GMKEUQYa@[[AGeAqAq@eAEAGKUSUOSE]EQ@y@L_@B{@IO?KEI?_@EmB[s@W_@W{@kASg@Qq@Um@OUWMSAWBULGFOZEb@Ad@Lx@Nf@n@fAJVBb@E`@Od@MT[POBYAGB_@McAoAs@s@YQCK[YqAs@w@Wq@I]BSF_@ZQR',
+    activityUrl: 'https://www.strava.com/activities/19124100614',
+  },
+  {
     title: 'Interval 4K w Elevation',
     date: 'Jun 23, 2026',
     distance: '4.28 km',
@@ -624,16 +634,6 @@ export const recentRuns: RecentRun[] = [
     achievements: 5,
     polyline: '{n_xFvhkbMXYHEV]h@]j@Gp@Lv@XnAx@HDd@`@Zb@`@b@NHFJVVDJJJHDNARDRCh@UHGV}@@c@G[M_@Q]MKIO[_AIs@Dc@Ha@VYTMVA^DXVJVPz@LZJJBFLJTl@t@z@j@R`@D`@JhAPP?HGJ@XLX@FB^C^GH?PC\\Ap@Lj@b@\\t@ZX`@l@TP^n@j@r@ZRb@f@ZTj@X^VdAf@|@LNC\\@d@]`@e@HGf@Sn@OX?FHXBFFJ@LFH?n@JN@LIH@VGN@LCHBn@BPJVFJHh@Vb@^J@JHPFDH\\V`Ah@d@\\BFd@RHJ|@j@DFLD~@p@TJNRJDJHF?HLRLOUWWe@QMQIECKODIECGCBCIM?CEIYKEWWMEc@[OE]]C@GEI?GBIGC@SECEIUE?BKCGQISSQEEGc@[QEEEK?AIE?CGM?QOKCKIK?GCYEs@?[JSCm@Dm@Ma@QI@g@Cg@Dm@NUPaA~@E@W?w@Es@YKCMK_@Qi@a@YOCIYYg@]]]u@{@oBsCe@g@e@WGA]@]Hc@@c@Fq@AQGyAQ[?UKg@Ia@MQMGAUYSOQ[Ug@Ma@@GK]EEIUQ]KKc@UI@YHWZSZCLCr@?TLj@DFL\\LN@JJHPZDRDTAf@ANIVGHGNQPUHYBYEUM[_@GMKIC?KQUU',
     activityUrl: 'https://www.strava.com/activities/18985944698',
-  },
-  {
-    title: 'Morning Run 🏃🏻‍♀️',
-    date: 'Jun 16, 2026',
-    distance: '5.03 km',
-    pace: '7:05 /km',
-    time: '35m 36s',
-    achievements: 21,
-    polyline: '_p_xFjjkbMHQNQ^i@N[f@[DM@QDEF?TLXDLHJBHCXHFFZHPLZNHHRHHJPFZ\\HAFBX\\DTd@p@RPHNLHj@HZGTONSHQJc@@o@AOOi@MY[e@Sc@Is@?]B]J[`@a@RCP?ND^ZP\\BTl@`Bn@z@j@d@lAX\\BHAP@F@XRl@HX?\\FN?tBULBXJZTbApAZh@LJt@bA~@fA\\RBHr@h@n@^ZNH@XNJBLLz@HV?TCdA}@d@YNGVEF@`@CRBVLH?LHbANV?F@NILA|@Gb@HNFXRL@|@l@DFRHNLZNb@\\b@V`At@\\Nd@ZBFp@b@d@RnA`ANCFLPNNVPLXHRPJ@DBdAz@p@ZLN^NRRPFDHLDLLb@Tf@`@PZRrACv@K`B?HBAF_@@u@AGDS@k@AWGi@I_@EIm@c@MM]SIKWOMCeAw@m@]c@]MEQYKCK@EAE@EDGGO[SWg@WEG]UKCk@c@MEMS[WCG_CyAc@]w@e@aBiAQIEB?GUO_@Ka@QEEa@Ee@@GGQ@_@Jq@Bc@KMIUIq@Ei@Do@PGA_A`A]Pg@Fs@I}@a@c@]q@]EI]Sk@e@mByBoAkB][IQWYi@M[?W?WHq@H_@A_@Ie@EMIKAO@_AOMEYEi@Oa@[?MEEOW_@a@_@q@WmAc@c@SG[@[NSTQd@?r@Jr@Xz@Td@DDNd@F^?\\Qp@UX]Na@A]OSSAGKCUQCM}@}@CC?IIMYMYMEGi@Wk@_@{@Se@CSB',
-    activityUrl: 'https://www.strava.com/activities/18942134062',
   }
 ]
 
