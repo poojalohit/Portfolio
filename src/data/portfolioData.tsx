@@ -547,10 +547,10 @@ export interface BookRecommendation {
 }
 
 export const currentlyReading = {
-  title: 'The Warmth of Other Suns: The Epic Story of America\'s Great Migration',
-  author: 'Isabel Wilkerson',
-  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1433354252l/8171378.jpg',
-  goodreadsUrl: 'https://www.goodreads.com/book/show/8171378',
+  title: 'The God of Small Things',
+  author: 'Arundhati Roy',
+  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1767305433l/9777.jpg',
+  goodreadsUrl: 'https://www.goodreads.com/book/show/9777',
 }
 
 export const bookRecommendations: BookRecommendation[] = [
