@@ -547,10 +547,10 @@ export interface BookRecommendation {
 }
 
 export const currentlyReading = {
-  title: 'The God of Small Things',
-  author: 'Arundhati Roy',
-  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1767305433l/9777.jpg',
-  goodreadsUrl: 'https://www.goodreads.com/book/show/9777',
+  title: 'Kitchen Confidential: Adventures in the Culinary Underbelly',
+  author: 'Anthony Bourdain',
+  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1433739086l/33313.jpg',
+  goodreadsUrl: 'https://www.goodreads.com/book/show/33313',
 }
 
 export const bookRecommendations: BookRecommendation[] = [
