@@ -97,9 +97,9 @@ export const workExperienceData: WorkExperienceItem[] = [
     link: 'https://www.commvault.com',
     isIntern: true,
     description: [
-      'Built an AI audit platform to support partner enablement across the global partner ecosystem.',
-      'Developed a partner enablement library partners use to learn and position Commvault.',
-      'Created an onboarding nurture track that guides new partners through their first steps with Commvault.',
+      'Conceived and built an AI-driven global audit platform to evaluate partner brand representation, pinpoint enablement gaps, and deliver customized partner guides.',
+      'Architected a global partner enablement library for the resilience portfolio, producing localized playbooks, technical documentation, and executive briefs across international markets.',
+      'Designed the onboarding nurture track for new partner portal users and optimized platform workflows to drive partner adoption and engagement.',
     ],
   },
   {
