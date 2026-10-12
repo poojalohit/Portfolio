@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion'
-import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa'
+import { FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'
 import { contactData } from '../data/portfolioData'
 
 const Contact = () => {
   const iconMap = {
     email: FaEnvelope,
-    phone: FaPhone,
     location: FaMapMarkerAlt,
   }
 

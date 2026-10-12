@@ -93,12 +93,13 @@ export const workExperienceData: WorkExperienceItem[] = [
   {
     company: 'Commvault',
     role: 'Global Partner Marketing Intern',
-    period: 'May 2026 - Aug 2026',
+    period: 'May 2026 - Present',
     link: 'https://www.commvault.com',
     isIntern: true,
     description: [
-      'Interning at Commvault this summer!',
-      'Watch this space for more details.',
+      'Built an AI audit platform to support partner enablement across the global partner ecosystem.',
+      'Developed a partner enablement library partners use to learn and position Commvault.',
+      'Created an onboarding nurture track that guides new partners through their first steps with Commvault.',
     ],
   },
   {
@@ -547,10 +548,10 @@ export interface BookRecommendation {
 }
 
 export const currentlyReading = {
-  title: 'Kitchen Confidential: Adventures in the Culinary Underbelly',
-  author: 'Anthony Bourdain',
-  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1433739086l/33313.jpg',
-  goodreadsUrl: 'https://www.goodreads.com/book/show/33313',
+  title: 'Taiwan Travelogue',
+  author: 'Yáng Shuāng-zǐ',
+  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1707354397l/205363984.jpg',
+  goodreadsUrl: 'https://www.goodreads.com/book/show/205363984',
 }
 
 export const bookRecommendations: BookRecommendation[] = [
@@ -644,7 +645,7 @@ export interface ContactItem {
   label: string
   value: string
   link: string | null
-  icon: 'email' | 'phone' | 'location'
+  icon: 'email' | 'location'
 }
 
 export const contactData: ContactItem[] = [
@@ -653,12 +654,6 @@ export const contactData: ContactItem[] = [
     value: 'pooja.lohit6@gmail.com',
     link: 'mailto:pooja.lohit6@gmail.com',
     icon: 'email',
-  },
-  {
-    label: 'Mobile',
-    value: '+13473687729',
-    link: 'tel:+13473687729',
-    icon: 'phone',
   },
   {
     label: 'Location',
