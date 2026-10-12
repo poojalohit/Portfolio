@@ -75,13 +75,12 @@ const RouteMap = ({ polyline }: { polyline: string }) => {
     })
     map.attributionControl.setPrefix('')
 
-    L.tileLayer(
-      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-      {
-        attribution: '© OpenStreetMap © CARTO',
-        maxZoom: 19,
-      }
-    ).addTo(map)
+    // CARTO's public raster CDN now returns an "API key required" placeholder.
+    // Official OSM tiles stay keyless and draw the street map under the route.
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 19,
+    }).addTo(map)
 
     const route = L.polyline(points, {
       color: '#FC4C02',
@@ -91,14 +90,16 @@ const RouteMap = ({ polyline }: { polyline: string }) => {
       lineCap: 'round',
     }).addTo(map)
 
-    map.fitBounds(route.getBounds(), { padding: [16, 16] })
-    // Container size can settle a frame after mount; re-measure to avoid gray tiles.
-    setTimeout(() => {
+    const fit = () => {
       map.invalidateSize()
       map.fitBounds(route.getBounds(), { padding: [16, 16] })
-    }, 0)
+    }
+    fit()
+    // Container size can settle a frame after mount; re-measure to avoid gray tiles.
+    const timer = window.setTimeout(fit, 0)
 
     return () => {
+      window.clearTimeout(timer)
       map.remove()
     }
   }, [polyline])

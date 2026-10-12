@@ -2,6 +2,14 @@ import { motion } from 'framer-motion'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import { currentlyReading, bookRecommendations, goodreadsLink } from '../data/portfolioData'
 
+// Open Library cover URLs redirect through archive.org and often 502, which
+// hid these images. Local files are served with the site; remote URLs stay as-is.
+const coverSrc = (url?: string) => {
+  if (!url) return ''
+  if (/^https?:\/\//.test(url)) return url
+  return `${import.meta.env.BASE_URL}${url.replace(/^\//, '')}`
+}
+
 const Books = () => {
   const recommendations = bookRecommendations
 
@@ -34,7 +42,7 @@ const Books = () => {
                 className="flex-shrink-0 hover:scale-105 transition-transform duration-300 cursor-pointer"
               >
                 <img
-                  src={currentlyReading.coverUrl}
+                  src={coverSrc(currentlyReading.coverUrl)}
                   alt={`${currentlyReading.title} cover`}
                   className="w-32 h-48 object-contain rounded-lg shadow-lg"
                   onError={(e) => {
@@ -80,7 +88,7 @@ const Books = () => {
                     className="block mb-4 hover:scale-105 transition-transform duration-300 cursor-pointer"
                   >
                     <img
-                      src={book.coverUrl}
+                      src={coverSrc(book.coverUrl)}
                       alt={`${book.title} cover`}
                       className="w-full h-80 object-contain rounded-lg shadow-lg bg-surface/50"
                       onError={(e) => {
