@@ -548,10 +548,10 @@ export interface BookRecommendation {
 }
 
 export const currentlyReading = {
-  title: 'Taiwan Travelogue',
-  author: 'Yáng Shuāng-zǐ',
-  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1707354397l/205363984.jpg',
-  goodreadsUrl: 'https://www.goodreads.com/book/show/205363984',
+  title: 'Rejection',
+  author: 'Tony Tulathimutte',
+  coverUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1757697215l/199635125.jpg',
+  goodreadsUrl: 'https://www.goodreads.com/book/show/199635125',
 }
 
 export const bookRecommendations: BookRecommendation[] = [
